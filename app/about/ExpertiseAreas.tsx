@@ -3,24 +3,9 @@
 export default function ExpertiseAreas() {
   const expertiseAreas = [
     {
-      title: 'Branding & Identity',
-      description: 'Complete brand development from concept to execution',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20branding%20and%20identity%20design%20workspace%20with%20color%20palettes%2C%20logo%20sketches%2C%20brand%20guidelines%2C%20modern%20design%20tools%2C%20clean%20minimalist%20aesthetic%2C%20creative%20branding%20materials%20spread%20on%20desk%2C%20inspiring%20design%20environment&width=400&height=300&seq=branding&orientation=landscape'
-    },
-    {
       title: 'Web Design & Development',
       description: 'Modern, responsive websites that drive results',
       image: 'https://readdy.ai/api/search-image?query=Web%20development%20and%20design%20process%20showing%20multiple%20screens%20with%20responsive%20website%20layouts%2C%20modern%20UI%2FUX%20design%2C%20clean%20code%20on%20monitors%2C%20contemporary%20development%20workspace%2C%20professional%20web%20design%20tools%20and%20wireframes&width=400&height=300&seq=webdev&orientation=landscape'
-    },
-    {
-      title: 'Digital Marketing',
-      description: 'Strategic campaigns that amplify your reach',
-      image: 'https://readdy.ai/api/search-image?query=Digital%20marketing%20analytics%20dashboard%20with%20charts%20and%20graphs%2C%20social%20media%20campaigns%2C%20marketing%20strategy%20planning%2C%20modern%20workspace%20with%20multiple%20screens%20showing%20marketing%20data%2C%20professional%20marketing%20environment&width=400&height=300&seq=marketing&orientation=landscape'
-    },
-    {
-      title: 'Content Creation',
-      description: 'Compelling content that resonates with your audience',
-      image: 'https://readdy.ai/api/search-image?query=Content%20creation%20workspace%20with%20video%20equipment%2C%20cameras%2C%20lighting%20setup%2C%20modern%20content%20studio%2C%20creative%20writing%20and%20video%20production%20tools%2C%20professional%20content%20creation%20environment%20with%20bright%20lighting&width=400&height=300&seq=content&orientation=landscape'
     },
     {
       title: 'Custom Software',
@@ -51,7 +36,7 @@ export default function ExpertiseAreas() {
                 <img
                   src={area.image}
                   alt={area.title}
-                  className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  className="w-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
               </div>

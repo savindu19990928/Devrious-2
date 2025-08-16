@@ -7,7 +7,7 @@ export default function ServiceHero() {
     <section 
       className="relative min-h-[600px] flex items-center bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: 'url("https://readdy.ai/api/search-image?query=Modern%20technology%20services%20workspace%20with%20multiple%20screens%20displaying%20code%2C%20web%20development%2C%20UI%20design%20mockups%2C%20API%20documentation%2C%20clean%20minimal%20office%20environment%2C%20professional%20software%20development%20team%20collaborating%2C%20bright%20natural%20lighting%2C%20contemporary%20tech%20atmosphere&width=1920&height=600&seq=services-hero&orientation=landscape")'
+        backgroundImage: 'url("/images/services-hero.jpg")'
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/60 to-transparent"></div>

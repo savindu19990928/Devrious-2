@@ -22,7 +22,7 @@ export default function StorySection() {
           
           <div className="relative">
             <img
-              src="https://readdy.ai/api/search-image?query=Professional%20creative%20team%20brainstorming%20session%20in%20modern%20office%2C%20diverse%20group%20of%20designers%20and%20developers%20collaborating%20around%20table%20with%20laptops%20and%20sketches%2C%20bright%20natural%20lighting%2C%20contemporary%20workspace%20design%2C%20creative%20process%20and%20innovation%2C%20inspiring%20collaborative%20environment&width=600&height=400&seq=story-image&orientation=landscape"
+              src="/images/about-cta.jpg"
               alt="Our Story"
               className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
             />

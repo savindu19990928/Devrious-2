@@ -166,7 +166,7 @@ export default function Home() {
             
             <div className="relative">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20software%20development%20team%20working%20collaboratively%20in%20modern%20office%20environment%2C%20diverse%20team%20of%20developers%20and%20designers%20at%20computers%2C%20bright%20workspace%20with%20large%20windows%2C%20contemporary%20tech%20office%20design%2C%20teamwork%20and%20innovation%20atmosphere&width=600&height=400&seq=team-work&orientation=landscape"
+                src="/images/home1.jpg"
                 alt="Devrious Team"
                 className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
               />

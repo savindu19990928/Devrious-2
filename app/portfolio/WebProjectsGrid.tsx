@@ -120,7 +120,7 @@ export default function WebProjectsGrid() {
                     Start Similar Project
                   </Link>
                   <button className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
-                    View Details
+                    View Project
                   </button>
                 </div>
               </div>

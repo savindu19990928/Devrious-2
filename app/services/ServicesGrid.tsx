@@ -104,11 +104,11 @@ export default function ServicesGrid() {
                     </div>
                   </div>
                 </div>
-                <div className="h-48">
+                <div>
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full"
                   />
                 </div>
               </div>
