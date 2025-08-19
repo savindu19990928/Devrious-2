@@ -6,33 +6,34 @@ export default function WebProjectsGrid() {
   const projects = [
     {
       id: 1,
-      title: "TechFlow Solutions",
-      category: "Corporate Website",
-      description: "Modern corporate website for a technology consulting firm featuring responsive design, interactive portfolio showcase, and integrated CRM system.",
-      image: "https://readdy.ai/api/search-image?query=Modern%20corporate%20technology%20website%20design%20with%20clean%20professional%20layout%2C%20blue%20and%20white%20color%20scheme%2C%20technology%20consulting%20company%20homepage%20with%20hero%20section%2C%20navigation%20menu%2C%20service%20cards%2C%20and%20professional%20business%20imagery%2C%20responsive%20web%20design%20showcase&width=800&height=600&seq=project-1&orientation=landscape",
-      technologies: ["React", "Next.js", "Stripe", "PostgreSQL"],
-      features: ["Product Catalog", "Payment Processing", "User Accounts", "Order Tracking"],
-      liveUrl: "#"
+      title: "TutorsHub",
+      category: "Web Application",
+      description: "Developed TutorsHub, a web app that seamlessly matches students and teachers for personalized learning.",
+      image: "/images/tutorshub.png",
+      technologies: ["React", "Next.js", "Stripe", "MySQL", "Django"],
+      features: ["Tutors Catalog", "Payment Processing", "User Accounts", "Video chat"],
+      liveUrl: "https://www.tutorshub.org"
     },
     {
       id: 2,
       title: "CarCare by Motor Elite",
-      category: "Branding Website",
-      description: "Designed and built a responsive website for Car Care by Motor Elite, highlighting their premium auto repair services.",
+      category: "Branding & E-Commerce Project",
+      description: "Built a modern web presence for Motor Elite, including a service-focused site for car care and a full-featured e-commerce shop for auto parts.",
       image: "/images/carcare.png",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
+      technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: "https://carcare.mortorelite.com"
+      liveUrl: "https://carcare.mortorelite.com",
+      liveUrl2: "https://www.mortorelite.com"
     },
     {
       id: 3,
-      title: "HealthCare Connect",
-      category: "Web Application",
-      description: "Patient management web application for healthcare providers with appointment scheduling, medical records, and telemedicine capabilities.",
-      image: "https://readdy.ai/api/search-image?query=Healthcare%20web%20application%20interface%20design%20with%20medical%20theme%2C%20clean%20professional%20layout%20for%20patient%20management%20system%2C%20appointment%20scheduling%20interface%2C%20medical%20records%20dashboard%2C%20blue%20and%20white%20medical%20color%20scheme%2C%20professional%20healthcare%20website%20design&width=800&height=600&seq=project-3&orientation=landscape",
-      technologies: ["React", "TypeScript", "Express.js", "MongoDB"],
-      features: ["Appointment System", "Patient Records", "Video Calls", "Secure Messaging"],
-      liveUrl: "#"
+      title: "SilkWok",
+      category: "Branding Website",
+      description: "Built an elegant online presence for SilkWok, featuring their menu, reservations, and authentic dining experience.",
+      image: "/images/silkwok.png",
+      technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
+      features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
+      liveUrl: "https://www.silkwok.lk"
     }
   ];
 
