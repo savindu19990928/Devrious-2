@@ -22,7 +22,7 @@ export default function WebProjectsGrid() {
       image: "/images/carcare.png",
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: "https://carcare..mortorelite.com",
+      liveUrl: "https://carcare.mortorelite.com",
       liveUrl2: "https://www.mortorelite.com"
     },
     {
