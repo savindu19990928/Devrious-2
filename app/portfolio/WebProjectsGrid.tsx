@@ -16,13 +16,13 @@ export default function WebProjectsGrid() {
     },
     {
       id: 2,
-      title: "CarCare by Motor Elite",
+      title: "CarCare by Mortor Elite",
       category: "Branding & E-Commerce Project",
       description: "Built a modern web presence for Motor Elite, including a service-focused site for car care and a full-featured e-commerce shop for auto parts.",
       image: "/images/carcare.png",
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: "https://carcare-522049904205.europe-west1.run.app/",
+      liveUrl: "https://carcare..mortorelite.com",
       liveUrl2: "https://www.mortorelite.com"
     },
     {
