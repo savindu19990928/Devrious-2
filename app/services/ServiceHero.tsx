@@ -1,32 +1,33 @@
-'use client';
 
-import Link from 'next/link';
+'use client';
 
 export default function ServiceHero() {
   return (
-    <section 
-      className="relative min-h-[600px] flex items-center bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: 'url("/images/services-hero.jpg")'
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/60 to-transparent"></div>
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="w-full max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Complete Digital
-            <span className="text-emerald-400 block">Solutions</span>
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://readdy.ai/api/search-image?query=modern%20vector%20illustration%20of%20web%20development%20with%20globe%20symbols%2C%20laptop%20computers%20showing%20code%20editors%2C%20HTML%20CSS%20JavaScript%20symbols%2C%20browser%20windows%20with%20colorful%20interfaces%2C%20world%20wide%20web%20icons%2C%20internet%20connectivity%20symbols%2C%20digital%20globe%20with%20network%20connections%2C%20programming%20elements%2C%20clean%20flat%20design%20style%20with%20blue%20purple%20teal%20gradients%2C%20no%20humans%20no%20text&width=1920&height=1080&seq=service-hero-web-globe-35&orientation=landscape')`
+        }}
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      
+      <div className="relative z-10 w-full container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+            Digital Solutions
+            <span className="block text-emerald-400">That Drive Results</span>
           </h1>
-          <p className="text-xl text-gray-200 mb-8 max-w-3xl">
-            From concept to deployment, we provide comprehensive software development services that transform your ideas into powerful digital solutions. Our expertise spans across all modern technologies and development practices.
+          <p className="text-lg sm:text-xl md:text-2xl text-white mb-8 leading-relaxed max-w-4xl drop-shadow-lg">
+            From concept to launch, we create powerful digital experiences that help your business thrive in the modern world.
           </p>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link href="/contact" className="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors cursor-pointer text-center whitespace-nowrap">
-              Start Your Project
-            </Link>
-            <Link href="/portfolio" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors cursor-pointer text-center whitespace-nowrap">
-              View Case Studies
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap cursor-pointer shadow-xl">
+              Get Started
+            </button>
+            <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer shadow-xl">
+              View Our Work
+            </button>
           </div>
         </div>
       </div>

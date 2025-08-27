@@ -1,3 +1,4 @@
+
 'use client';
 
 export default function StorySection() {
@@ -22,7 +23,7 @@ export default function StorySection() {
           
           <div className="relative">
             <img
-              src="/images/about-cta.jpg"
+              src="https://readdy.ai/api/search-image?query=Vector%20illustration%20of%20creative%20team%20brainstorming%20and%20collaboration%2C%20flat%20design%20style%20showing%20diverse%20professionals%20working%20together%2C%20geometric%20shapes%20representing%20teamwork%20and%20innovation%2C%20modern%20minimalist%20illustration%20with%20bright%20colors%2C%20creative%20process%20visualization%20in%20vector%20art%20style&width=600&height=400&seq=story-vector&orientation=landscape"
               alt="Our Story"
               className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
             />

@@ -1,3 +1,4 @@
+
 'use client';
 
 export default function ContactInfo() {
@@ -5,23 +6,20 @@ export default function ContactInfo() {
     {
       icon: 'ri-mail-line',
       title: 'Email Us',
-      info: 'info@devrious.lk',
-      description: 'Send us your project details',
-      href: 'mailto:info@devrious.lk'
+      info: 'hello@devrious.com',
+      description: 'Send us your project details'
     },
     {
       icon: 'ri-phone-line',
       title: 'Call Us',
-      info: '+94 75 574 6933',
-      description: 'Mon-Fri from 8am to 6pm',
-      href: 'tel:+94755746933'
+      info: '+1 (555) 123-4567',
+      description: 'Mon-Fri from 8am to 6pm'
     },
     {
       icon: 'ri-map-pin-line',
       title: 'Location',
       info: 'Remote Team',
-      description: 'Serving clients worldwide',
-      href: null
+      description: 'Serving clients worldwide'
     }
   ];
 
@@ -29,7 +27,7 @@ export default function ContactInfo() {
     { icon: 'ri-linkedin-fill', label: 'LinkedIn', href: '#' },
     { icon: 'ri-twitter-fill', label: 'Twitter', href: '#' },
     { icon: 'ri-github-fill', label: 'GitHub', href: '#' },
-    { icon: 'ri-dribbble-fill', label: 'Dribbble', href: '#' }
+    { icon: 'ri-facebook-fill', label: 'Facebook', href: '#' }
   ];
 
   return (
@@ -50,23 +48,14 @@ export default function ContactInfo() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">{method.title}</h3>
-                {method.href ? (
-                  <a
-                    href={method.href}
-                    className="text-emerald-600 font-medium mb-1 block hover:underline"
-                  >
-                    {method.info}
-                  </a>
-                ) : (
-                  <p className="text-emerald-600 font-medium mb-1">{method.info}</p>
-                )}
+                <p className="text-emerald-600 font-medium mb-1">{method.info}</p>
                 <p className="text-sm text-gray-600">{method.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* <div className="mb-8">
+        <div className="mb-8">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
           <div className="flex space-x-4">
             {socialLinks.map((social, index) => (
@@ -80,7 +69,7 @@ export default function ContactInfo() {
               </a>
             ))}
           </div>
-        </div> */}
+        </div>
 
         <div className="bg-white rounded-lg p-6 shadow-sm">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Why Choose Devrious?</h3>

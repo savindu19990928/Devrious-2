@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -70,7 +71,7 @@ export default function WebProjectsGrid() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-80 object-cover object-top rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                  className="w-full h-96 object-cover object-top rounded-xl shadow-lg hover:shadow-xl transition-shadow"
                 />
               </div>
 
@@ -120,14 +121,9 @@ export default function WebProjectsGrid() {
                   >
                     Start Similar Project
                   </Link>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap inline-block"
-                  >
-                    View Project
-                  </a>
+                  <button className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -152,7 +151,7 @@ export default function ContactForm() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Service Needed *
@@ -175,6 +174,7 @@ export default function ContactForm() {
               </select>
             </div>
           </div>
+
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Project Details *

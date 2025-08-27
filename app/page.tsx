@@ -1,198 +1,245 @@
 
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function Home() {
+export default function HomePage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const services = [
+    {
+      icon: 'ri-code-s-slash-line',
+      title: 'Web Development',
+      description: 'Custom websites and web applications built with modern technologies',
+      features: ['Responsive Design', 'Performance Optimization', 'SEO Friendly']
+    },
+    {
+      icon: 'ri-palette-line',
+      title: 'UI/UX Design',
+      description: 'Beautiful, intuitive interfaces that users love to interact with',
+      features: ['User Research', 'Wireframing', 'Prototyping']
+    },
+    {
+      icon: 'ri-server-line',
+      title: 'API Development',
+      description: 'Robust backend systems and APIs for seamless data integration',
+      features: ['RESTful APIs', 'Database Design', 'Security']
+    },
+    {
+      icon: 'ri-smartphone-line',
+      title: 'Software Development',
+      description: 'Custom software solutions tailored to your business needs',
+      features: ['Desktop Apps', 'System Integration', 'Maintenance']
+    }
+  ];
+
   return (
     <div className="min-h-screen">
-      <Header />
-      
+      {/* Hero Section */}
       <section 
         className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("https://readdy.ai/api/search-image?query=Modern%20software%20development%20office%20with%20clean%20minimalist%20design%2C%20bright%20natural%20lighting%2C%20computers%20and%20coding%20screens%2C%20professional%20tech%20workspace%20environment%2C%20glass%20windows%2C%20contemporary%20architecture%2C%20soft%20blue%20and%20green%20color%20palette&width=1920&height=1080&seq=hero-main&orientation=landscape")'
+          backgroundImage: `url("https://readdy.ai/api/search-image?query=Modern%20flat%20vector%20illustration%20of%20web%20development%20concept%2C%20abstract%20coding%20workspace%20with%20floating%20HTML%20CSS%20JavaScript%20code%20elements%2C%20laptop%20computer%20with%20colorful%20interface%20designs%2C%20geometric%20programming%20symbols%20and%20development%20tools%2C%20minimalist%20illustration%20style%20with%20vibrant%20blue%20purple%20and%20emerald%20gradient%20colors%2C%20contemporary%20web%20developer%20workspace%20with%20clean%20lines%20and%20modern%20aesthetic&width=1920&height=1080&seq=homepage-web-dev-hero&orientation=landscape")`
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-transparent"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="w-full max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Crafting Digital
-              <span className="text-emerald-400 block">Excellence</span>
-              Since 2019
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className={`w-full max-w-5xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
+              Build Your
+              <span className="text-emerald-400 block">Digital Future</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl">
-              Professional software development agency specializing in web development, UI design, API solutions, and custom software systems that drive business growth.
+            <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 max-w-4xl leading-relaxed drop-shadow-lg">
+              Professional software development agency specializing in web applications, 
+              custom software solutions, and digital transformation for businesses worldwide.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="/portfolio" className="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors cursor-pointer text-center whitespace-nowrap">
-                View Our Work
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <Link 
+                href="/contact" 
+                className="bg-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer text-center whitespace-nowrap shadow-xl"
+              >
+                Get Started Today
               </Link>
-              <Link href="/contact" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors cursor-pointer text-center whitespace-nowrap">
-                Get Started
+              <Link 
+                href="/portfolio" 
+                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer text-center whitespace-nowrap shadow-xl"
+              >
+                View Our Work
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Services</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver comprehensive digital solutions tailored to your business needs
+              We provide comprehensive digital solutions to help your business thrive in the modern world
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-emerald-100 rounded-lg mb-6">
-                <i className="ri-code-line text-2xl text-emerald-600"></i>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div 
+                key={index}
+                className="group bg-white p-8 rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="w-16 h-16 flex items-center justify-center bg-emerald-100 rounded-lg mb-6 group-hover:bg-emerald-600 group-hover:scale-110 transition-all duration-300">
+                  <i className={`${service.icon} text-2xl text-emerald-600 group-hover:text-white transition-colors duration-300`}></i>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-gray-600">
+                      <div className="w-4 h-4 flex items-center justify-center mr-3">
+                        <i className="ri-check-line text-emerald-600"></i>
+                      </div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Web Development</h3>
-              <p className="text-gray-600">
-                Modern, responsive websites and web applications using cutting-edge technologies like React, Next.js, and Node.js.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-lg mb-6">
-                <i className="ri-palette-line text-2xl text-blue-600"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">UI/UX Design</h3>
-              <p className="text-gray-600">
-                Beautiful, intuitive user interfaces that enhance user experience and drive engagement for your digital products.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-lg mb-6">
-                <i className="ri-share-line text-2xl text-purple-600"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">API Development</h3>
-              <p className="text-gray-600">
-                Robust, scalable APIs that connect your applications and enable seamless data integration across platforms.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-orange-100 rounded-lg mb-6">
-                <i className="ri-settings-3-line text-2xl text-orange-600"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Software Development</h3>
-              <p className="text-gray-600">
-                Custom standalone applications tailored to your specific business requirements and workflows.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-red-100 rounded-lg mb-6">
-                <i className="ri-global-line text-2xl text-red-600"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Web-Based Systems</h3>
-              <p className="text-gray-600">
-                Comprehensive web-based business systems including CRM, ERP, and custom management platforms.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 flex items-center justify-center bg-green-100 rounded-lg mb-6">
-                <i className="ri-customer-service-2-line text-2xl text-green-600"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Consulting & Support</h3>
-              <p className="text-gray-600">
-                Expert technical consultation and ongoing support to ensure your digital solutions continue to deliver value.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Stats Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Devrious?</h2>
-            <p className="text-xl text-gray-600">5+ years of delivering exceptional digital solutions</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { number: '200+', label: 'Projects Completed' },
+              { number: '50+', label: 'Happy Clients' },
+              { number: '5+', label: 'Years Experience' },
+              { number: '24/7', label: 'Support Available' }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="text-4xl md:text-5xl font-bold text-emerald-600 mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 text-lg group-hover:text-gray-900 transition-colors duration-300">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-emerald-100 rounded-lg flex-shrink-0">
-                    <i className="ri-trophy-line text-xl text-emerald-600"></i>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Why Choose Devrious?
+              </h2>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Since 2019, we've been delivering exceptional digital solutions that combine 
+                technical excellence with creative innovation. Our team is committed to 
+                transforming your ideas into powerful digital experiences.
+              </p>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    icon: 'ri-rocket-line',
+                    title: 'Fast Delivery',
+                    description: 'Quick turnaround times without compromising quality'
+                  },
+                  {
+                    icon: 'ri-shield-check-line',
+                    title: 'Reliable & Secure',
+                    description: 'Built with security and reliability as top priorities'
+                  },
+                  {
+                    icon: 'ri-customer-service-2-line',
+                    title: '24/7 Support',
+                    description: 'Ongoing support and maintenance for all projects'
+                  }
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-4 group">
+                    <div className="w-12 h-12 flex items-center justify-center bg-emerald-100 rounded-lg group-hover:bg-emerald-600 transition-colors duration-300 flex-shrink-0">
+                      <i className={`${feature.icon} text-emerald-600 group-hover:text-white text-xl transition-colors duration-300`}></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600">{feature.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Proven Track Record</h3>
-                    <p className="text-gray-600">Since 2019, we've delivered 200+ successful projects across various industries.</p>
+                ))}
+              </div>
+              
+              <div className="mt-8">
+                <Link 
+                  href="/about" 
+                  className="inline-flex items-center bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
+                >
+                  Learn More About Us
+                  <div className="w-5 h-5 flex items-center justify-center ml-2">
+                    <i className="ri-arrow-right-line"></i>
                   </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-lg flex-shrink-0">
-                    <i className="ri-rocket-line text-xl text-blue-600"></i>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Cutting-Edge Technology</h3>
-                    <p className="text-gray-600">We stay ahead of technology trends to deliver future-proof solutions.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-lg flex-shrink-0">
-                    <i className="ri-team-line text-xl text-purple-600"></i>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert Team</h3>
-                    <p className="text-gray-600">Our skilled developers and designers bring years of experience to every project.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-orange-100 rounded-lg flex-shrink-0">
-                    <i className="ri-time-line text-xl text-orange-600"></i>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">On-Time Delivery</h3>
-                    <p className="text-gray-600">We pride ourselves on meeting deadlines without compromising quality.</p>
-                  </div>
-                </div>
+                </Link>
               </div>
             </div>
             
             <div className="relative">
               <img
-                src="/images/home1.jpg"
-                alt="Devrious Team"
+                src="https://readdy.ai/api/search-image?query=Professional%20software%20development%20team%20collaboration%20illustration%2C%20modern%20flat%20vector%20style%20with%20developers%20working%20on%20computers%2C%20geometric%20code%20elements%20and%20programming%20symbols%2C%20clean%20minimalist%20design%20with%20blue%20emerald%20and%20purple%20gradients%2C%20technology%20workspace%20with%20multiple%20screens%20and%20coding%20interfaces%2C%20contemporary%20business%20illustration%20without%20text%20or%20humans&width=600&height=400&seq=homepage-why-choose-fixed&orientation=landscape"
+                alt="Why Choose Us"
                 className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
               />
+              <div className="absolute -bottom-6 -left-6 bg-emerald-600 text-white p-6 rounded-lg shadow-lg">
+                <div className="text-2xl font-bold">Since 2019</div>
+                <div className="text-emerald-100">Delivering Excellence</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-emerald-600">
+      {/* CTA Section */}
+      <section className="py-20 bg-gray-900 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help bring your digital vision to life. Get a free consultation today.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Let's discuss your ideas and create something amazing together. 
+            Contact us today for a free consultation.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link href="/contact" className="bg-white text-emerald-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors cursor-pointer whitespace-nowrap">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact" 
+              className="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
+            >
               Get Free Quote
             </Link>
-            <Link href="/portfolio" className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-emerald-600 transition-colors cursor-pointer whitespace-nowrap">
-              View Portfolio
+            <Link 
+              href="/services" 
+              className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
+            >
+              View All Services
             </Link>
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
