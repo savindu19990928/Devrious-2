@@ -21,7 +21,7 @@ export default function TeamValues() {
       color: 'purple'
     },
     {
-      icon: 'ri-target-line',
+      icon: 'ri-line-chart-line',
       title: 'Measurable Results',
       description: 'We don\'t just create beautiful work — we ensure it delivers engagement, builds brand equity, and generates growth.',
       color: 'orange'
