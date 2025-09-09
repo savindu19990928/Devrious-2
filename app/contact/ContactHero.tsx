@@ -6,7 +6,7 @@ export default function ContactHero() {
     <section 
       className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url("https://readdy.ai/api/search-image?query=Modern%20flat%20vector%20illustration%20of%20customer%20communication%20and%20support%20concept%2C%20abstract%20geometric%20shapes%20representing%20connection%20and%20dialogue%2C%20floating%20message%20bubbles%20and%20communication%20icons%2C%20minimalist%20design%20with%20green%20and%20yellow%20gradient%20colors%2C%20contemporary%20contact%20and%20support%20illustration%20with%20clean%20flowing%20lines%20and%20friendly%20atmosphere&width=1920&height=1080&seq=contact-hero-communication-illustration&orientation=landscape")`
+        backgroundImage: `url("/images/contactHero.jpg")`
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20"></div>

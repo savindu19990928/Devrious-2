@@ -6,7 +6,7 @@ export default function AboutHero() {
     <section 
       className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url("https://readdy.ai/api/search-image?query=Flat%20vector%20illustration%20of%20diverse%20team%20collaboration%2C%20abstract%20figures%20working%20together%20around%20digital%20elements%2C%20colorful%20geometric%20shapes%20representing%20teamwork%20and%20unity%2C%20modern%20minimalist%20design%20with%20warm%20orange%20and%20teal%20color%20palette%2C%20contemporary%20business%20illustration%20with%20clean%20lines%20and%20flowing%20organic%20shapes%2C%20professional%20team%20building%20concept%20art&width=1920&height=1080&seq=about-hero-team-illustration&orientation=landscape")`
+        backgroundImage: `url("/images/aboutHero.jpg")`
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20"></div>

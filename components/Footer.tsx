@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 transform hover:scale-105 transition-transform duration-300">
             <div className="flex items-center space-x-2 mb-4 group">
               <img 
-                src="https://static.readdy.ai/image/7287dcd8714649f87b3169e43a183267/d7419ef3b32b2a1fbf12b42a8a916efb.jfif" 
+                src="/images/logo.jfif" 
                 alt="Devrious Logo" 
                 className="w-8 h-8 object-contain rounded-full group-hover:rotate-12 transition-transform duration-300"
               />

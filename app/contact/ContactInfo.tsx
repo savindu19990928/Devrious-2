@@ -6,20 +6,23 @@ export default function ContactInfo() {
     {
       icon: 'ri-mail-line',
       title: 'Email Us',
-      info: 'hello@devrious.com',
-      description: 'Send us your project details'
+      info: 'info@devrious.com',
+      description: 'Send us your project details',
+      href: "mailto:info@devrious.com"
     },
     {
       icon: 'ri-phone-line',
       title: 'Call Us',
-      info: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 6pm'
+      info: '+94 75 574-6933',
+      description: 'Mon-Fri from 8am to 6pm',
+      href: "tel:+94755746933"
     },
     {
       icon: 'ri-map-pin-line',
       title: 'Location',
       info: 'Remote Team',
-      description: 'Serving clients worldwide'
+      description: 'Serving clients worldwide',
+      href: "#"
     }
   ];
 
@@ -48,7 +51,7 @@ export default function ContactInfo() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">{method.title}</h3>
-                <p className="text-emerald-600 font-medium mb-1">{method.info}</p>
+                <p className="text-emerald-600 font-medium mb-1"><a href={method.href}>{method.info}</a></p>
                 <p className="text-sm text-gray-600">{method.description}</p>
               </div>
             </div>

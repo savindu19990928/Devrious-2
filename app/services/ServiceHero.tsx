@@ -7,7 +7,7 @@ export default function ServiceHero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://readdy.ai/api/search-image?query=modern%20vector%20illustration%20of%20web%20development%20with%20globe%20symbols%2C%20laptop%20computers%20showing%20code%20editors%2C%20HTML%20CSS%20JavaScript%20symbols%2C%20browser%20windows%20with%20colorful%20interfaces%2C%20world%20wide%20web%20icons%2C%20internet%20connectivity%20symbols%2C%20digital%20globe%20with%20network%20connections%2C%20programming%20elements%2C%20clean%20flat%20design%20style%20with%20blue%20purple%20teal%20gradients%2C%20no%20humans%20no%20text&width=1920&height=1080&seq=service-hero-web-globe-35&orientation=landscape')`
+          backgroundImage: `url('/images/serviceHero.jpg')`
         }}
       />
       <div className="absolute inset-0 bg-black/40" />

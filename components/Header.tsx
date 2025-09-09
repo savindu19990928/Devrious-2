@@ -26,7 +26,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2 group">
             <img 
-              src="https://static.readdy.ai/image/7287dcd8714649f87b3169e43a183267/d7419ef3b32b2a1fbf12b42a8a916efb.jfif" 
+              src="/images/logo.jfif" 
               alt="Devrious Logo" 
               className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300"
             />
