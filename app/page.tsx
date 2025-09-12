@@ -44,7 +44,7 @@ export default function HomePage() {
       <section 
         className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url("https://readdy.ai/api/search-image?query=Modern%20flat%20vector%20illustration%20of%20web%20development%20concept%2C%20abstract%20coding%20workspace%20with%20floating%20HTML%20CSS%20JavaScript%20code%20elements%2C%20laptop%20computer%20with%20colorful%20interface%20designs%2C%20geometric%20programming%20symbols%20and%20development%20tools%2C%20minimalist%20illustration%20style%20with%20vibrant%20blue%20purple%20and%20emerald%20gradient%20colors%2C%20contemporary%20web%20developer%20workspace%20with%20clean%20lines%20and%20modern%20aesthetic&width=1920&height=1080&seq=homepage-web-dev-hero&orientation=landscape")`
+          backgroundImage: `url("/images/homeHero.jpg")`
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20"></div>
@@ -201,7 +201,7 @@ export default function HomePage() {
             
             <div className="relative">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20software%20development%20team%20collaboration%20illustration%2C%20modern%20flat%20vector%20style%20with%20developers%20working%20on%20computers%2C%20geometric%20code%20elements%20and%20programming%20symbols%2C%20clean%20minimalist%20design%20with%20blue%20emerald%20and%20purple%20gradients%2C%20technology%20workspace%20with%20multiple%20screens%20and%20coding%20interfaces%2C%20contemporary%20business%20illustration%20without%20text%20or%20humans&width=600&height=400&seq=homepage-why-choose-fixed&orientation=landscape"
+                src="/images/home1.jpg"
                 alt="Why Choose Us"
                 className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
               />
