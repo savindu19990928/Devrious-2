@@ -13,7 +13,7 @@ export default function WebProjectsGrid() {
       image: "/images/tutorshub.png",
       technologies: ["React", "Next.js", "Stripe", "MySQL", "Django"],
       features: ["Tutors Catalog", "Payment Processing", "User Accounts", "Video chat"],
-      liveUrl: "https://www.tutorshub.org"
+      liveUrl: ["https://www.tutorshub.org"]
     },
     {
       id: 2,
@@ -23,8 +23,7 @@ export default function WebProjectsGrid() {
       image: "/images/carcare.png",
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: "https://carcare.mortorelite.com",
-      liveUrl2: "https://www.mortorelite.com"
+      liveUrl: ["https://carcare.mortorelite.com", "https://www.mortorelite.com"],
     },
     {
       id: 3,
@@ -34,9 +33,15 @@ export default function WebProjectsGrid() {
       image: "/images/silkwok.png",
       technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: "https://www.silkwok.lk"
+      liveUrl: ["https://www.silkwok.lk"]
     }
   ];
+
+  const handleOpenTabs = (urls: string[]) => {
+    urls.forEach((url: string) => {
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  };
 
   return (
     <section className="py-20 bg-white">
@@ -121,7 +126,7 @@ export default function WebProjectsGrid() {
                   >
                     Start Similar Project
                   </Link>
-                  <button className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
+                  <button onClick={() => {handleOpenTabs(project.liveUrl)}} className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
                     View Details
                   </button>
                 </div>
