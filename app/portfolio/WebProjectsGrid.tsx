@@ -132,12 +132,12 @@ export default function WebProjectsGrid() {
                 <div className="flex space-x-4">
                   <Link
                     href="/contact"
-                    className="bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors cursor-pointer whitespace-nowrap"
+                    className="bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors cursor-pointer whitespace-nowrap text-sm sm:text-base"
                   >
                     Start Similar Project
                   </Link>
-                  <button onClick={() => { handleOpenTabs(project.liveUrl) }} className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
-                    View Details
+                  <button onClick={() => { handleOpenTabs(project.liveUrl) }} className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap text-sm sm:text-base">
+                    View Project
                   </button>
                 </div>
               </div>
