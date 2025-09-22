@@ -11,8 +11,8 @@ export default function WebProjectsGrid() {
       category: "E-Commerce Project",
       description: "A demo project created for showcasing portfolio work. Simulates an e-commerce platform for an auto parts shop with modern design and functionality.",
       image: "/images/mortorelite.png",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
-      features: ["Responsive Design", "Shop Catalog", "Payment Processing", "User Accounts", "SEO Optimized"],
+      technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Redis", "Django"],
+      features: ["Responsive Design", "User Accounts", "Product Catalog", "Shopping Cart","Secure Checkout", "Payment Gateway Integration", "SEO Optimized", "Caching"],
       liveUrl: ["https://www.mortorelite.com"]
     },
     {
@@ -24,7 +24,27 @@ export default function WebProjectsGrid() {
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
       liveUrl: ["https://carcare.mortorelite.com"],
-    }
+    },
+    {
+      id: 3,
+      title: "Devmart",
+      category: "Full-Stack E-Commerce Project",
+      description:
+        "A demo full-stack e-commerce application built to demonstrate advanced development skills. Features product listings, shopping cart, checkout, and secure payment integration using Stripe.",
+      image: "/images/devmart.png",
+      technologies: ["MongoDB", "Express.js", "React", "Node.js", "Stripe"],
+      features: [
+        "Full-Stack Architecture",
+        "Responsive Design",
+        "User Accounts",
+        "Product Catalog",
+        "Shopping Cart",
+        "Secure Checkout",
+        "Payment Gateway Integration",
+        "SEO Optimized"
+      ],
+      liveUrl: ["https://devmart.devrious.lk"],
+    },
   ];
 
   const handleOpenTabs = (urls: string[]) => {
