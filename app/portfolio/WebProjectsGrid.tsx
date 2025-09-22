@@ -7,33 +7,23 @@ export default function WebProjectsGrid() {
   const projects = [
     {
       id: 1,
-      title: "TutorsHub",
-      category: "Web Application",
-      description: "Developed TutorsHub, a web app that seamlessly matches students and teachers for personalized learning.",
-      image: "/images/tutorshub.png",
-      technologies: ["React", "Next.js", "Stripe", "MySQL", "Django"],
-      features: ["Tutors Catalog", "Payment Processing", "User Accounts", "Video chat"],
-      liveUrl: ["https://www.tutorshub.org"]
+      title: "Motor Elite",
+      category: "E-Commerce Project",
+      description: "A demo project created for showcasing portfolio work. Simulates an e-commerce platform for an auto parts shop with modern design and functionality.",
+      image: "/images/mortorelite.png",
+      technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
+      features: ["Responsive Design", "Shop Catalog", "Payment Processing", "User Accounts", "SEO Optimized"],
+      liveUrl: ["https://www.mortorelite.com"]
     },
     {
       id: 2,
       title: "CarCare by Mortor Elite",
-      category: "Branding & E-Commerce Project",
-      description: "Built a modern web presence for Motor Elite, including a service-focused site for car care and a full-featured e-commerce shop for auto parts.",
+      category: "Branding Website",
+      description: "A demo project designed for portfolio purposes. Represents a service-focused website for an automobile company, highlighting branding and user engagement.",
       image: "/images/carcare.png",
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "MySQL", "Django"],
       features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: ["https://www.mortorelite.com", "https://carcare.mortorelite.com"],
-    },
-    {
-      id: 3,
-      title: "SilkWok",
-      category: "Branding Website",
-      description: "Built an elegant online presence for SilkWok, featuring their menu, reservations, and authentic dining experience.",
-      image: "/images/silkwok.png",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
-      features: ["Responsive Design", "CMS Integration", "Contact Forms", "SEO Optimized"],
-      liveUrl: ["https://www.silkwok.lk"]
+      liveUrl: ["https://carcare.mortorelite.com"],
     }
   ];
 
@@ -47,11 +37,11 @@ export default function WebProjectsGrid() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Web Projects</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Demo Web Projects</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Here are some of our selected web development projects that demonstrate our expertise in creating modern, functional, and beautiful digital experiences.
           </p>
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-6 max-w-4xl mx-auto text-left">
+          {/* <div className="bg-blue-50 border-l-4 border-blue-500 p-6 max-w-4xl mx-auto text-left">
             <div className="flex items-start">
               <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
                 <i className="ri-information-line text-blue-600 text-xl"></i>
@@ -59,11 +49,11 @@ export default function WebProjectsGrid() {
               <div className="ml-3">
                 <p className="text-blue-800 font-medium">Portfolio Note:</p>
                 <p className="text-blue-700 text-sm mt-1">
-                  This portfolio showcases only our web development projects. We also create custom POS systems, stock management systems, finance management systems, and other tailored business solutions for our clients. These non-web projects are not displayed here due to client confidentiality agreements.
+                  This portfolio showcases only our demo web development projects. We also create custom POS systems, stock management systems, finance management systems, and other tailored business solutions for our clients. These non-web projects are not displayed here due to client confidentiality agreements.
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
@@ -126,7 +116,7 @@ export default function WebProjectsGrid() {
                   >
                     Start Similar Project
                   </Link>
-                  <button onClick={() => {handleOpenTabs(project.liveUrl)}} className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
+                  <button onClick={() => { handleOpenTabs(project.liveUrl) }} className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer whitespace-nowrap">
                     View Details
                   </button>
                 </div>

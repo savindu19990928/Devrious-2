@@ -28,8 +28,7 @@ export default function ContactInfo() {
 
   const socialLinks = [
     { icon: 'ri-linkedin-fill', label: 'LinkedIn', href: '#' },
-    { icon: 'ri-twitter-fill', label: 'Twitter', href: '#' },
-    { icon: 'ri-github-fill', label: 'GitHub', href: '#' },
+    { icon: 'ri-instagram-fill', label: 'Instagram', href: '#' },
     { icon: 'ri-facebook-fill', label: 'Facebook', href: '#' }
   ];
 

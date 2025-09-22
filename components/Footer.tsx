@@ -23,8 +23,8 @@ export default function Footer() {
             <div className="flex space-x-4">
               {[
                 { icon: 'ri-linkedin-fill', href: '#' },
-                { icon: 'ri-twitter-fill', href: '#' },
-                { icon: 'ri-github-fill', href: '#' }
+                { icon: 'ri-facebook-fill', href: '#' },
+                { icon: 'ri-instagram-fill', href: '#' }
               ].map((social, index) => (
                 <div 
                   key={index}
