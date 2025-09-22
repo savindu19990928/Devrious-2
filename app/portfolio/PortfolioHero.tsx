@@ -3,7 +3,7 @@
 
 export default function PortfolioHero() {
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url("/images/portfolioHero.jpg")`
@@ -17,20 +17,20 @@ export default function PortfolioHero() {
             <span className="text-emerald-400 block">Portfolio</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 max-w-4xl leading-relaxed drop-shadow-lg">
-            Explore our carefully selected projects that showcase our expertise in web development, 
-            software solutions, and digital innovation. Each project represents our commitment to 
+            Explore our carefully selected projects that showcase our expertise in web development,
+            software solutions, and digital innovation. Each project represents our commitment to
             delivering exceptional results that exceed client expectations.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">200+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Projects Completed</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">50+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Happy Clients</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">15+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Industries Served</div>
             </div>

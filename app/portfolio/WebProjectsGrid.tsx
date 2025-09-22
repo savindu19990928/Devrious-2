@@ -86,7 +86,7 @@ export default function WebProjectsGrid() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-96 object-cover object-top rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                  className="w-full h-full object-cover object-top rounded-xl shadow-lg hover:shadow-xl transition-shadow"
                 />
               </div>
 

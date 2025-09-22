@@ -3,7 +3,7 @@
 
 export default function AboutHero() {
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url("/images/aboutHero.jpg")`
@@ -20,15 +20,15 @@ export default function AboutHero() {
             A collective of experienced freelancers united by a shared vision: to transform ideas into impactful digital experiences. Since 2019, we've been delivering comprehensive solutions that blend creativity, strategy, and technical expertise.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">200+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Projects Delivered</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">5+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Years Experience</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">100%</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Client Satisfaction</div>
             </div>
