@@ -2,10 +2,10 @@
 
 export default function TeamStats() {
   const stats = [
-    { number: '200+', label: 'Projects Completed', icon: 'ri-checkbox-circle-line' },
-    { number: '50+', label: 'Happy Clients', icon: 'ri-heart-line' },
-    { number: '5+', label: 'Years of Excellence', icon: 'ri-time-line' },
-    { number: '15+', label: 'Team Members', icon: 'ri-group-line' },
+    { number: '13+', label: 'Projects Completed', icon: 'ri-checkbox-circle-line' },
+    { number: '4+', label: 'Happy Clients', icon: 'ri-heart-line' },
+    { number: '1+', label: 'Years of Excellence', icon: 'ri-time-line' },
+    { number: '4+', label: 'Team Members', icon: 'ri-group-line' },
     { number: '100%', label: 'Client Satisfaction', icon: 'ri-star-line' },
     { number: '24/7', label: 'Support Available', icon: 'ri-customer-service-line' }
   ];

@@ -21,11 +21,11 @@ export default function AboutHero() {
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
             <div className="text-left">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">200+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">13+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Projects Delivered</div>
             </div>
             <div className="text-left">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">5+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">1+</div>
               <div className="text-white text-sm sm:text-base drop-shadow-lg">Years Experience</div>
             </div>
             <div className="text-left">

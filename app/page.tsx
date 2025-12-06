@@ -44,7 +44,7 @@ export default function HomePage() {
       <section 
         className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url("/images/homeHero.jpg")`
+          backgroundImage: `url("/images/111.jpeg")`
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20"></div>
@@ -122,9 +122,9 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { number: '200+', label: 'Projects Completed' },
-              { number: '50+', label: 'Happy Clients' },
-              { number: '5+', label: 'Years Experience' },
+              { number: '13+', label: 'Projects Completed' },
+              { number: '4+', label: 'Happy Clients' },
+              { number: '1+', label: 'Years Experience' },
               { number: '24/7', label: 'Support Available' }
             ].map((stat, index) => (
               <div key={index} className="text-center group">
@@ -206,7 +206,7 @@ export default function HomePage() {
                 className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
               />
               <div className="absolute -bottom-6 -left-6 bg-emerald-600 text-white p-6 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold">Since 2019</div>
+                <div className="text-2xl font-bold">Since 2025</div>
                 <div className="text-emerald-100">Delivering Excellence</div>
               </div>
             </div>

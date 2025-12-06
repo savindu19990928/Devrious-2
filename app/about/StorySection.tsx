@@ -23,7 +23,7 @@ export default function StorySection() {
           
           <div className="relative">
             <img
-              src="/images/about1.jpg"
+              src="/images/home1.jpg"
               alt="Our Story"
               className="rounded-xl shadow-lg w-full h-96 object-cover object-top"
             />

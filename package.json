@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "next start -p 8080",
-    "dev": "cross-env NODE_ENV=development next dev -H 0.0.0.0 -p 3000",
+    "dev": "cross-env NODE_ENV=development next dev -H 0.0.0.0 -p 8000",
     "build": "next build"
   },
   "dependencies": {
