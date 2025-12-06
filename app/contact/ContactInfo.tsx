@@ -6,9 +6,9 @@ export default function ContactInfo() {
     {
       icon: 'ri-mail-line',
       title: 'Email Us',
-      info: 'info@devrious.com',
+      info: 'info@devrious.lk',
       description: 'Send us your project details',
-      href: "mailto:info@devrious.com"
+      href: "mailto:info@devrious.lk"
     },
     {
       icon: 'ri-phone-line',

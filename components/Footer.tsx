@@ -18,7 +18,7 @@ export default function Footer() {
               <span className="text-xl font-bold group-hover:text-emerald-400 transition-colors duration-300">Devrious</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Professional software development agency founded in 2019. We specialize in creating innovative digital solutions for businesses worldwide.
+              Professional software development agency founded in 2025. We specialize in creating innovative digital solutions for businesses worldwide.
             </p>
             <div className="flex space-x-4">
               {[

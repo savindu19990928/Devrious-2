@@ -48,7 +48,7 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <Link href="/contact" className="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 hover:scale-105 transform transition-all duration-300 cursor-pointer whitespace-nowrap shadow-md hover:shadow-lg">
+            <Link href="tel:+94755746933" className="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 hover:scale-105 transform transition-all duration-300 cursor-pointer whitespace-nowrap shadow-md hover:shadow-lg">
               Call Us Now
             </Link>
           </div>
@@ -85,7 +85,7 @@ export default function Header() {
               </Link>
             ))}
             <Link 
-              href="/contact" 
+              href="tel:+94755746933" 
               className={`bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors cursor-pointer text-center whitespace-nowrap transform hover:scale-105 duration-300 ${
                 isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
               }`}
