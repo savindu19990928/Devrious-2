@@ -17,7 +17,7 @@ export default function AboutHero() {
             <span className="text-emerald-400 block">Devrious</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 max-w-4xl leading-relaxed drop-shadow-lg">
-            A collective of experienced freelancers united by a shared vision: to transform ideas into impactful digital experiences. Since 2019, we've been delivering comprehensive solutions that blend creativity, strategy, and technical expertise.
+            A collective of experienced freelancers united by a shared vision: to transform ideas into impactful digital experiences. Since 2025, we've been delivering comprehensive solutions that blend creativity, strategy, and technical expertise.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
             <div className="text-left">

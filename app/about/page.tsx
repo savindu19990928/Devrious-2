@@ -46,9 +46,9 @@ export default function AboutPage() {
       <div data-section="values" className={`transform transition-all duration-1000 delay-300 ${visibleSections.has('values') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
         <TeamValues />
       </div>
-      <div data-section="expertise" className={`transform transition-all duration-1000 delay-400 ${visibleSections.has('expertise') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+      {/* <div data-section="expertise" className={`transform transition-all duration-1000 delay-400 ${visibleSections.has('expertise') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
         <ExpertiseAreas />
-      </div>
+      </div> */}
       <div data-section="stats" className={`transform transition-all duration-1000 delay-500 ${visibleSections.has('stats') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
         <TeamStats />
       </div>
