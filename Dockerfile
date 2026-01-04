@@ -22,4 +22,4 @@ COPY --from=builder /app/package.json ./
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "npx vite preview --host 0.0.0.0 --port 8080"]
+CMD ["serve", "-s", "dist", "-l", "8080"]
