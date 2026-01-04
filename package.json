@@ -7,7 +7,7 @@
     "dev": "npx vite",
     "build": "npx vite build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "preview": "npx vite preview"
+    "preview": "vite preview --port 8080 --host"
   },
   "dependencies": {
     "emailjs-com": "^3.2.0",
