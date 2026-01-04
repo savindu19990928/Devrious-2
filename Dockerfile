@@ -22,4 +22,4 @@ COPY --from=builder /app/package.json ./
 
 EXPOSE 8080
 
-CMD ["serve", "-s", "dist", "-l", "8080"]
+CMD ["sh", "-c", "serve -s dist -l 8080"]
