@@ -71,7 +71,7 @@ export function Portfolio() {
                 size="sm"
                 className="w-full"
               >
-                View Details
+                View Project
               </Button>
             </div>
           </div>
