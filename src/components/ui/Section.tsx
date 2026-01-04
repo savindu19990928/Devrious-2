@@ -1,0 +1,18 @@
+import React from 'react';
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+  background?: 'white' | 'gray';
+}
+export function Section({
+  children,
+  className = '',
+  id,
+  background = 'white'
+}: SectionProps) {
+  const bgClass = background === 'white' ? 'bg-white' : 'bg-gray-50';
+  return <section id={id} className={`py-16 md:py-24 ${bgClass} ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+    </section>;
+}
