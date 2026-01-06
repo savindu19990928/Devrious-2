@@ -173,11 +173,11 @@ export function Home() {
             {[
               {
                 label: 'Projects Completed',
-                value: '50+',
+                value: '57+',
               },
               {
                 label: 'Happy Clients',
-                value: '30+',
+                value: '34+',
               },
               {
                 label: 'Team Members',
