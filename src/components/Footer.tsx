@@ -19,10 +19,10 @@ export function Footer() {
               solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-[#10B981] transition-colors">
+              <a href="https://www.facebook.com/share/12LXEx3idTT/" className="text-gray-400 hover:text-[#10B981] transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#FB7185] transition-colors">
+              <a href="https://www.instagram.com/devrious.lk/?igsh=cWRkMXM5YWV4NHVw&utm_source=qr#" className="text-gray-400 hover:text-[#FB7185] transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="https://www.linkedin.com/company/devrious/" className="text-gray-400 hover:text-[#FBBF24] transition-colors">

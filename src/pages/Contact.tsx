@@ -113,10 +113,10 @@ export function Contact() {
               Follow Us
             </h3>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#10B981] hover:text-white transition-all duration-300">
+              <a href="https://www.facebook.com/share/12LXEx3idTT/" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#10B981] hover:text-white transition-all duration-300">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#FB7185] hover:text-white transition-all duration-300">
+              <a href="https://www.instagram.com/devrious.lk/?igsh=cWRkMXM5YWV4NHVw&utm_source=qr#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#FB7185] hover:text-white transition-all duration-300">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="https://www.linkedin.com/company/devrious/" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#FBBF24] hover:text-white transition-all duration-300">
