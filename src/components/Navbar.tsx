@@ -54,7 +54,7 @@ export function Navbar() {
           {navLinks.map(link => <Link key={link.name} to={link.path} className={`text-sm font-medium transition-colors duration-200 ${isActive(link.path) ? 'text-[#10B981]' : 'text-gray-600 hover:text-[#10B981]'}`}>
             {link.name}
           </Link>)}
-          <a href="tel:+94755746933">
+          <a href="tel:+94706611936">
             <Button size="sm" variant="primary">
               Contact Us
             </Button>

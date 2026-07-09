@@ -92,7 +92,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+94 75 574-6933</p>
+                  <p className="text-gray-600">+94 70 661 1936</p>
                 </div>
               </div>
 
