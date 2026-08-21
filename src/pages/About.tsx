@@ -1,111 +1,160 @@
 import React from 'react';
-import { Section } from '../components/ui/Section';
-import { Card } from '../components/ui/Card';
-import { Code2, Database, Globe, Layout, Server, Shield, Smartphone, Terminal } from 'lucide-react';
-export function About() {
-  const team = [{
-    name: 'Savindu Warnakulasooriya',
-    role: 'Back-End Developer, Pentester & Project Lead',
-    image: 'https://ui-avatars.com/api/?name=Savindu+Warnakulasooriya&background=10B981&color=fff&size=256',
-    initials: 'SW'
-  }, {
-    name: 'Nimesh Munasinghe',
-    role: 'Business Analyst & UI Designer',
-    image: 'https://ui-avatars.com/api/?name=Nimesh+Munasinghe&background=FBBF24&color=fff&size=256',
-    initials: 'NM'
-  }, {
-    name: 'Tharindu Jayathilake',
-    role: 'Front-End Developer & QA Tester',
-    image: 'https://ui-avatars.com/api/?name=Tharindu+Jayathilake&background=FB7185&color=fff&size=256',
-    initials: 'TJ'
-  }, {
-    name: 'Venuja Gamage',
-    role: 'Mobile App Developer & Graphic Designer',
-    image: 'https://ui-avatars.com/api/?name=Venuja+Gamage&background=6366F1&color=fff&size=256',
-    initials: 'VG'
-  }];
-  const techStack = [{
-    category: 'Backend',
-    items: ['Django', '.NET', 'Python'],
-    icon: Server
-  }, {
-    category: 'Frontend',
-    items: ['React', 'TypeScript', 'Tailwind CSS'],
-    icon: Layout
-  }, {
-    category: 'Database',
-    items: ['MySQL', 'Redis', 'Firebase'],
-    icon: Database
-  }, {
-    category: 'DevOps & Cloud',
-    items: ['GCP', 'AWS', 'Azure', 'Docker', 'K8s'],
-    icon: Globe
-  }];
-  return <>
-      <div className="bg-gray-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            About Devrious
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Devrious is a remote IT freelance team founded in 2024, focused on
-            delivering high-quality digital solutions using modern technologies.
-            We believe in clean architecture, performance, and long-term
-            scalability.
-          </p>
-        </div>
-      </div>
+import { motion, useReducedMotion } from 'framer-motion';
+import { PageHero } from '../components/layout/PageHero';
+import { SectionHeading } from '../components/common/SectionHeading';
+import { StorySection } from '../components/about/StorySection';
+import { ApproachSection } from '../components/about/ApproachSection';
+import { WhyDevrious } from '../components/WhyDevrious';
+import { CTASection } from '../components/CTASection';
+import { LogoMark } from '../components/Logo';
+import { LOCATIONS, MILESTONES, TEAM } from '../data/team';
+import { DUR, EASE, VIEWPORT } from '../utils/motion';
 
-      <Section>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900">Meet The Team</h2>
-          <p className="mt-4 text-gray-600">
-            The experts behind our digital solutions.
-          </p>
-        </div>
+export function AboutPage() {
+  const reduce = useReducedMotion();
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, index) => <Card key={index} className="text-center p-6 border-t-4 border-t-[#10B981]">
-              <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-gray-50">
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                {member.name}
-              </h3>
-              <p className="text-sm text-[#10B981] font-medium uppercase tracking-wide">
-                {member.role}
-              </p>
-            </Card>)}
-        </div>
-      </Section>
+  return (
+    <>
+      <PageHero
+        eyebrow="Devrious · Est. 2024"
+        lines={['We build', 'what should', 'exist.']}
+        copy="A small, senior team that combines design, engineering, systems thinking, and AI — built to be the technology partner a growing business actually needs."
+        index={[
+        { label: 'Why we exist', href: '#story' },
+        { label: 'How we got here', href: '#milestones' },
+        { label: 'Who you work with', href: '#team' },
+        { label: 'Where we are', href: '#locations' },
+        { label: 'How we work', href: '#approach' }]
+        }
+        stats={[
+        { value: '2024', label: 'Founded' },
+        { value: '6', label: 'People in the studio' },
+        { value: '2', label: 'Countries served' },
+        { value: 'Senior', label: 'Only staffing model' }]
+        } />
+      
 
-      <Section background="gray">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Technologies We Use
-          </h2>
-          <p className="mt-4 text-gray-600">
-            We use the latest tools to build robust applications.
-          </p>
-        </div>
+      <StorySection />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {techStack.map((stack, index) => <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-gray-50 rounded-lg mr-4">
-                  <stack.icon className="h-6 w-6 text-gray-700" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  {stack.category}
+      <section id="milestones" className="w-full scroll-mt-24 bg-ink py-14 md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <SectionHeading
+            eyebrow="Milestones"
+            lines={['A short', 'history.']}
+            copy="Founded in 2024, and deliberately grown around the work rather than a headcount target." />
+          
+
+          <ol className="relative mt-10 border-l border-white/12 pl-8 md:pl-12">
+            {MILESTONES.map((milestone, i) =>
+            <motion.li
+              key={milestone.title}
+              className="relative pb-12 last:pb-0"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: DUR.slow, ease: EASE, delay: i * 0.04 }}>
+              
+                <span className="absolute -left-[41px] top-1 grid h-5 w-5 place-items-center rounded-full border border-white/20 bg-ink md:-left-[57px]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+                  {milestone.year}
+                </span>
+                <h3 className="mt-3 font-display text-[clamp(1.4rem,4vw,2.25rem)] font-bold uppercase leading-none tracking-tightest text-paper">
+                  {milestone.title}
                 </h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {stack.items.map(tech => <span key={tech} className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium border border-gray-100">
-                    {tech}
-                  </span>)}
-              </div>
-            </div>)}
+                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ash">
+                  {milestone.copy}
+                </p>
+              </motion.li>
+            )}
+          </ol>
         </div>
-      </Section>
-    </>;
+      </section>
+
+      <section id="team" className="w-full scroll-mt-24 bg-paper py-14 text-ink md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <SectionHeading
+            tone="light"
+            eyebrow="The studio"
+            lines={['Who you', 'work with.']}
+            copy="No account layer between you and the people building. The team you meet is the team that delivers." />
+          
+
+          <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {TEAM.map((member, i) =>
+            <motion.li
+              key={member.name}
+              className="group flex flex-col rounded-2xl border border-ink/12 bg-white p-6 transition-colors duration-200 ease-out hover:border-accent md:p-7"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: DUR.slow, ease: EASE, delay: i % 3 * 0.05 }}>
+              
+                <div className="flex items-center justify-between">
+                  <span className="grid h-14 w-14 place-items-center rounded-xl border border-ink/10 bg-paper">
+                    <LogoMark className="h-7 w-6" />
+                  </span>
+                  <span className="font-mono text-[11px] tracking-[0.16em] text-ink/35">
+                    {member.initials}
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-xl font-bold tracking-tight md:text-2xl">
+                  {member.name}
+                </h3>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+                  {member.role}
+                </p>
+                <p className="mt-auto border-t border-ink/10 pt-5 text-[14px] leading-relaxed text-ink/65">
+                  {member.focus}
+                </p>
+              </motion.li>
+            )}
+          </ul>
+        </div>
+      </section>
+
+      <WhyDevrious />
+
+      <section id="locations" className="w-full scroll-mt-24 bg-ink py-14 md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <SectionHeading
+            eyebrow="Where we are"
+            lines={['Colombo based.', 'Working further.']}
+            copy="Delivery is remote-first with a real studio behind it, so time zones never become an excuse." />
+          
+
+          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/12 md:grid-cols-3">
+            {LOCATIONS.map((location, i) =>
+            <motion.li
+              key={location.city}
+              className="flex flex-col bg-ink p-7 md:p-8"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: DUR.slow, ease: EASE, delay: i * 0.05 }}>
+              
+                <p className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-extrabold uppercase leading-none tracking-tightest text-paper">
+                  {location.city}
+                </p>
+                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-ash">
+                  {location.country}
+                </p>
+                <p className="mt-auto border-t border-white/12 pt-4 text-[14px] text-paper/75">
+                  {location.note}
+                </p>
+              </motion.li>
+            )}
+          </ul>
+        </div>
+      </section>
+
+      <ApproachSection />
+
+      <CTASection
+        lines={['Want to work', 'with this team?']}
+        copy="Tell us about the business and what you are trying to change. We will tell you if we are the right people for it." />
+      
+    </>);
+
 }

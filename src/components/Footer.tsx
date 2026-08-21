@@ -1,97 +1,152 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRightIcon } from 'lucide-react';
+import { LogoMark } from './Logo';
+import {
+  CONTACT,
+  FOOTER_LINKS,
+  LEGAL_LINKS,
+  PORTAL_URL,
+  SOCIAL_LINKS } from
+'../data/site';
+import { SERVICES } from '../data/services';
+
 export function Footer() {
-  return <footer className="bg-gray-900 text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Info */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 rounded bg-white p-0.5">
-                <img src="/WhatsApp_Image_2025-03-25_at_16.31.59_c4698d8d.jpg" alt="Devrious Logo" className="w-full h-full object-cover rounded-sm" />
-              </div>
-              <span className="text-xl font-bold">Devrious</span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Building Reliable Digital Solutions with Precision. A remote IT
-              freelance team delivering scalable web, software, and AI-powered
-              solutions.
+  return (
+    <footer className="w-full border-t border-white/10 bg-ink pb-9 pt-12 md:pb-10 md:pt-14">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-12">
+          <div className="col-span-2 md:col-span-4">
+            <Link to="/" className="flex items-center gap-2.5">
+              <LogoMark className="h-9 w-8" title="Devrious" />
+              <span className="font-display text-base font-extrabold uppercase tracking-[0.18em] text-paper">
+                Devrious
+              </span>
+            </Link>
+            <p className="mt-5 max-w-xs font-display text-xl font-bold tracking-tight text-paper/80 md:text-2xl">
+              Where Ambition Becomes Digital.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/share/12LXEx3idTT/" className="text-gray-400 hover:text-[#10B981] transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="https://www.instagram.com/devrious.lk/?igsh=cWRkMXM5YWV4NHVw&utm_source=qr#" className="text-gray-400 hover:text-[#FB7185] transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="https://www.linkedin.com/company/devrious/" className="text-gray-400 hover:text-[#FBBF24] transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </div>
+            <a
+              href={PORTAL_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 font-display text-[13px] font-semibold text-paper transition-colors duration-150 ease-out hover:border-accent hover:text-accent">
+              
+              Client Portal
+              <ArrowUpRightIcon
+                className="h-4 w-4 transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true" />
+              
+            </a>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {['Home', 'Services', 'About', 'Portfolio', 'Contact'].map(item => <li key={item}>
-                    <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="text-gray-400 hover:text-[#10B981] transition-colors text-sm">
-                      {item}
-                    </Link>
-                  </li>)}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Services</h3>
-            <ul className="space-y-3">
-              {['Web Development', 'Software Solutions', 'AI & Automation', 'POS Systems'].map(item => <li key={item}>
-                  <Link to="/services" className="text-gray-400 hover:text-[#10B981] transition-colors text-sm">
-                    {item}
+          <nav aria-label="Footer" className="md:col-span-2">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ash">
+              Navigate
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {FOOTER_LINKS.map((link) =>
+              <li key={link.to}>
+                  <Link
+                  to={link.to}
+                  className="text-[15px] text-paper/75 transition-colors duration-150 ease-out hover:text-accent focus:outline-none focus-visible:text-accent">
+                  
+                    {link.label}
                   </Link>
-                </li>)}
+                </li>
+              )}
+            </ul>
+          </nav>
+
+          <div className="md:col-span-3">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ash">
+              What we build
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {SERVICES.map((service) =>
+              <li key={service.num}>
+                  <Link
+                  to="/services"
+                  className="text-[15px] text-paper/75 transition-colors duration-150 ease-out hover:text-accent">
+                  
+                    {service.title}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">
-              Contact Us
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3 text-gray-400 text-sm">
-                <Mail className="h-5 w-5 text-[#10B981] shrink-0" />
-                <span>info@devrious.lk</span>
+          <div className="md:col-span-3">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ash">
+              Contact
+            </h2>
+            <ul className="mt-5 space-y-3">
+              <li>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="text-[15px] text-paper/75 transition-colors duration-150 ease-out hover:text-accent">
+                  
+                  {CONTACT.email}
+                </a>
               </li>
-              <li className="flex items-start space-x-3 text-gray-400 text-sm">
-                <Phone className="h-5 w-5 text-[#10B981] shrink-0" />
-                <span>+94 70 661 1936</span>
+              <li>
+                <a
+                  href={`tel:${CONTACT.phoneHref}`}
+                  className="text-[15px] text-paper/75 transition-colors duration-150 ease-out hover:text-accent">
+                  
+                  {CONTACT.phone}
+                </a>
               </li>
-              <li className="flex items-start space-x-3 text-gray-400 text-sm">
-                <MapPin className="h-5 w-5 text-[#10B981] shrink-0" />
-                <span>Remote Team</span>
-              </li>
+            </ul>
+
+            <h2 className="mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-ash">
+              Social
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {SOCIAL_LINKS.map((social) =>
+              <li key={social.label}>
+                  <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 text-[15px] text-paper/75 transition-colors duration-150 ease-out hover:text-accent">
+                  
+                    {social.label}
+                    <ArrowUpRightIcon
+                    className="h-3.5 w-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true" />
+                  
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            {new Date().getFullYear()} Made by Devrious
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ash">
+            © 2026 Devrious. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            {/* <a href="#" className="text-gray-500 hover:text-white text-sm">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-white text-sm">
-              Terms of Service
-            </a> */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((link) =>
+            <Link
+              key={link.to}
+              to={link.to}
+              className="font-mono text-[10px] uppercase tracking-[0.16em] text-ash transition-colors duration-150 ease-out hover:text-accent">
+              
+                {link.label}
+              </Link>
+            )}
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="font-mono text-[10px] uppercase tracking-[0.16em] text-ash transition-colors duration-150 ease-out hover:text-accent">
+              
+              Back to top ↑
+            </button>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>);
+
 }

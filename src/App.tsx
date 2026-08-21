@@ -1,22 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
-import { Services } from './pages/Services';
-import { About } from './pages/About';
-import { Portfolio } from './pages/Portfolio';
-import { Contact } from './pages/Contact';
-function App() {
-  return <Router>
-      <Layout>
-        <Routes>
+import { WorkPage } from './pages/Work';
+import { ServicesPage } from './pages/Services';
+import { AboutPage } from './pages/About';
+import { InsightsPage } from './pages/Insights';
+import { ContactPage } from './pages/Contact';
+import { PrivacyPage } from './pages/Privacy';
+import { TermsPage } from './pages/Terms';
+import { NotFoundPage } from './pages/NotFound';
+
+export function App() {
+  return (
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Routes>
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Layout>
-    </Router>;
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* How we work now lives inside About. Old links keep working. */}
+          <Route path="/approach" element={<Navigate to="/about#approach" replace />} />
+          <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>);
+
 }
-export { App };

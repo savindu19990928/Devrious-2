@@ -1,167 +1,243 @@
-import React, { useState } from 'react';
-import { Section } from '../components/ui/Section';
-import { Card } from '../components/ui/Card';
-import { Input } from '../components/ui/Input';
-import { TextArea } from '../components/ui/TextArea';
-import { Button } from '../components/ui/Button';
-import emailjs from 'emailjs-com';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
-export function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRightIcon, ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
+import { PageHero } from '../components/layout/PageHero';
+import { SectionHeading } from '../components/common/SectionHeading';
+import { FaqList } from '../components/common/FaqList';
+import { ContactForm } from '../components/contact/ContactForm';
+import { LocationMap } from '../components/contact/LocationMap';
+import { Reveal } from '../components/motion/Reveal';
+import { CONTACT, PORTAL_URL, SOCIAL_LINKS, STUDIO } from '../data/site';
+import { CONTACT_FAQS } from '../data/faqs';
+import { DUR, EASE, VIEWPORT } from '../utils/motion';
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+const NEXT_STEPS = [
+{
+  num: '01',
+  title: 'We read it properly',
+  copy: 'Your message goes straight to the people who would do the work — no sales filter in between.'
+},
+{
+  num: '02',
+  title: 'A first opinion, free',
+  copy: 'You get a reply with our initial read on the problem and what we would explore first.'
+},
+{
+  num: '03',
+  title: 'A short call',
+  copy: 'If it looks like a fit, we talk through the business, the constraints, and what a first phase could look like.'
+}];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+export function ContactPage() {
+  const reduce = useReducedMotion();
 
-    emailjs
-      .send(
-        'service_qa8tthr',
-        'template_cjvlawq',
-        formData,
-        'fMGXtkaGqd2N9nwyW'
-      )
-      .then(() => {
-        setIsSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      })
-      .catch((error) => {
-        console.error('EmailJS error:', error);
-        setIsSuccess(false);
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
-  };
-  return <>
-    <div className="bg-gray-50 py-20 text-center">
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto px-4">
-        Have a project in mind? Let's discuss how we can help you achieve your
-        goals.
-      </p>
-    </div>
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact"
+        lines={['Tell us what', "you're trying", 'to build.']}
+        copy="Whether it is a defined project, a process that keeps breaking, or an idea with no shape yet — send it across and we will help you figure out the next step."
+        index={[
+        { label: 'Send a message', href: '#form' },
+        { label: 'What happens next', href: '#next' },
+        { label: 'Client portal', href: '#portal' },
+        { label: 'Questions', href: '#contact-faqs' }]
+        }
+        stats={[
+        { value: 'Direct', label: 'Reply from the team' },
+        { value: 'Free', label: 'First opinion' },
+        { value: 'NDA', label: 'On request' },
+        { value: 'LK · AE', label: 'Where we work' }]
+        } />
+      
 
-    <Section>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {/* Contact Info */}
-        <div className="lg:col-span-1 space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Contact Information
-            </h2>
-            <p className="text-gray-600 mb-8">
-              Fill out the form and our team will get back to you within 24
-              hours.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-green-50 p-3 rounded-lg">
-                  <Mail className="h-6 w-6 text-[#10B981]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@devrious.lk</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-amber-50 p-3 rounded-lg">
-                  <Phone className="h-6 w-6 text-[#FBBF24]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+94 70 661 1936</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-rose-50 p-3 rounded-lg">
-                  <MapPin className="h-6 w-6 text-[#FB7185]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">Location</h3>
-                  <p className="text-gray-600">Remote Team</p>
-                </div>
-              </div>
+      <section id="form" className="w-full scroll-mt-28 bg-ink py-14 md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <ContactForm />
+              </Reveal>
             </div>
-          </div>
 
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">
-              Follow Us
-            </h3>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/share/12LXEx3idTT/" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#10B981] hover:text-white transition-all duration-300">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="https://www.instagram.com/devrious.lk/?igsh=cWRkMXM5YWV4NHVw&utm_source=qr#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#FB7185] hover:text-white transition-all duration-300">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="https://www.linkedin.com/company/devrious/" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#FBBF24] hover:text-white transition-all duration-300">
-                <Linkedin className="h-5 w-5" />
-              </a>
+            <div className="lg:col-span-5">
+              <Reveal delay={0.08}>
+                <h2 className="font-display text-[clamp(1.75rem,4.5vw,2.75rem)] font-extrabold uppercase leading-[0.95] tracking-tightest text-paper">
+                  Or reach us
+                  <br />
+                  directly.
+                </h2>
+
+                <ul className="mt-8 border-t border-white/12">
+                  <li className="border-b border-white/12">
+                    <a
+                      href={`mailto:${CONTACT.email}`}
+                      className="group flex items-center gap-4 py-5 transition-colors duration-150 ease-out hover:text-accent">
+                      
+                      <MailIcon className="h-5 w-5 text-ash" aria-hidden="true" />
+                      <span className="font-display text-lg font-semibold tracking-tight text-paper group-hover:text-accent">
+                        {CONTACT.email}
+                      </span>
+                      <ArrowUpRightIcon
+                        className="ml-auto h-4 w-4 text-ash transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        aria-hidden="true" />
+                      
+                    </a>
+                  </li>
+                  <li className="border-b border-white/12">
+                    <a
+                      href={`tel:${CONTACT.phoneHref}`}
+                      className="group flex items-center gap-4 py-5 transition-colors duration-150 ease-out hover:text-accent">
+                      
+                      <PhoneIcon className="h-5 w-5 text-ash" aria-hidden="true" />
+                      <span className="font-display text-lg font-semibold tracking-tight text-paper group-hover:text-accent">
+                        {CONTACT.phone}
+                      </span>
+                      <ArrowUpRightIcon
+                        className="ml-auto h-4 w-4 text-ash transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        aria-hidden="true" />
+                      
+                    </a>
+                  </li>
+                  <li className="border-b border-white/12">
+                    <a
+                      href={STUDIO.mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-center gap-4 py-5 transition-colors duration-150 ease-out hover:text-accent">
+                      
+                      <MapPinIcon className="h-5 w-5 shrink-0 text-ash" aria-hidden="true" />
+                      <span className="font-display text-lg font-semibold tracking-tight text-paper group-hover:text-accent">
+                        {STUDIO.city}, {STUDIO.country}
+                      </span>
+                      <ArrowUpRightIcon
+                        className="ml-auto h-4 w-4 shrink-0 text-ash transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        aria-hidden="true" />
+                      
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-4 border-b border-white/12 py-5">
+                    <ClockIcon className="h-5 w-5 shrink-0 text-ash" aria-hidden="true" />
+                    <span className="text-[15px] text-paper/80">
+                      {STUDIO.hours} ({STUDIO.timezone})
+                    </span>
+                  </li>
+                </ul>
+
+                <LocationMap className="mt-8" />
+
+                <div className="mt-8">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ash">
+                    Follow
+                  </p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {SOCIAL_LINKS.map((social) =>
+                    <li key={social.label}>
+                        <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 font-display text-[13px] font-medium text-paper/80 transition-colors duration-150 ease-out hover:border-accent hover:text-accent">
+                        
+                          {social.label}
+                          <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </Reveal>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Contact Form */}
-        <div className="lg:col-span-2">
-          <Card className="p-8">
-            {isSuccess ? <div className="text-center py-12">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="h-8 w-8 text-[#10B981]" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Message Sent!
-              </h3>
-              <p className="text-gray-600">
-                Thank you for contacting us. We'll be in touch shortly.
+      <section id="next" className="w-full scroll-mt-28 bg-paper py-14 text-ink md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <SectionHeading
+            tone="light"
+            eyebrow="What happens next"
+            lines={['No black box.']}
+            copy="Three steps between your message and a plan you can act on." />
+          
+
+          <ol className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {NEXT_STEPS.map((step, i) =>
+            <motion.li
+              key={step.num}
+              className="border-t border-ink/15 pt-6"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: DUR.slow, ease: EASE, delay: i * 0.05 }}>
+              
+                <span className="font-mono text-[10px] tracking-[0.18em] text-accent">
+                  {step.num}
+                </span>
+                <h3 className="mt-5 font-display text-2xl font-bold tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[14px] leading-relaxed text-ink/65">{step.copy}</p>
+              </motion.li>
+            )}
+          </ol>
+        </div>
+      </section>
+
+      <section id="portal" className="w-full scroll-mt-28 bg-ink py-14 md:py-20">
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <div className="grid grid-cols-1 items-center gap-8 rounded-2xl border border-white/12 bg-graphite p-8 md:p-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+                Existing clients
               </p>
-              <Button variant="outline" className="mt-6" onClick={() => setIsSuccess(false)}>
-                Send another message
-              </Button>
-            </div> : <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input name="name" label="Your Name" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
-                <Input name="email" label="Email Address" type="email" placeholder="john@example.com" value={formData.email} onChange={handleInputChange} required />
-              </div>
-              <Input name="subject" label="Subject" placeholder="Project Inquiry" value={formData.subject} onChange={handleInputChange} required />
-              <TextArea name="message" label="Message" placeholder="Tell us about your project..." value={formData.message} onChange={handleInputChange} required />
-              <Button type="submit" size="lg" fullWidth disabled={isSubmitting} className="flex items-center justify-center">
-                {isSubmitting ? <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Sending...
-                </> : 'Send Message'}
-              </Button>
-            </form>}
-          </Card>
+              <h2 className="mt-5 font-display text-[clamp(1.9rem,5vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tightest text-paper">
+                Your project,
+                <br />
+                open any time.
+              </h2>
+              <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-ash">
+                Progress, decisions, releases, documents, and invoices in one shared
+                workspace — so you never have to ask for a status update.
+              </p>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <a
+                href={PORTAL_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex w-full items-center justify-between gap-6 rounded-full bg-accent px-8 py-4 font-display text-base font-semibold text-ink transition-transform duration-150 ease-out hover:-translate-y-0.5">
+                
+                Open Client Portal
+                <ArrowUpRightIcon
+                  className="h-5 w-5 transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true" />
+                
+              </a>
+              <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-ash">
+                Opens in a new tab
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </Section>
-  </>;
+      </section>
+
+      <section
+        id="contact-faqs"
+        className="w-full scroll-mt-28 border-t border-white/10 bg-ink py-14 md:py-20">
+        
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <SectionHeading eyebrow="Questions" lines={['Before you', 'write.']} />
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <FaqList faqs={CONTACT_FAQS} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>);
+
 }
