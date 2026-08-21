@@ -6,7 +6,7 @@ import { LOGO_PATHS } from '../components/Logo';
  * The mark sits on an ink tile with generous padding — at 16px a bare glyph
  * disappears against light browser chrome.
  */
-const TILE = '#0a0a0a';
+const TILE = 'transparent';
 const SIZE = 512;
 const PAD = 96;
 const MARK_W = 222;
@@ -21,11 +21,11 @@ function buildSvg(): string {
   ).join('');
 
   return [
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SIZE} ${SIZE}">`,
-  `<rect width="${SIZE}" height="${SIZE}" rx="112" fill="${TILE}"/>`,
-  `<g transform="translate(${OFFSET_X} ${OFFSET_Y}) scale(${SCALE})">${paths}</g>`,
-  `</svg>`].
-  join('');
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SIZE} ${SIZE}">`,
+    `<rect width="${SIZE}" height="${SIZE}" rx="112" fill="${TILE}"/>`,
+    `<g transform="translate(${OFFSET_X} ${OFFSET_Y}) scale(${SCALE})">${paths}</g>`,
+    `</svg>`].
+    join('');
 }
 
 function setLink(rel: string, href: string, type?: string) {
