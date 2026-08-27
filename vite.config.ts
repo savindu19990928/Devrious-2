@@ -7,7 +7,7 @@ export default defineConfig({
     allowedHosts: [
       'www.devrious.lk',
       'devrious.lk',
-      'devrious-2-708852150124.europe-west1.run.app'
+      'devrious-2-727633019198.us-central1.run.app'
     ]
   },
   preview: {
@@ -16,7 +16,7 @@ export default defineConfig({
     allowedHosts: [
       'www.devrious.lk',
       'devrious.lk',
-      'devrious-2-708852150124.europe-west1.run.app'
+      'devrious-2-727633019198.us-central1.run.app'
     ]
   }
 })
