@@ -1,160 +1,145 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { PageHero } from '../components/layout/PageHero';
-import { SectionHeading } from '../components/common/SectionHeading';
-import { StorySection } from '../components/about/StorySection';
-import { ApproachSection } from '../components/about/ApproachSection';
-import { WhyDevrious } from '../components/WhyDevrious';
-import { CTASection } from '../components/CTASection';
-import { LogoMark } from '../components/Logo';
-import { LOCATIONS, MILESTONES, TEAM } from '../data/team';
-import { DUR, EASE, VIEWPORT } from '../utils/motion';
+import { MapPinIcon, UserIcon } from 'lucide-react';
+import { PageHeader } from '../components/PageHeader';
+import { TechStackTable } from '../components/TechStackTable';
+import { CtaBand } from '../components/CtaBand';
+import { Reveal } from '../components/Reveal';
+import { VisionMission } from '../components/about/VisionMission';
+import { KeysToSuccess } from '../components/about/KeysToSuccess';
+import { TestimonialCarousel } from '../components/about/TestimonialCarousel';
+import { company, founders } from '../data/site';
+import { aboutFacts, story, workProcess } from '../data/about';
+import { usePageTitle } from '../hooks/usePageTitle';
 
-export function AboutPage() {
-  const reduce = useReducedMotion();
+export function About() {
+  usePageTitle('About Our Software Development Company', {
+    description:
+      'Devrious was founded in Colombo, Sri Lanka, by Savindu Shiranjaya and Rangana Munasinghe to deliver engineered, thoroughly tested, and long-term supported software for growing businesses.',
+    canonicalPath: '/about',
+  });
 
   return (
     <>
-      <PageHero
-        eyebrow="Devrious · Est. 2024"
-        lines={['We build', 'what should', 'exist.']}
-        copy="A small, senior team that combines design, engineering, systems thinking, and AI — built to be the technology partner a growing business actually needs."
-        index={[
-        { label: 'Why we exist', href: '#story' },
-        { label: 'How we got here', href: '#milestones' },
-        { label: 'Who you work with', href: '#team' },
-        { label: 'Where we are', href: '#locations' },
-        { label: 'How we work', href: '#approach' }]
-        }
-        stats={[
-        { value: '2024', label: 'Founded' },
-        { value: '6', label: 'People in the studio' },
-        { value: '2', label: 'Countries served' },
-        { value: 'Senior', label: 'Only staffing model' }]
-        } />
+      <PageHeader
+        label="About Devrious"
+        title="A software company built on doing things properly"
+        description={`Devrious was founded in ${company.founded} in Colombo, Sri Lanka, by Mr. Savindu Shiranjaya and Mr. Rangana Munasinghe — to give businesses software that is engineered, tested and supported to a professional standard.`} />
       
 
-      <StorySection />
-
-      <section id="milestones" className="w-full scroll-mt-24 bg-ink py-14 md:py-20">
-        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
-          <SectionHeading
-            eyebrow="Milestones"
-            lines={['A short', 'history.']}
-            copy="Founded in 2024, and deliberately grown around the work rather than a headcount target." />
-          
-
-          <ol className="relative mt-10 border-l border-white/12 pl-8 md:pl-12">
-            {MILESTONES.map((milestone, i) =>
-            <motion.li
-              key={milestone.title}
-              className="relative pb-12 last:pb-0"
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: DUR.slow, ease: EASE, delay: i * 0.04 }}>
+      <section className="mx-auto grid max-w-7xl gap-14 px-6 py-16 sm:py-24 lg:grid-cols-[1.4fr_0.6fr] lg:gap-24 lg:px-8" aria-labelledby="story-heading">
+        <Reveal>
+          <h2 id="story-heading" className="font-display text-2xl font-bold tracking-tight text-ink-950 sm:text-3xl">
+            Our story
+          </h2>
+          <div className="mt-6 max-w-[68ch] space-y-5">
+            {story.map((p, i) =>
+            <p
+              key={p}
+              className={i === 0 ? 'text-base leading-[1.8] text-ink-700' : 'text-[0.9375rem] leading-[1.8] text-ink-600 sm:text-base'}>
               
-                <span className="absolute -left-[41px] top-1 grid h-5 w-5 place-items-center rounded-full border border-white/20 bg-ink md:-left-[57px]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                  {milestone.year}
-                </span>
-                <h3 className="mt-3 font-display text-[clamp(1.4rem,4vw,2.25rem)] font-bold uppercase leading-none tracking-tightest text-paper">
-                  {milestone.title}
-                </h3>
-                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ash">
-                  {milestone.copy}
-                </p>
-              </motion.li>
+                {p}
+              </p>
+            )}
+          </div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <dl className="grid grid-cols-2 gap-x-6 border-t border-ink-300 lg:grid-cols-1">
+            {aboutFacts.map((f) =>
+            <div key={f.label} className="flex flex-col-reverse border-b border-ink-200 py-6">
+                <dt className="mt-1.5 text-[0.9375rem] leading-snug text-ink-600">{f.label}</dt>
+                <dd className="font-display text-2xl font-bold text-brand-700 sm:text-3xl">{f.value}</dd>
+              </div>
+            )}
+          </dl>
+        </Reveal>
+      </section>
+
+      <VisionMission />
+
+      <KeysToSuccess />
+
+      <section className="border-t border-ink-100" aria-labelledby="process-heading">
+        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+          <Reveal>
+            <h2 id="process-heading" className="font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+              How we work
+            </h2>
+            <p className="mt-4 max-w-2xl text-[1.0625rem] leading-[1.75] text-ink-600 sm:text-lg">
+              The same four stages on every project, so you always know what happens next.
+            </p>
+          </Reveal>
+          <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {workProcess.map((step, i) =>
+            <li key={step.title}>
+                <Reveal delay={i * 0.06} className="h-full border-t-2 border-brand-500 pt-6">
+                  <span className="text-sm font-semibold text-brand-700">Stage {i + 1}</span>
+                  <h3 className="mt-2 font-display text-xl font-bold text-ink-950">{step.title}</h3>
+                  <p className="mt-3 text-base leading-[1.75] text-ink-600">{step.description}</p>
+                </Reveal>
+              </li>
             )}
           </ol>
         </div>
       </section>
 
-      <section id="team" className="w-full scroll-mt-24 bg-paper py-14 text-ink md:py-20">
-        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
-          <SectionHeading
-            tone="light"
-            eyebrow="The studio"
-            lines={['Who you', 'work with.']}
-            copy="No account layer between you and the people building. The team you meet is the team that delivers." />
-          
+      <section className="border-t border-ink-100" aria-labelledby="founders-heading">
+        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+          <Reveal>
+            <h2 id="founders-heading" className="font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+              Founders
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-14 md:grid-cols-2 md:gap-12">
+            {founders.map((f, i) =>
+            <Reveal key={f.name} delay={i * 0.08}>
+                <article className="flex flex-col gap-6 sm:flex-row sm:gap-8">
+                  <div className="aspect-[4/5] w-full max-w-xs shrink-0 overflow-hidden rounded-2xl bg-ink-100 sm:w-44 lg:w-48">
+                    {f.photo ?
+                  <img src={f.photo} alt={`Mr. ${f.name}`} className="h-full w-full object-cover" style={{ objectPosition: '30% 35%' }} /> :
 
-          <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map((member, i) =>
-            <motion.li
-              key={member.name}
-              className="group flex flex-col rounded-2xl border border-ink/12 bg-white p-6 transition-colors duration-200 ease-out hover:border-accent md:p-7"
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: DUR.slow, ease: EASE, delay: i % 3 * 0.05 }}>
-              
-                <div className="flex items-center justify-between">
-                  <span className="grid h-14 w-14 place-items-center rounded-xl border border-ink/10 bg-paper">
-                    <LogoMark className="h-7 w-6" />
-                  </span>
-                  <span className="font-mono text-[11px] tracking-[0.16em] text-ink/35">
-                    {member.initials}
-                  </span>
-                </div>
-                <h3 className="mt-6 font-display text-xl font-bold tracking-tight md:text-2xl">
-                  {member.name}
-                </h3>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
-                  {member.role}
-                </p>
-                <p className="mt-auto border-t border-ink/10 pt-5 text-[14px] leading-relaxed text-ink/65">
-                  {member.focus}
-                </p>
-              </motion.li>
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-ink-400">
+                        <UserIcon className="h-12 w-12" aria-hidden="true" />
+                        <span className="text-sm font-medium">Photo coming soon</span>
+                      </div>
+                  }
+                  </div>
+                  <div className="min-w-0 sm:pt-1">
+                    <h3 className="font-display text-2xl font-bold tracking-tight text-ink-950">Mr. {f.name}</h3>
+                    <p className="mt-1.5 text-[0.9375rem] font-semibold text-brand-700">{f.role}</p>
+                    <p className="mt-4 text-base leading-[1.8] text-ink-600 sm:text-[1.0625rem]">{f.bio}</p>
+                  </div>
+                </article>
+              </Reveal>
             )}
-          </ul>
+          </div>
         </div>
       </section>
 
-      <WhyDevrious />
+      <TestimonialCarousel />
 
-      <section id="locations" className="w-full scroll-mt-24 bg-ink py-14 md:py-20">
-        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
-          <SectionHeading
-            eyebrow="Where we are"
-            lines={['Colombo based.', 'Working further.']}
-            copy="Delivery is remote-first with a real studio behind it, so time zones never become an excuse." />
-          
-
-          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/12 md:grid-cols-3">
-            {LOCATIONS.map((location, i) =>
-            <motion.li
-              key={location.city}
-              className="flex flex-col bg-ink p-7 md:p-8"
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT}
-              transition={{ duration: DUR.slow, ease: EASE, delay: i * 0.05 }}>
-              
-                <p className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-extrabold uppercase leading-none tracking-tightest text-paper">
-                  {location.city}
-                </p>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-ash">
-                  {location.country}
-                </p>
-                <p className="mt-auto border-t border-white/12 pt-4 text-[14px] text-paper/75">
-                  {location.note}
-                </p>
-              </motion.li>
-            )}
-          </ul>
-        </div>
+      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8">
+        <Reveal>
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Our tech stack</h2>
+          <p className="mt-4 max-w-md text-[1.0625rem] leading-[1.75] text-ink-600 sm:text-lg">
+            Every Devrious project is built, hosted, optimised and tested with the same proven tools.
+          </p>
+          <div className="mt-8 flex gap-3 text-base leading-relaxed text-ink-700">
+            <MapPinIcon className="mt-1 h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
+            <address className="not-italic">
+              {company.addressLines.map((l) =>
+              <span key={l} className="block">
+                  {l}
+                </span>
+              )}
+            </address>
+          </div>
+        </Reveal>
+        <Reveal delay={0.08} className="min-w-0">
+          <TechStackTable />
+        </Reveal>
       </section>
 
-      <ApproachSection />
-
-      <CTASection
-        lines={['Want to work', 'with this team?']}
-        copy="Tell us about the business and what you are trying to change. We will tell you if we are the right people for it." />
-      
+      <CtaBand />
     </>);
 
 }

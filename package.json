@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "npx vite build",
+    "generate:seo": "node scripts/generate-seo-assets.js",
+    "build": "node scripts/generate-seo-assets.js && npx vite build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview --port 8080 --host"
   },
@@ -21,15 +22,16 @@
     "@types/node": "^20.11.18",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
+    "@typescript-eslint/eslint-plugin": "^8.71.1",
+    "@typescript-eslint/parser": "^8.71.1",
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "latest",
     "eslint": "^8.50.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
     "postcss": "latest",
-    "tailwindcss": "3.4.17",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.5.4",
     "vite": "^8.2.2"
   }

@@ -1,35 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Nav } from '../Nav';
-import { Footer } from '../Footer';
-import { ScrollToTop } from './ScrollToTop';
-import { DUR, EASE } from '../../utils/motion';
+import { Navbar } from './Navbar';
+import { Footer } from './Footer';
+import { SocialIcon } from '../SocialIcon';
+import { company } from '../../data/site';
 
-/**
- * The page transition is opacity-only and enter-only on purpose. An
- * `AnimatePresence mode="wait"` exit left `main` empty for the length of the
- * fade — the footer jumped up under the nav and back down on every navigation
- * — and a `y` offset put a transform on the ancestor of every sticky/scroll
- * driven section on the page.
- */
 export function Layout() {
-  const location = useLocation();
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const timer = window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ block: 'start' });
+      }, 50);
+      return () => window.clearTimeout(timer);
+    }
+    window.scrollTo(0, 0);
+    return undefined;
+  }, [pathname, hash]);
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-ink font-sans text-paper">
-      <ScrollToTop />
-      <Nav />
-      <motion.main
-        key={location.pathname}
-        className="flex-1"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: DUR.base, ease: EASE }}>
-        
+    <div className="flex min-h-screen w-full flex-col bg-canvas">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink-50 focus:px-4 focus:py-2 focus:text-ink-950">
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main" className="flex-1">
         <Outlet />
-      </motion.main>
+      </main>
       <Footer />
+      <a
+        href={company.whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat with Devrious on WhatsApp"
+        className="fixed bottom-5 right-5 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-brand-500 text-canvas shadow-lg shadow-black/40 transition-colors duration-150 hover:bg-brand-400">
+        
+        <SocialIcon name="whatsapp" className="h-6 w-6" />
+      </a>
     </div>);
 
 }

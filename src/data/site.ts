@@ -1,49 +1,53 @@
-export const CONTACT = {
+import type { Founder, NavLinkItem } from '../types/content';
+
+export const company = {
+  name: 'Devrious',
+  founded: 2024,
+  logo: "/logo.png",
   email: 'info@devrious.lk',
-  phone: '+94 70 661 1936',
-  phoneHref: '+94706611936'
+  phoneDisplay: '+94 70 661 1936',
+  phoneHref: 'tel:+94706611936',
+  whatsappHref: 'https://wa.me/94706611936',
+  addressLines: ['161/6, Old Kottawa Road', 'Navinna, Maharagama', 'Colombo, Sri Lanka'],
+  mapEmbed:
+  'https://www.google.com/maps?q=161%2F6%20Old%20Kottawa%20Road%2C%20Navinna%2C%20Maharagama%2C%20Sri%20Lanka&output=embed',
+  mapLink:
+  'https://www.google.com/maps/search/?api=1&query=161%2F6%20Old%20Kottawa%20Road%2C%20Navinna%2C%20Maharagama%2C%20Sri%20Lanka'
 };
 
-export const PORTAL_URL = 'https://clientportal.devrious.lk/';
+export const socials = [
+{ name: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/devrious' },
+{ name: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/devrious' },
+{ name: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/devrious' }] as
+const;
 
-/** The studio location behind the remote-first delivery model. */
-export const STUDIO = {
-  city: 'Colombo',
-  country: 'Sri Lanka',
-  area: 'Western Province',
-  timezone: 'GMT+5:30',
-  hours: 'Mon – Fri, 9:00 – 18:00',
-  mapsUrl:
-  'https://www.google.com/maps/search/?api=1&query=Colombo%2C%20Sri%20Lanka',
-  embedUrl:
-  'https://maps.google.com/maps?q=Colombo%2C%20Sri%20Lanka&z=12&hl=en&output=embed'
-};
-
-export const NAV_LINKS = [
-{ label: 'Home', to: '/' },
-{ label: 'Work', to: '/work' },
-{ label: 'Services', to: '/services' },
-{ label: 'About', to: '/about' },
-{ label: 'Insights', to: '/insights' },
-{ label: 'Contact', to: '/contact' }];
+export const navLinks: NavLinkItem[] = [
+{ to: '/', label: 'Home', end: true },
+{ to: '/services', label: 'Services' },
+{ to: '/pre-builds', label: 'Pre Builds' },
+{ to: '/portfolio', label: 'Portfolio' },
+{ to: '/cybersecurity-services', label: 'Cybersecurity services' },
+{ to: '/about', label: 'About' }];
 
 
-export const FOOTER_LINKS = [
-{ label: 'Home', to: '/' },
-{ label: 'Work', to: '/work' },
-{ label: 'Services', to: '/services' },
-{ label: 'About', to: '/about' },
-{ label: 'How we work', to: '/about#approach' },
-{ label: 'Insights', to: '/insights' },
-{ label: 'Contact', to: '/contact' }];
+export const founders: Founder[] = [
+{
+  name: 'Savindu Shiranjaya',
+  role: 'Co-Founder',
+  photo: "/Savindu.jpg",
+  bio: 'Co-founded Devrious in 2024 to give growing businesses software that is engineered properly — built on a dependable stack, tested before it ships and supported after launch.'
+},
+{
+  name: 'Rangana Munasinghe',
+  role: 'Co-Founder',
+  photo: null,
+  bio: 'Co-founded Devrious in 2024 with a focus on turning real operational problems into practical, maintainable systems that teams actually enjoy using.'
+}];
 
 
-export const LEGAL_LINKS = [
-{ label: 'Privacy Policy', to: '/privacy' },
-{ label: 'Terms & Conditions', to: '/terms' }];
-
-
-export const SOCIAL_LINKS = [
-{ label: 'LinkedIn', href: 'https://www.linkedin.com' },
-{ label: 'Instagram', href: 'https://www.instagram.com' },
-{ label: 'Facebook', href: 'https://www.facebook.com' }];
+export const clientNames = [
+'Avenor Apparel',
+'Zevora Custom',
+'Sunrise Apartments',
+'Smart Metro Tech',
+'Smart Park n Fly'];

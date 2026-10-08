@@ -1,34 +1,45 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CurrencyProvider } from './contexts/CurrencyContext';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
-import { WorkPage } from './pages/Work';
-import { ServicesPage } from './pages/Services';
-import { AboutPage } from './pages/About';
-import { InsightsPage } from './pages/Insights';
-import { ContactPage } from './pages/Contact';
-import { PrivacyPage } from './pages/Privacy';
-import { TermsPage } from './pages/Terms';
-import { NotFoundPage } from './pages/NotFound';
+import { Services } from './pages/Services';
+import { PreBuilds } from './pages/PreBuilds';
+import { PreBuildDetail } from './pages/PreBuildDetail';
+import { Portfolio } from './pages/Portfolio';
+import { Cybersecurity } from './pages/Cybersecurity';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
+import { Legal } from './pages/Legal';
+import { NotFound } from './pages/NotFound';
+import { company } from './data/site';
+import { setFavicon } from './utils/document';
 
 export function App() {
+  useEffect(() => {
+    setFavicon(company.logo);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<WorkPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          {/* How we work now lives inside About. Old links keep working. */}
-          <Route path="/approach" element={<Navigate to="/about#approach" replace />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>);
+    <CurrencyProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/pre-builds" element={<PreBuilds />} />
+            <Route path="/pre-builds/:slug" element={<PreBuildDetail />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/cybersecurity-services" element={<Cybersecurity />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Legal doc="terms" />} />
+            <Route path="/privacy" element={<Legal doc="privacy" />} />
+            <Route path="/cookies" element={<Legal doc="cookies" />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CurrencyProvider>);
 
 }
