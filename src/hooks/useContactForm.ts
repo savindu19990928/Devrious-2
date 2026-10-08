@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../config/emailjs';
+import { preBuilds } from '../data/preBuilds';
+import { cyberPackages } from '../data/cyberPackages';
+import { services } from '../data/services';
 
 export type InquiryType = 'project' | 'demo' | 'cyber' | 'general';
 
@@ -18,16 +23,39 @@ export interface ContactValues {
 export type ContactErrors = Partial<Record<keyof ContactValues, string>>;
 export type ContactStatus = 'idle' | 'submitting' | 'success' | 'error';
 
+export const INQUIRY_LABELS: Record<InquiryType, string> = {
+  project: 'Start a custom project',
+  demo: 'Request for Demo',
+  cyber: 'Cybersecurity services',
+  general: 'General question'
+};
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validate(values: ContactValues): ContactErrors {
   const errors: ContactErrors = {};
   if (!values.name.trim()) errors.name = 'Please enter your name.';
-  if (!values.email.trim()) errors.email = 'Please enter your email address.';else
-  if (!emailPattern.test(values.email.trim())) errors.email = 'Please enter a valid email address.';
+  if (!values.email.trim()) errors.email = 'Please enter your email address.';
+  else if (!emailPattern.test(values.email.trim())) errors.email = 'Please enter a valid email address.';
   if (values.type === 'demo' && !values.system) errors.system = 'Please choose a system for the demo.';
   if (values.message.trim().length < 10) errors.message = 'Please tell us a little more (at least 10 characters).';
   return errors;
+}
+
+export function getSelectedOption(values: ContactValues): string {
+  if (values.type === 'demo' && values.system) {
+    const item = preBuilds.find((p) => p.slug === values.system);
+    return item ? item.name : values.system;
+  }
+  if (values.type === 'cyber' && values.pkg) {
+    const item = cyberPackages.find((p) => p.id === values.pkg);
+    return item ? item.name : values.pkg;
+  }
+  if (values.type === 'project' && values.service) {
+    const item = services.find((s) => s.id === values.service);
+    return item ? item.name : values.service;
+  }
+  return 'N/A';
 }
 
 export function useContactForm(initial: ContactValues) {
@@ -49,13 +77,59 @@ export function useContactForm(initial: ContactValues) {
       document.getElementById(`field-${firstKey}`)?.focus();
       return;
     }
+
     setStatus('submitting');
-    await new Promise((resolve) => window.setTimeout(resolve, 1100));
-    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+
+    try {
+      if (typeof navigator !== 'undefined' && !navigator.onLine) {
+        throw new Error('Network offline');
+      }
+
+      const selectedOption = getSelectedOption(values);
+      const service = INQUIRY_LABELS[values.type] || values.type || 'N/A';
+
+      const templateParams = {
+        service,
+        selected_option: selectedOption,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim() || 'N/A',
+        company: values.company.trim() || 'N/A',
+        message: values.message.trim() || 'N/A',
+        // Common template aliases
+        from_name: values.name.trim(),
+        from_email: values.email.trim(),
+        reply_to: values.email.trim()
+      };
+
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          service_id: EMAILJS_CONFIG.serviceId,
+          template_id: EMAILJS_CONFIG.templateId,
+          user_id: EMAILJS_CONFIG.publicKey,
+          accessToken: EMAILJS_CONFIG.privateKey,
+          template_params: templateParams
+        })
+      });
+
+      if (!response.ok) {
+        await emailjs.send(
+          EMAILJS_CONFIG.serviceId,
+          EMAILJS_CONFIG.templateId,
+          templateParams,
+          EMAILJS_CONFIG.publicKey
+        );
+      }
+
+      setStatus('success');
+    } catch (err) {
+      console.error('EmailJS submission error:', err);
       setStatus('error');
-      return;
     }
-    setStatus('success');
   };
 
   const reset = () => {
