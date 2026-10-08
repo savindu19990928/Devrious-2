@@ -28,6 +28,10 @@ const requiredFiles = [
   'dist/sitemap.xml',
   'dist/llms.txt',
   'dist/llms-full.txt',
+  'dist/.well-known/ai-catalog.json',
+  'dist/.well-known/ard.json',
+  'dist/ai-catalog.json',
+  'dist/ard.json',
   'dist/.well-known/ai-plugin.json',
   'dist/site.webmanifest',
   'dist/manifest.json',
@@ -44,6 +48,8 @@ const requiredFiles = [
   'dist/browserconfig.xml',
   'dist/.well-known/security.txt',
   'dist/humans.txt',
+  'dist/serve.json',
+  'dist/_headers',
 ];
 
 console.log('\nChecking required SEO & Agentic Browsing files:');
@@ -58,24 +64,58 @@ for (const file of requiredFiles) {
   }
 }
 
-// Agentic Verification
+// Agentic & Lighthouse Validation
 console.log('\nValidating Agentic & AI Agent discovery:');
+
+// 1. llms.txt validation
 const llmsTxt = fs.readFileSync('dist/llms.txt', 'utf8');
-if (llmsTxt.includes('https://devrious.lk/logo.png')) {
-  console.log('✓ llms.txt contains explicit brand logo URL (https://devrious.lk/logo.png)');
+const h1Match = llmsTxt.match(/^#\s+.+/m);
+if (h1Match) {
+  console.log(`✓ llms.txt contains H1 header: "${h1Match[0]}"`);
+} else {
+  console.error('✗ llms.txt is missing H1 header');
+  missing++;
+}
+
+const markdownLinks = llmsTxt.match(/\[([^\]]+)\]\(([^)]+)\)/g);
+if (markdownLinks && markdownLinks.length > 5) {
+  console.log(`✓ llms.txt contains ${markdownLinks.length} valid Markdown links [Title](URL) (Lighthouse link audit satisfied)`);
+} else {
+  console.error('✗ llms.txt does not contain sufficient Markdown links');
+  missing++;
+}
+
+if (llmsTxt.includes('https://www.devrious.lk/logo.png')) {
+  console.log('✓ llms.txt contains explicit brand logo URL (https://www.devrious.lk/logo.png)');
 } else {
   console.error('✗ llms.txt is missing logo URL');
   missing++;
 }
 
+// 2. ai-catalog.json (ARD Specification) validation
+try {
+  const aiCatalog = JSON.parse(fs.readFileSync('dist/.well-known/ai-catalog.json', 'utf8'));
+  if (aiCatalog.specVersion === '1.0' && Array.isArray(aiCatalog.entries) && aiCatalog.entries.length > 0) {
+    console.log(`✓ ai-catalog.json valid ARD manifest (specVersion: ${aiCatalog.specVersion}, entries: ${aiCatalog.entries.length}, logo: ${aiCatalog.host?.logoUrl})`);
+  } else {
+    console.error('✗ ai-catalog.json missing specVersion or entries');
+    missing++;
+  }
+} catch (e) {
+  console.error('✗ Malformed JSON in ai-catalog.json:', e.message);
+  missing++;
+}
+
+// 3. ai-plugin.json validation
 const aiPlugin = JSON.parse(fs.readFileSync('dist/.well-known/ai-plugin.json', 'utf8'));
-if (aiPlugin.logo_url === 'https://devrious.lk/logo.png') {
-  console.log('✓ ai-plugin.json contains explicit logo_url (https://devrious.lk/logo.png)');
+if (aiPlugin.logo_url === 'https://www.devrious.lk/logo.png') {
+  console.log('✓ ai-plugin.json contains explicit logo_url (https://www.devrious.lk/logo.png)');
 } else {
   console.error('✗ ai-plugin.json is missing or incorrect logo_url');
   missing++;
 }
 
+// 4. robots.txt validation
 const robotsTxt = fs.readFileSync('dist/robots.txt', 'utf8');
 if (robotsTxt.includes('User-agent: GPTBot') && robotsTxt.includes('User-agent: ClaudeBot')) {
   console.log('✓ robots.txt allows GPTBot, ClaudeBot, and major AI agent crawlers');
@@ -84,10 +124,11 @@ if (robotsTxt.includes('User-agent: GPTBot') && robotsTxt.includes('User-agent: 
   missing++;
 }
 
-if (html.includes('href="/llms.txt"') && html.includes('https://devrious.lk/logo.png')) {
-  console.log('✓ index.html links to llms.txt and logo metadata');
+// 5. index.html discovery tags
+if (html.includes('href="/llms.txt"') && html.includes('ai-catalog.json') && html.includes('https://www.devrious.lk/logo.png')) {
+  console.log('✓ index.html links to llms.txt, ai-catalog.json, and logo metadata with www.devrious.lk');
 } else {
-  console.error('✗ index.html missing llms.txt or logo links');
+  console.error('✗ index.html missing llms.txt, ai-catalog.json, or logo links');
   missing++;
 }
 

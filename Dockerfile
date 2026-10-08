@@ -19,9 +19,10 @@ ENV NODE_ENV=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
+COPY serve.json ./
 
 RUN npm install -g serve
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "serve -s dist -l 8080"]
+CMD ["sh", "-c", "serve -s dist -l 8080 -c serve.json"]

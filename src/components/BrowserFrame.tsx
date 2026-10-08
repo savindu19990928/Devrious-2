@@ -9,21 +9,50 @@ interface BrowserFrameProps {
   fallbackSrc?: string;
   className?: string;
   zoomable?: boolean;
+  width?: number;
+  height?: number;
+  priority?: boolean;
 }
 
-export function BrowserFrame({ src, url, alt, fallbackSrc, className = '', zoomable = false }: BrowserFrameProps) {
+export function BrowserFrame({
+  src,
+  url,
+  alt,
+  fallbackSrc,
+  className = '',
+  zoomable = false,
+  width = 1897,
+  height = 865,
+  priority = false,
+}: BrowserFrameProps) {
   const [current, setCurrent] = useState(src);
   const [open, setOpen] = useState(false);
 
-  const image =
-  <img
-    src={current}
-    alt={alt}
-    className="block h-auto w-full bg-ink-50"
-    loading="lazy"
-    onError={() => {
-      if (fallbackSrc && current !== fallbackSrc) setCurrent(fallbackSrc);
-    }} />;
+  React.useEffect(() => {
+    setCurrent(src);
+  }, [src]);
+
+  const webpSrc = current.replace(/\.(png|jpe?g)$/i, '.webp');
+
+  const image = (
+    <picture className="block w-full">
+      {webpSrc !== current && <source srcSet={webpSrc} type="image/webp" />}
+      <img
+        src={current}
+        alt={alt}
+        width={width}
+        height={height}
+        style={{ aspectRatio: `${width} / ${height}` }}
+        className="block h-auto w-full bg-ink-50 object-cover"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding={priority ? 'sync' : 'async'}
+        onError={() => {
+          if (fallbackSrc && current !== fallbackSrc) setCurrent(fallbackSrc);
+        }}
+      />
+    </picture>
+  );
 
 
 

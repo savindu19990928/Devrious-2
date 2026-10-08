@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Performance: Preconnect to Font Origins & Non-Render-Blocking Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      />
+    </noscript>
+
     <!-- Primary SEO Meta Tags -->
     <title>Devrious | Custom Software, Web &amp; AI Development in Sri Lanka</title>
     <meta name="title" content="Devrious | Custom Software, Web &amp; AI Development in Sri Lanka" />
@@ -17,7 +38,7 @@
     />
     <meta name="author" content="Devrious" />
     <meta name="application-name" content="Devrious" />
-    <link rel="canonical" href="https://devrious.lk/" />
+    <link rel="canonical" href="https://www.devrious.lk/" />
 
     <!-- Search Engine & AI Agent Crawling Directives -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -28,7 +49,9 @@
     <!-- Agentic Browsing & LLM Discovery Links -->
     <link rel="alternate" type="text/markdown" href="/llms.txt" title="Devrious LLM Summary" />
     <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Devrious Full LLM Documentation" />
-    <link rel="logo" type="image/png" href="https://devrious.lk/logo.png" />
+    <link rel="agent-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
+    <link rel="alternate" type="application/json" href="/.well-known/ai-catalog.json" title="Devrious AI Catalog Manifest" />
+    <link rel="logo" type="image/png" href="https://www.devrious.lk/logo.png" />
 
     <!-- Google Favicon & App Icons (Google Search Central Compliant) -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
@@ -47,30 +70,30 @@
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp / Slack -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Devrious" />
-    <meta property="og:url" content="https://devrious.lk/" />
+    <meta property="og:url" content="https://www.devrious.lk/" />
     <meta property="og:title" content="Devrious | Custom Software, Web &amp; AI Development in Sri Lanka" />
     <meta
       property="og:description"
       content="High-performance React &amp; Django DRF platforms, custom business software, AI assistants, and enterprise POS systems engineered in Sri Lanka."
     />
-    <meta property="og:image" content="https://devrious.lk/og-image.png" />
-    <meta property="og:image:secure_url" content="https://devrious.lk/og-image.png" />
+    <meta property="og:image" content="https://www.devrious.lk/og-image.png" />
+    <meta property="og:image:secure_url" content="https://www.devrious.lk/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Devrious - Custom Software, Web &amp; AI Development Studio" />
-    <meta property="og:logo" content="https://devrious.lk/logo.png" />
+    <meta property="og:logo" content="https://www.devrious.lk/logo.png" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://devrious.lk/" />
+    <meta name="twitter:url" content="https://www.devrious.lk/" />
     <meta name="twitter:title" content="Devrious | Custom Software, Web &amp; AI Development in Sri Lanka" />
     <meta
       name="twitter:description"
       content="High-performance React &amp; Django DRF platforms, custom business software, AI assistants, and enterprise POS systems engineered in Sri Lanka."
     />
-    <meta name="twitter:image" content="https://devrious.lk/og-image.png" />
+    <meta name="twitter:image" content="https://www.devrious.lk/og-image.png" />
     <meta name="twitter:image:alt" content="Devrious - Custom Software, Web &amp; AI Development Studio" />
 
     <!-- Local SEO & Geographic Tags -->
@@ -86,20 +109,20 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://devrious.lk/#organization",
+            "@id": "https://www.devrious.lk/#organization",
             "name": "Devrious",
-            "url": "https://devrious.lk",
+            "url": "https://www.devrious.lk",
             "logo": {
               "@type": "ImageObject",
-              "@id": "https://devrious.lk/#logo",
-              "url": "https://devrious.lk/logo.png",
-              "contentUrl": "https://devrious.lk/logo.png",
+              "@id": "https://www.devrious.lk/#logo",
+              "url": "https://www.devrious.lk/logo.png",
+              "contentUrl": "https://www.devrious.lk/logo.png",
               "caption": "Devrious Official Brand Logo",
               "description": "Devrious signature tri-color emblem in emerald green (#12B57A), golden yellow (#FFD400), and coral red (#FF5E5B)",
               "width": 640,
               "height": 640
             },
-            "image": "https://devrious.lk/logo.png",
+            "image": "https://www.devrious.lk/logo.png",
             "description": "Devrious is a software development studio in Sri Lanka specializing in custom web applications, Django DRF systems, AI assistants, and enterprise solutions.",
             "email": "info@devrious.lk",
             "telephone": "+94706611936",
@@ -129,22 +152,22 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://devrious.lk/#website",
-            "url": "https://devrious.lk",
+            "@id": "https://www.devrious.lk/#website",
+            "url": "https://www.devrious.lk",
             "name": "Devrious",
             "description": "Custom Software, Web & AI Development Studio in Sri Lanka",
             "publisher": {
-              "@id": "https://devrious.lk/#organization"
+              "@id": "https://www.devrious.lk/#organization"
             },
             "inLanguage": "en-US"
           },
           {
             "@type": "ProfessionalService",
-            "@id": "https://devrious.lk/#localbusiness",
+            "@id": "https://www.devrious.lk/#localbusiness",
             "name": "Devrious",
-            "url": "https://devrious.lk",
-            "logo": "https://devrious.lk/logo.png",
-            "image": "https://devrious.lk/og-image.png",
+            "url": "https://www.devrious.lk",
+            "logo": "https://www.devrious.lk/logo.png",
+            "image": "https://www.devrious.lk/og-image.png",
             "telephone": "+94706611936",
             "email": "info@devrious.lk",
             "priceRange": "$$",

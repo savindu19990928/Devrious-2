@@ -34,8 +34,8 @@ export function PreBuildDetail() {
             provider: {
               '@type': 'Organization',
               name: 'Devrious',
-              url: 'https://devrious.lk',
-              logo: 'https://devrious.lk/logo.png',
+              url: 'https://www.devrious.lk',
+              logo: 'https://www.devrious.lk/logo.png',
             },
           },
         }

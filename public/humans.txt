@@ -2,10 +2,10 @@
 Co-Founder & Developer: Savindu Shiranjaya
 Co-Founder: Rangana Munasinghe
 Contact: info@devrious.lk
-Website: https://devrious.lk
+Website: https://www.devrious.lk
 Location: Maharagama, Colombo, Sri Lanka
 
 /* SITE */
-Standards: HTML5, CSS3, ESNext, Open Graph, Schema.org, llms.txt
+Standards: HTML5, CSS3, ESNext, Open Graph, Schema.org, llms.txt, ARD
 Components: React, Vite, Tailwind CSS, TypeScript
 Production: Cloudflare, Google Cloud Platform

@@ -1,14 +1,16 @@
 # ========================================================
 # Devrious Robots.txt
-# Website: https://devrious.lk
+# Website: https://www.devrious.lk
 # ========================================================
 
 User-agent: *
 Allow: /
+Allow: /.well-known/
 
 # Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
+Allow: /.well-known/
 Allow: /logo.png
 Allow: /favicon.ico
 Allow: /favicon.svg
@@ -22,6 +24,7 @@ Allow: /llms-full.txt
 
 User-agent: Googlebot-Image
 Allow: /
+Allow: /.well-known/
 Allow: /logo.png
 Allow: /favicon.ico
 Allow: /favicon.svg
@@ -32,6 +35,7 @@ Allow: /og-image.png
 
 User-agent: Bingbot
 Allow: /
+Allow: /.well-known/
 
 # ========================================================
 # Agentic Browsing & AI Agents Directives
@@ -40,52 +44,68 @@ Allow: /
 
 User-agent: GPTBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: ChatGPT-User
 Allow: /
+Allow: /.well-known/
 
 User-agent: ClaudeBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Claude-Web
 Allow: /
+Allow: /.well-known/
 
 User-agent: anthropic-ai
 Allow: /
+Allow: /.well-known/
 
 User-agent: Google-Extended
 Allow: /
+Allow: /.well-known/
 
 User-agent: GoogleOther
 Allow: /
+Allow: /.well-known/
 
 User-agent: Google-CloudVertexBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Applebot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Applebot-Extended
 Allow: /
+Allow: /.well-known/
 
 User-agent: Amazonbot
 Allow: /
+Allow: /.well-known/
 
 User-agent: cohere-ai
 Allow: /
+Allow: /.well-known/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Allow: /.well-known/
 
 User-agent: OAI-SearchBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Diffbot
 Allow: /
+Allow: /.well-known/
 
-# Sitemaps & LLMs.txt for AI Agents
-Sitemap: https://devrious.lk/sitemap.xml
-Host: https://devrious.lk
+# Sitemaps & Agent Discovery
+Sitemap: https://www.devrious.lk/sitemap.xml
+Host: https://www.devrious.lk

@@ -9,9 +9,9 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://devrious.lk/llms.txt"
+    "url": "https://www.devrious.lk/llms.txt"
   },
-  "logo_url": "https://devrious.lk/logo.png",
+  "logo_url": "https://www.devrious.lk/logo.png",
   "contact_email": "info@devrious.lk",
-  "legal_info_url": "https://devrious.lk/terms"
+  "legal_info_url": "https://www.devrious.lk/terms"
 }

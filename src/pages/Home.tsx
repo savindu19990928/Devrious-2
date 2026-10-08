@@ -119,26 +119,44 @@ export function Home() {
           </Link>
         </div>
         <div className="mt-12 grid gap-10 md:grid-cols-2">
-          {featuredWork.map((p) =>
-          <article key={p.id} className="flex flex-col">
-              <a
-              href={p.url}
-              target="_blank"
-              rel="noreferrer"
-              className="group block overflow-hidden rounded-2xl border border-ink-200 bg-ink-50 transition-[border-color,transform] duration-200 ease-out hover:-translate-y-1 hover:border-brand-500">
-              
-                <img src={p.screenshot} alt={`${p.name} website`} className="block h-auto w-full" loading="lazy" />
-              </a>
-              <div className="mt-5 flex items-baseline justify-between gap-4">
-                <h3 className="font-display text-xl font-bold text-ink-950">{p.name}</h3>
-                <span className="text-sm text-ink-500">{p.type}</span>
-              </div>
-              <p className="mt-2 text-ink-600">
-                <span className="font-semibold text-ink-900">The challenge: </span>
-                {p.challenges[0]}
-              </p>
-            </article>
-          )}
+          {featuredWork.map((p) => {
+            if (!p.screenshot) return null;
+            const webpSrc = p.screenshot.replace(/\.(png|jpe?g)$/i, '.webp');
+            const width = p.id === 'zevora-custom' ? 1918 : 1897;
+            const height = p.id === 'zevora-custom' ? 863 : 865;
+            return (
+              <article key={p.id} className="flex flex-col">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block overflow-hidden rounded-2xl border border-ink-200 bg-ink-50 transition-[border-color,transform] duration-200 ease-out hover:-translate-y-1 hover:border-brand-500"
+                >
+                  <picture className="block w-full">
+                    {webpSrc !== p.screenshot && <source srcSet={webpSrc} type="image/webp" />}
+                    <img
+                      src={p.screenshot}
+                      alt={`${p.name} website built by Devrious`}
+                      width={width}
+                      height={height}
+                      style={{ aspectRatio: `${width} / ${height}` }}
+                      className="block h-auto w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </a>
+                <div className="mt-5 flex items-baseline justify-between gap-4">
+                  <h3 className="font-display text-xl font-bold text-ink-950">{p.name}</h3>
+                  <span className="text-sm text-ink-500">{p.type}</span>
+                </div>
+                <p className="mt-2 text-ink-600">
+                  <span className="font-semibold text-ink-900">The challenge: </span>
+                  {p.challenges[0]}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </section>
 

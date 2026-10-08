@@ -13,8 +13,8 @@ export interface SEOProps {
 const DEFAULT_TITLE = 'Custom Software, Web & AI Development in Sri Lanka';
 const DEFAULT_DESC =
   'Devrious is a premier software engineering studio in Sri Lanka. We build high-performance web applications, custom business software, Django DRF platforms, AI assistants, and enterprise POS & ERP systems.';
-const DEFAULT_IMAGE = 'https://devrious.lk/og-image.png';
-const BASE_URL = 'https://devrious.lk';
+const DEFAULT_IMAGE = 'https://www.devrious.lk/og-image.png';
+const BASE_URL = 'https://www.devrious.lk';
 
 function setMetaTag(attrName: 'name' | 'property', attrValue: string, content: string): void {
   let element = document.querySelector<HTMLMetaElement>(`meta[${attrName}="${attrValue}"]`);

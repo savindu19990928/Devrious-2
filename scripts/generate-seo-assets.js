@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
+const CANONICAL_BASE = 'https://www.devrious.lk';
 const publicDir = path.resolve('public');
 const logoPath = path.join(publicDir, 'logo.png');
 
@@ -162,8 +163,8 @@ async function generateOgImage() {
   </g>
 
   <!-- URL Tag bottom right -->
-  <g transform="translate(940, 535)">
-    <text x="0" y="20" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="600" fill="#12B57A" letter-spacing="0.02em">devrious.lk</text>
+  <g transform="translate(890, 535)">
+    <text x="0" y="20" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="600" fill="#12B57A" letter-spacing="0.02em">www.devrious.lk</text>
   </g>
 </svg>`;
 
@@ -177,15 +178,17 @@ async function generateOgImage() {
 function generateRobotsTxt() {
   const content = `# ========================================================
 # Devrious Robots.txt
-# Website: https://devrious.lk
+# Website: ${CANONICAL_BASE}
 # ========================================================
 
 User-agent: *
 Allow: /
+Allow: /.well-known/
 
 # Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
+Allow: /.well-known/
 Allow: /logo.png
 Allow: /favicon.ico
 Allow: /favicon.svg
@@ -199,6 +202,7 @@ Allow: /llms-full.txt
 
 User-agent: Googlebot-Image
 Allow: /
+Allow: /.well-known/
 Allow: /logo.png
 Allow: /favicon.ico
 Allow: /favicon.svg
@@ -209,6 +213,7 @@ Allow: /og-image.png
 
 User-agent: Bingbot
 Allow: /
+Allow: /.well-known/
 
 # ========================================================
 # Agentic Browsing & AI Agents Directives
@@ -217,55 +222,71 @@ Allow: /
 
 User-agent: GPTBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: ChatGPT-User
 Allow: /
+Allow: /.well-known/
 
 User-agent: ClaudeBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Claude-Web
 Allow: /
+Allow: /.well-known/
 
 User-agent: anthropic-ai
 Allow: /
+Allow: /.well-known/
 
 User-agent: Google-Extended
 Allow: /
+Allow: /.well-known/
 
 User-agent: GoogleOther
 Allow: /
+Allow: /.well-known/
 
 User-agent: Google-CloudVertexBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Applebot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Applebot-Extended
 Allow: /
+Allow: /.well-known/
 
 User-agent: Amazonbot
 Allow: /
+Allow: /.well-known/
 
 User-agent: cohere-ai
 Allow: /
+Allow: /.well-known/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Allow: /.well-known/
 
 User-agent: OAI-SearchBot
 Allow: /
+Allow: /.well-known/
 
 User-agent: Diffbot
 Allow: /
+Allow: /.well-known/
 
-# Sitemaps & LLMs.txt for AI Agents
-Sitemap: https://devrious.lk/sitemap.xml
-Host: https://devrious.lk
+# Sitemaps & Agent Discovery
+Sitemap: ${CANONICAL_BASE}/sitemap.xml
+Host: ${CANONICAL_BASE}
 `;
 
   fs.writeFileSync(path.join(publicDir, 'robots.txt'), content.trim() + '\n');
@@ -277,26 +298,26 @@ function generateSitemapXml() {
   const currentDate = new Date().toISOString().split('T')[0];
 
   const routes = [
-    { loc: 'https://devrious.lk/', priority: '1.0', changefreq: 'weekly', image: 'https://devrious.lk/logo.png', imageTitle: 'Devrious Software Engineering Studio' },
-    { loc: 'https://devrious.lk/services', priority: '0.9', changefreq: 'weekly', image: 'https://devrious.lk/logo.png', imageTitle: 'Devrious Services' },
-    { loc: 'https://devrious.lk/pre-builds', priority: '0.9', changefreq: 'weekly', image: 'https://devrious.lk/logo.png', imageTitle: 'Devrious Pre-Built Solutions' },
-    { loc: 'https://devrious.lk/pre-builds/gym-pos', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/pharmacy-pos', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/tuition-institute-pos', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/grocery-pos', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/supermarket-pos', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/erp-system', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/hotel-management', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/fleet-management', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/social-media-management', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/pre-builds/flexcore-ecommerce', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/portfolio', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/cybersecurity-services', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/about', priority: '0.7', changefreq: 'monthly', image: 'https://devrious.lk/Savindu.jpg', imageTitle: 'Savindu Shiranjaya - Co-Founder Devrious' },
-    { loc: 'https://devrious.lk/contact', priority: '0.8', changefreq: 'monthly' },
-    { loc: 'https://devrious.lk/terms', priority: '0.3', changefreq: 'yearly' },
-    { loc: 'https://devrious.lk/privacy', priority: '0.3', changefreq: 'yearly' },
-    { loc: 'https://devrious.lk/cookies', priority: '0.3', changefreq: 'yearly' },
+    { loc: `${CANONICAL_BASE}/`, priority: '1.0', changefreq: 'weekly', image: `${CANONICAL_BASE}/logo.png`, imageTitle: 'Devrious Software Engineering Studio' },
+    { loc: `${CANONICAL_BASE}/services`, priority: '0.9', changefreq: 'weekly', image: `${CANONICAL_BASE}/logo.png`, imageTitle: 'Devrious Services' },
+    { loc: `${CANONICAL_BASE}/pre-builds`, priority: '0.9', changefreq: 'weekly', image: `${CANONICAL_BASE}/logo.png`, imageTitle: 'Devrious Pre-Built Solutions' },
+    { loc: `${CANONICAL_BASE}/pre-builds/gym-pos`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/pharmacy-pos`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/tuition-institute-pos`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/grocery-pos`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/supermarket-pos`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/erp-system`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/hotel-management`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/fleet-management`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/social-media-management`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/pre-builds/flexcore-ecommerce`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/portfolio`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/cybersecurity-services`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/about`, priority: '0.7', changefreq: 'monthly', image: `${CANONICAL_BASE}/Savindu.jpg`, imageTitle: 'Savindu Shiranjaya - Co-Founder Devrious' },
+    { loc: `${CANONICAL_BASE}/contact`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${CANONICAL_BASE}/terms`, priority: '0.3', changefreq: 'yearly' },
+    { loc: `${CANONICAL_BASE}/privacy`, priority: '0.3', changefreq: 'yearly' },
+    { loc: `${CANONICAL_BASE}/cookies`, priority: '0.3', changefreq: 'yearly' },
   ];
 
   const urlElements = routes.map(r => {
@@ -315,124 +336,93 @@ ${urlElements}
 </urlset>`;
 
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), content.trim() + '\n');
-  console.log('Created sitemap.xml');
+  console.log('Created sitemap.xml with www.devrious.lk');
 }
 
-// 7. Generate llms.txt (Industry standard for Agentic Browsing & AI Agents)
+// 7. Generate llms.txt strictly adhering to https://llmstxt.org/ & Chrome Lighthouse Agentic Browsing specifications
 function generateLlmsTxt() {
-  const content = `# Devrious — Custom Software, Web & AI Engineering Studio
+  const content = `# Devrious — Custom Software, Web & AI Studio
 
-> Official Website: https://devrious.lk
-> Contact Email: info@devrious.lk
-> Phone: +94 70 661 1936 (tel:+94706611936)
-> WhatsApp: https://wa.me/94706611936
-> Office Location: 161/6, Old Kottawa Road, Navinna, Maharagama, Colombo, Sri Lanka
-> Founded: 2024 by Savindu Shiranjaya and Rangana Munasinghe
-> Full Technical Documentation for AI Agents: https://devrious.lk/llms-full.txt
+> Devrious is a boutique software engineering studio based in Colombo, Sri Lanka, building high-performance web applications, Django DRF platforms, enterprise POS/ERP systems, and practical AI assistants.
 
-## Official Brand Identity & Logo Assets
-- Official Brand Logo (PNG 640x640): https://devrious.lk/logo.png
-- Google Search Favicon (PNG 48x48): https://devrious.lk/favicon-48x48.png
-- Scalable Vector Favicon (SVG): https://devrious.lk/favicon.svg
-- Multi-Resolution Favicon (ICO): https://devrious.lk/favicon.ico
-- Social Sharing / Open Graph Image (1200x630): https://devrious.lk/og-image.png
-- Visual Description of the Logo: The official Devrious brand logo is a modern, geometric tri-color modernist monogram emblem consisting of an emerald green curved base (#12B57A), a golden amber accent (#FFD400), and a coral red accent (#FF5E5B) on transparent and obsidian backgrounds.
+Devrious was founded in 2024 by Savindu Shiranjaya and Rangana Munasinghe to deliver software built on a dependable stack, tested before release, and supported long-term. Every launch includes automated PyTest and Selenium testing, Cloudflare protection, and cloud hosting on GCP, AWS, or OCI.
 
-## Summary for AI & Agentic Browsers
-Devrious is a boutique software engineering studio based in Colombo, Sri Lanka. We build custom web applications, Django REST Framework back-ends, business management platforms, practical AI assistants, and enterprise POS/ERP systems. Every production launch includes automated testing (PyTest, Selenium), Cloudflare caching, SSL, DDoS protection, and cloud deployment on Google Cloud Platform (GCP), Oracle Cloud (OCI), or AWS.
+## Brand Identity & Logos
+- [Devrious Official Logo](${CANONICAL_BASE}/logo.png): High-resolution 640x640 PNG brand logo featuring the signature geometric modernist mark in emerald green (#12B57A), golden amber (#FFD400), and coral red (#FF5E5B)
+- [Google Search Favicon](${CANONICAL_BASE}/favicon-48x48.png): 48x48 PNG icon tailored strictly for Google Search Central favicon specifications
+- [Scalable Vector Favicon](${CANONICAL_BASE}/favicon.svg): Vector SVG format icon for high-DPI displays and modern web browsers
+- [Multi-Resolution Windows Favicon](${CANONICAL_BASE}/favicon.ico): Traditional multi-frame ICO file containing 16x16, 32x32, and 48x48 icons
+- [Social Share Preview Banner](${CANONICAL_BASE}/og-image.png): 1200x630 Open Graph card for WhatsApp, LinkedIn, X, and Facebook link previews
+- [Web App Manifest](${CANONICAL_BASE}/site.webmanifest): Progressive Web App manifest declaring brand colors (#12B57A), display mode, and responsive icons
 
 ## Core Engineering Services
-1. Custom Web Development (Starting at LKR 85,000 / ~$290 USD)
-   - Responsive React front-ends designed for your brand
-   - Django DRF back-end with admin portal
-   - Full SEO setup with Google Search Console and schema markup
-   - Cloudflare CDN, SSL, DDoS mitigation
-   - Hosting on GCP, OCI, or AWS
-   - Link: https://devrious.lk/services
+- [Custom Web Development](${CANONICAL_BASE}/services): Responsive React front-ends, Django DRF back-ends, SEO setup, Cloudflare caching, SSL, DDoS protection (From LKR 85,000 / ~$290 USD)
+- [Custom Software Development](${CANONICAL_BASE}/services): Internal operational platforms, role-based dashboards, and automated PyTest/Selenium suites (From LKR 250,000 / ~$850 USD)
+- [API Development](${CANONICAL_BASE}/services): REST APIs with Django DRF, JWT/OAuth authentication, payment gateways, interactive docs (From LKR 60,000 / ~$205 USD)
+- [AI Assistants & Tools](${CANONICAL_BASE}/services): Customer support chat assistants trained on business documents, WhatsApp integration (From LKR 120,000 / ~$410 USD)
+- [AI Systems & Automation](${CANONICAL_BASE}/services): Demand forecasting, computer vision, recommendation systems, and intelligent workflows (From LKR 350,000 / ~$1,190 USD)
+- [Cybersecurity & Penetration Testing](${CANONICAL_BASE}/cybersecurity-services): Web and API penetration testing, secure code review, and vulnerability audits (From LKR 45,000 / ~$155 USD)
 
-2. Custom Software Development (Starting at LKR 250,000 / ~$850 USD)
-   - Business software shaped around real operations
-   - Process mapping, role-based dashboards, and approval workflows
-   - Integration with legacy databases and third-party APIs
-   - Automated testing with PyTest and Selenium
-   - Staff training and post-launch maintenance
-   - Link: https://devrious.lk/services
-
-3. API Development (Starting at LKR 60,000 / ~$205 USD)
-   - REST API design with Django DRF
-   - JWT and OAuth authentication with granular permissions
-   - Interactive OpenAPI documentation
-   - Payment gateway integrations (PayHere, Stripe, WebXPay)
-   - Link: https://devrious.lk/services
-
-4. Practical AI Assistants & Tools (Starting at LKR 120,000 / ~$410 USD)
-   - Customer support chat assistants trained on client documents
-   - WhatsApp and web widget integration
-   - Automated content, email, and document drafting
-   - Conversation review and continuous fine-tuning
-   - Link: https://devrious.lk/services
-
-5. End-to-End AI Systems (Starting at LKR 350,000 / ~$1,190 USD)
-   - Demand forecasting, predictive modeling, recommendation engines
-   - Document and image recognition pipelines
-   - Model fine-tuning, monitoring, and evaluation
-   - Link: https://devrious.lk/services
-
-6. Cybersecurity & Penetration Testing (From LKR 45,000 to LKR 180,000)
-   - Secure code reviews (manual + static analysis)
-   - REST API penetration testing
-   - Web application penetration testing
-   - Infrastructure and cloud vulnerability assessments
-   - Link: https://devrious.lk/cybersecurity-services
-
-## Ready-Made Pre-Built Software Solutions
-All systems include setup, on-site/remote staff training, barcode/receipt printer configuration, and 3 months of free post-launch support:
-- Gym POS & Membership System (LKR 95,000): https://devrious.lk/pre-builds/gym-pos
-- Pharmacy POS System (LKR 95,000): https://devrious.lk/pre-builds/pharmacy-pos
-- Tuition Institute & Student POS (LKR 85,000): https://devrious.lk/pre-builds/tuition-institute-pos
-- Grocery Store POS System (LKR 75,000): https://devrious.lk/pre-builds/grocery-pos
-- Supermarket Multi-Lane POS & Inventory (LKR 120,000): https://devrious.lk/pre-builds/supermarket-pos
-- ERP & Business Operations System (LKR 280,000): https://devrious.lk/pre-builds/erp-system
-- Hotel & Resort Management System (LKR 180,000): https://devrious.lk/pre-builds/hotel-management
-- Fleet Management & Vehicle Tracking (LKR 150,000): https://devrious.lk/pre-builds/fleet-management
-- Social Media Management & Automation (LKR 95,000): https://devrious.lk/pre-builds/social-media-management
-- Flexcore Modern eCommerce Platform (LKR 120,000): https://devrious.lk/pre-builds/flexcore-ecommerce
+## Pre-Built Software Solutions
+- [Gym POS & Membership System](${CANONICAL_BASE}/pre-builds/gym-pos): Memberships, QR check-ins, counter sales, and trainer schedules (LKR 95,000)
+- [Pharmacy POS System](${CANONICAL_BASE}/pre-builds/pharmacy-pos): Batch and expiry control, prescription records, supplier GRNs (LKR 95,000)
+- [Tuition Institute & Student POS](${CANONICAL_BASE}/pre-builds/tuition-institute-pos): Student card billing, teacher shares, SMS attendance (LKR 85,000)
+- [Grocery Store POS System](${CANONICAL_BASE}/pre-builds/grocery-pos): Fast counter billing, barcode and weighing scale integration (LKR 75,000)
+- [Supermarket Multi-Lane POS & Inventory](${CANONICAL_BASE}/pre-builds/supermarket-pos): Multi-lane counters, central back-office inventory, loyalty points (LKR 120,000)
+- [ERP & Business Operations System](${CANONICAL_BASE}/pre-builds/erp-system): Department workflows, purchase orders, double-entry financial ledger (LKR 280,000)
+- [Hotel & Resort Management System](${CANONICAL_BASE}/pre-builds/hotel-management): Room bookings, guest check-in, restaurant POS, housekeeping (LKR 180,000)
+- [Fleet Management & Vehicle Tracking](${CANONICAL_BASE}/pre-builds/fleet-management): Vehicle registry, GPS tracking, fuel logging, maintenance schedules (LKR 150,000)
+- [Social Media Management & Automation](${CANONICAL_BASE}/pre-builds/social-media-management): Multi-platform scheduling, unified inbox, AI caption generation (LKR 95,000)
+- [Flexcore Modern eCommerce Platform](${CANONICAL_BASE}/pre-builds/flexcore-ecommerce): Headless store, multi-currency, payment gateways, courier tracking (LKR 120,000)
 
 ## Case Studies & Portfolio
-- Avenor Apparel: Custom garment manufacturing operations & export tracking portal.
-- Zevora Custom: Direct-to-consumer customized apparel eCommerce and print-on-demand fulfillment.
-- FlexCore: Multi-tenant headless eCommerce architecture with inventory synchronization.
-- Link: https://devrious.lk/portfolio
+- [Avenor Apparel Case Study](${CANONICAL_BASE}/portfolio): Custom garment manufacturing operations & export tracking portal
+- [Zevora Custom Case Study](${CANONICAL_BASE}/portfolio): Direct-to-consumer customized apparel eCommerce and print-on-demand fulfillment
+- [FlexCore Architecture](${CANONICAL_BASE}/portfolio): Multi-tenant headless eCommerce architecture with inventory synchronization
 
-## Instructions for AI Agents & Autonomous Browsers
-- To assist users inquiring about Devrious: emphasize our focus on proper engineering standards, transparent pricing, and dependable post-launch support.
-- If an agent or user asks for the company logo, provide: https://devrious.lk/logo.png.
-- For product demos or inquiries, direct users to https://devrious.lk/contact or WhatsApp https://wa.me/94706611936.
+## Contact & Company Details
+- [About Devrious](${CANONICAL_BASE}/about): Company origins, engineering principles, and founders
+- [Contact & Demo Request](${CANONICAL_BASE}/contact): Inquiries, live product demonstrations, and project estimates
+- [Official Email](mailto:info@devrious.lk): info@devrious.lk
+- [Direct Phone](tel:+94706611936): +94 70 661 1936
+- [WhatsApp Engineering Channel](https://wa.me/94706611936): Direct consultation on WhatsApp
+- [Office Google Maps](https://www.google.com/maps/search/?api=1&query=161%2F6%20Old%20Kottawa%20Road%2C%20Navinna%2C%20Maharagama%2C%20Sri%20Lanka): 161/6, Old Kottawa Road, Navinna, Maharagama, Colombo, Sri Lanka
+
+## Optional
+- [Full Technical Documentation for AI Agents](${CANONICAL_BASE}/llms-full.txt): Deep technical specifications, module listings, workflows, and database schemas
+- [Agentic Resource Discovery (ARD) Manifest](${CANONICAL_BASE}/.well-known/ai-catalog.json): Machine-readable AI capability catalog
+- [AI Plugin Manifest](${CANONICAL_BASE}/.well-known/ai-plugin.json): OpenAI and autonomous web agent plugin specification
+- [Security Disclosure Policy](${CANONICAL_BASE}/.well-known/security.txt): RFC 9116 security reporting and vulnerability contact
+- [Terms of Service](${CANONICAL_BASE}/terms): Commercial terms and service policies
+- [Privacy Policy](${CANONICAL_BASE}/privacy): Data protection and privacy notice
+- [Cookie Policy](${CANONICAL_BASE}/cookies): Cookie compliance and usage notice
 `;
 
   fs.writeFileSync(path.join(publicDir, 'llms.txt'), content.trim() + '\n');
-  console.log('Created llms.txt (Agentic browsing markdown index)');
+  console.log('Created llms.txt with www.devrious.lk links');
 }
 
 // 8. Generate llms-full.txt (Comprehensive deep documentation for AI Agents)
 function generateLlmsFullTxt() {
   const content = `# Devrious — Comprehensive Technical Documentation for AI Agents
 
-Website: https://devrious.lk
-Canonical Domain: https://devrious.lk
+> Deep technical specification and capabilities catalog for autonomous agents, LLMs, and automated tool callers.
+
+Website: ${CANONICAL_BASE}
+Canonical Domain: ${CANONICAL_BASE}
 Headquarters: 161/6, Old Kottawa Road, Navinna, Maharagama, Colombo, Sri Lanka
 Email: info@devrious.lk | Telephone: +94 70 661 1936
 Founded: 2024
 Co-Founders: Savindu Shiranjaya (Co-Founder & Technical Lead), Rangana Munasinghe (Co-Founder & Operations Lead)
 
 ## Brand Identity & Logos
-- Primary High-Resolution Logo: https://devrious.lk/logo.png (640x640 PNG with alpha channel)
-- Google Favicon Standard: https://devrious.lk/favicon-48x48.png (48x48 PNG)
-- Vector Favicon: https://devrious.lk/favicon.svg (Scalable SVG)
-- Multi-size Favicon: https://devrious.lk/favicon.ico (16, 32, 48 px ICO)
-- Social Graph Card: https://devrious.lk/og-image.png (1200x630 PNG)
-- Web App Manifest: https://devrious.lk/site.webmanifest
-- Logo Visual Geometry: A tri-color geometric modernist symbol. An emerald green base bracket (#12B57A), a golden amber top accent (#FFD400), and a coral red middle accent (#FF5E5B).
+- [Primary High-Resolution Logo](${CANONICAL_BASE}/logo.png): 640x640 PNG brand logo with alpha transparency
+- [Google Favicon Standard](${CANONICAL_BASE}/favicon-48x48.png): 48x48 PNG icon for search engines
+- [Vector Favicon](${CANONICAL_BASE}/favicon.svg): Scalable SVG logo icon
+- [Multi-size Favicon](${CANONICAL_BASE}/favicon.ico): 16, 32, 48 px ICO file
+- [Social Graph Card](${CANONICAL_BASE}/og-image.png): 1200x630 PNG card
+- [Web App Manifest](${CANONICAL_BASE}/site.webmanifest): PWA manifest specification
+- Logo Geometry: A tri-color geometric modernist symbol. An emerald green base bracket (#12B57A), a golden amber top accent (#FFD400), and a coral red middle accent (#FF5E5B).
 
 ## Engineering Principles & Technology Stack
 Devrious builds software with zero technical debt shortcuts:
@@ -447,7 +437,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 1. Gym POS & Membership System (slug: gym-pos)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/gym-pos
+- Live URL: ${CANONICAL_BASE}/pre-builds/gym-pos
 - Modules:
   * Membership plans (monthly, quarterly, annual, freeze, transfer)
   * QR & RFID member check-in with live payment status
@@ -458,7 +448,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 2. Pharmacy POS System (slug: pharmacy-pos)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/pharmacy-pos
+- Live URL: ${CANONICAL_BASE}/pre-builds/pharmacy-pos
 - Modules:
   * Batch-wise stock management & FIFO picking
   * Expiry alert dashboard (30, 60, 90 days warning)
@@ -468,7 +458,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 3. Tuition Institute & Student POS (slug: tuition-institute-pos)
 - Price: LKR 85,000 (~$290 USD)
-- Live URL: https://devrious.lk/pre-builds/tuition-institute-pos
+- Live URL: ${CANONICAL_BASE}/pre-builds/tuition-institute-pos
 - Modules:
   * Student barcode / QR card attendance
   * Class card billing & teacher revenue share calculation
@@ -477,7 +467,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 4. Grocery Store POS System (slug: grocery-pos)
 - Price: LKR 75,000 (~$255 USD)
-- Live URL: https://devrious.lk/pre-builds/grocery-pos
+- Live URL: ${CANONICAL_BASE}/pre-builds/grocery-pos
 - Modules:
   * Fast cashier billing with shortcut keys
   * Weighing scale integration & loose item barcode printing
@@ -486,7 +476,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 5. Supermarket Multi-Lane POS & Inventory (slug: supermarket-pos)
 - Price: LKR 120,000 (~$410 USD)
-- Live URL: https://devrious.lk/pre-builds/supermarket-pos
+- Live URL: ${CANONICAL_BASE}/pre-builds/supermarket-pos
 - Modules:
   * Multi-lane counter synchronization with offline fallback
   * Central back-office inventory & multi-branch transfer
@@ -495,7 +485,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 6. ERP & Business Operations System (slug: erp-system)
 - Price: LKR 280,000 (~$955 USD)
-- Live URL: https://devrious.lk/pre-builds/erp-system
+- Live URL: ${CANONICAL_BASE}/pre-builds/erp-system
 - Modules:
   * Multi-department workflow management
   * Purchase order approval hierarchy
@@ -505,7 +495,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 7. Hotel & Resort Management System (slug: hotel-management)
 - Price: LKR 180,000 (~$615 USD)
-- Live URL: https://devrious.lk/pre-builds/hotel-management
+- Live URL: ${CANONICAL_BASE}/pre-builds/hotel-management
 - Modules:
   * Room reservation calendar & online booking engine
   * Front desk check-in / check-out with passport scan
@@ -514,7 +504,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 8. Fleet Management & Vehicle Tracking (slug: fleet-management)
 - Price: LKR 150,000 (~$510 USD)
-- Live URL: https://devrious.lk/pre-builds/fleet-management
+- Live URL: ${CANONICAL_BASE}/pre-builds/fleet-management
 - Modules:
   * Vehicle registry, revenue license & insurance expiry alerts
   * GPS tracking integration & route history
@@ -523,7 +513,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 9. Social Media Management & Automation (slug: social-media-management)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/social-media-management
+- Live URL: ${CANONICAL_BASE}/pre-builds/social-media-management
 - Modules:
   * Multi-channel post scheduler (Facebook, Instagram, LinkedIn)
   * Unified inbox for comments and direct messages
@@ -532,7 +522,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 10. FlexCore Modern eCommerce Platform (slug: flexcore-ecommerce)
 - Price: LKR 120,000 (~$410 USD)
-- Live URL: https://devrious.lk/pre-builds/flexcore-ecommerce
+- Live URL: ${CANONICAL_BASE}/pre-builds/flexcore-ecommerce
 - Modules:
   * Headless React storefront with lightning-fast catalog search
   * Multi-currency support (LKR, USD, EUR, GBP)
@@ -553,10 +543,95 @@ Devrious builds software with zero technical debt shortcuts:
 `;
 
   fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), content.trim() + '\n');
-  console.log('Created llms-full.txt (Comprehensive agentic documentation)');
+  console.log('Created llms-full.txt with www.devrious.lk');
 }
 
-// 9. Generate .well-known/ai-plugin.json
+// 9. Generate ai-catalog.json & ard.json strictly adhering to the Agentic Resource Discovery (ARD) Specification (agenticresourcediscovery.org/spec/)
+function generateAiCatalogJson() {
+  const wellKnownDir = path.join(publicDir, '.well-known');
+  if (!fs.existsSync(wellKnownDir)) {
+    fs.mkdirSync(wellKnownDir, { recursive: true });
+  }
+
+  const catalog = {
+    specVersion: "1.0",
+    host: {
+      identifier: "did:web:www.devrious.lk",
+      displayName: "Devrious",
+      documentationUrl: `${CANONICAL_BASE}/llms.txt`,
+      logoUrl: `${CANONICAL_BASE}/logo.png`
+    },
+    entries: [
+      {
+        identifier: "urn:air:devrious:services:web-development",
+        displayName: "Custom Web Development",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/services`,
+        description: "High-performance React and Django DRF corporate website and web portal engineering",
+        capabilities: ["web-development", "react", "django-drf", "cloud-hosting", "seo-optimization"]
+      },
+      {
+        identifier: "urn:air:devrious:services:custom-software",
+        displayName: "Custom Software Development",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/services`,
+        description: "Business management software, workflow automation, and custom operational platforms",
+        capabilities: ["custom-software", "process-mapping", "role-based-dashboards", "automated-testing"]
+      },
+      {
+        identifier: "urn:air:devrious:services:api-development",
+        displayName: "REST API Development",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/services`,
+        description: "Secure, documented REST APIs built with Django DRF, JWT/OAuth, and payment integrations",
+        capabilities: ["rest-api", "jwt-authentication", "payment-gateways", "openapi-documentation"]
+      },
+      {
+        identifier: "urn:air:devrious:services:ai-assistants",
+        displayName: "AI Assistants & Tools",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/services`,
+        description: "Custom AI customer support assistants, document knowledge-base bots, and WhatsApp integration",
+        capabilities: ["ai-assistants", "rag-chatbots", "whatsapp-integration", "document-automation"]
+      },
+      {
+        identifier: "urn:air:devrious:services:ai-systems",
+        displayName: "AI Systems & Development",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/services`,
+        description: "Predictive analytics, demand forecasting, image/document recognition, and intelligent automation",
+        capabilities: ["machine-learning", "demand-forecasting", "computer-vision", "data-pipelines"]
+      },
+      {
+        identifier: "urn:air:devrious:services:cybersecurity",
+        displayName: "Cybersecurity & Penetration Testing",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/cybersecurity-services`,
+        description: "Web application and API penetration testing, secure code review, and cloud security audits",
+        capabilities: ["penetration-testing", "secure-code-review", "vulnerability-assessment", "owasp-audit"]
+      },
+      {
+        identifier: "urn:air:devrious:prebuilds:catalog",
+        displayName: "Pre-Built Software Solutions",
+        type: "text/html",
+        url: `${CANONICAL_BASE}/pre-builds`,
+        description: "Ten ready-to-deploy POS, ERP, Hotel, Fleet, and eCommerce systems with 3 months free support",
+        capabilities: ["pos-systems", "erp-solutions", "inventory-management", "membership-software"]
+      }
+    ]
+  };
+
+  const jsonStr = JSON.stringify(catalog, null, 2) + '\n';
+
+  fs.writeFileSync(path.join(wellKnownDir, 'ai-catalog.json'), jsonStr);
+  fs.writeFileSync(path.join(wellKnownDir, 'ard.json'), jsonStr);
+  fs.writeFileSync(path.join(publicDir, 'ai-catalog.json'), jsonStr);
+  fs.writeFileSync(path.join(publicDir, 'ard.json'), jsonStr);
+
+  console.log('Created valid ai-catalog.json & ard.json manifests with www.devrious.lk');
+}
+
+// 10. Generate .well-known/ai-plugin.json
 function generateAiPluginJson() {
   const wellKnownDir = path.join(publicDir, '.well-known');
   if (!fs.existsSync(wellKnownDir)) {
@@ -574,18 +649,18 @@ function generateAiPluginJson() {
     },
     api: {
       type: "openapi",
-      url: "https://devrious.lk/llms.txt"
+      url: `${CANONICAL_BASE}/llms.txt`
     },
-    logo_url: "https://devrious.lk/logo.png",
+    logo_url: `${CANONICAL_BASE}/logo.png`,
     contact_email: "info@devrious.lk",
-    legal_info_url: "https://devrious.lk/terms"
+    legal_info_url: `${CANONICAL_BASE}/terms`
   };
 
   fs.writeFileSync(path.join(wellKnownDir, 'ai-plugin.json'), JSON.stringify(plugin, null, 2) + '\n');
-  console.log('Created .well-known/ai-plugin.json');
+  console.log('Created .well-known/ai-plugin.json with www.devrious.lk');
 }
 
-// 10. Generate site.webmanifest
+// 11. Generate site.webmanifest
 function generateWebManifest() {
   const manifest = {
     name: "Devrious - Custom Software, Web & AI Development",
@@ -621,7 +696,7 @@ function generateWebManifest() {
   console.log('Created site.webmanifest & manifest.json');
 }
 
-// 11. Generate browserconfig.xml
+// 12. Generate browserconfig.xml
 function generateBrowserConfig() {
   const content = `<?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
@@ -637,7 +712,7 @@ function generateBrowserConfig() {
   console.log('Created browserconfig.xml');
 }
 
-// 12. Generate .well-known/security.txt
+// 13. Generate .well-known/security.txt
 function generateSecurityTxt() {
   const wellKnownDir = path.join(publicDir, '.well-known');
   if (!fs.existsSync(wellKnownDir)) {
@@ -647,28 +722,63 @@ function generateSecurityTxt() {
   const content = `Contact: mailto:info@devrious.lk
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: en
-Canonical: https://devrious.lk/.well-known/security.txt
+Canonical: ${CANONICAL_BASE}/.well-known/security.txt
 `;
   fs.writeFileSync(path.join(wellKnownDir, 'security.txt'), content.trim() + '\n');
-  console.log('Created .well-known/security.txt');
+  console.log('Created .well-known/security.txt with www.devrious.lk');
 }
 
-// 13. Generate humans.txt
+// 14. Generate humans.txt
 function generateHumansTxt() {
   const content = `/* TEAM */
 Co-Founder & Developer: Savindu Shiranjaya
 Co-Founder: Rangana Munasinghe
 Contact: info@devrious.lk
-Website: https://devrious.lk
+Website: ${CANONICAL_BASE}
 Location: Maharagama, Colombo, Sri Lanka
 
 /* SITE */
-Standards: HTML5, CSS3, ESNext, Open Graph, Schema.org, llms.txt
+Standards: HTML5, CSS3, ESNext, Open Graph, Schema.org, llms.txt, ARD
 Components: React, Vite, Tailwind CSS, TypeScript
 Production: Cloudflare, Google Cloud Platform
 `;
   fs.writeFileSync(path.join(publicDir, 'humans.txt'), content.trim() + '\n');
-  console.log('Created humans.txt');
+  console.log('Created humans.txt with www.devrious.lk');
+}
+
+// 15. Optimize high-resolution screenshots & generate WebP modern formats
+async function optimizeImages() {
+  const images = [
+    'screenshot_of_avenorapparel.png',
+    'screenshot_of_zevoracustom.png',
+    'screenshot_of_flexcore.png',
+  ];
+
+  for (const imgName of images) {
+    const srcPath = path.join(publicDir, imgName);
+    if (!fs.existsSync(srcPath)) continue;
+
+    const webpName = imgName.replace(/\.png$/i, '.webp');
+    const webpPath = path.join(publicDir, webpName);
+
+    try {
+      await sharp(srcPath).webp({ quality: 82 }).toFile(webpPath);
+      console.log(`Generated ${webpName}`);
+    } catch (e) {
+      console.warn(`Could not generate webp for ${imgName}:`, e.message);
+    }
+  }
+
+  const savinduJpg = path.join(publicDir, 'Savindu.jpg');
+  if (fs.existsSync(savinduJpg)) {
+    const savinduWebp = path.join(publicDir, 'Savindu.webp');
+    try {
+      await sharp(savinduJpg).webp({ quality: 80 }).toFile(savinduWebp);
+      console.log('Generated Savindu.webp');
+    } catch (e) {
+      console.warn('Could not generate webp for Savindu.jpg:', e.message);
+    }
+  }
 }
 
 async function main() {
@@ -676,16 +786,18 @@ async function main() {
     await generatePngs();
     await generateIco();
     await generateOgImage();
+    await optimizeImages();
     generateRobotsTxt();
     generateSitemapXml();
     generateLlmsTxt();
     generateLlmsFullTxt();
+    generateAiCatalogJson();
     generateAiPluginJson();
     generateWebManifest();
     generateBrowserConfig();
     generateSecurityTxt();
     generateHumansTxt();
-    console.log('All SEO & Agentic Browsing files generated successfully!');
+    console.log('All SEO & Agentic Browsing files generated successfully with www.devrious.lk!');
   } catch (err) {
     console.error('Error generating assets:', err);
     process.exit(1);

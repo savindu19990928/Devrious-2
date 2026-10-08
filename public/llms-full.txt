@@ -1,20 +1,22 @@
 # Devrious — Comprehensive Technical Documentation for AI Agents
 
-Website: https://devrious.lk
-Canonical Domain: https://devrious.lk
+> Deep technical specification and capabilities catalog for autonomous agents, LLMs, and automated tool callers.
+
+Website: https://www.devrious.lk
+Canonical Domain: https://www.devrious.lk
 Headquarters: 161/6, Old Kottawa Road, Navinna, Maharagama, Colombo, Sri Lanka
 Email: info@devrious.lk | Telephone: +94 70 661 1936
 Founded: 2024
 Co-Founders: Savindu Shiranjaya (Co-Founder & Technical Lead), Rangana Munasinghe (Co-Founder & Operations Lead)
 
 ## Brand Identity & Logos
-- Primary High-Resolution Logo: https://devrious.lk/logo.png (640x640 PNG with alpha channel)
-- Google Favicon Standard: https://devrious.lk/favicon-48x48.png (48x48 PNG)
-- Vector Favicon: https://devrious.lk/favicon.svg (Scalable SVG)
-- Multi-size Favicon: https://devrious.lk/favicon.ico (16, 32, 48 px ICO)
-- Social Graph Card: https://devrious.lk/og-image.png (1200x630 PNG)
-- Web App Manifest: https://devrious.lk/site.webmanifest
-- Logo Visual Geometry: A tri-color geometric modernist symbol. An emerald green base bracket (#12B57A), a golden amber top accent (#FFD400), and a coral red middle accent (#FF5E5B).
+- [Primary High-Resolution Logo](https://www.devrious.lk/logo.png): 640x640 PNG brand logo with alpha transparency
+- [Google Favicon Standard](https://www.devrious.lk/favicon-48x48.png): 48x48 PNG icon for search engines
+- [Vector Favicon](https://www.devrious.lk/favicon.svg): Scalable SVG logo icon
+- [Multi-size Favicon](https://www.devrious.lk/favicon.ico): 16, 32, 48 px ICO file
+- [Social Graph Card](https://www.devrious.lk/og-image.png): 1200x630 PNG card
+- [Web App Manifest](https://www.devrious.lk/site.webmanifest): PWA manifest specification
+- Logo Geometry: A tri-color geometric modernist symbol. An emerald green base bracket (#12B57A), a golden amber top accent (#FFD400), and a coral red middle accent (#FF5E5B).
 
 ## Engineering Principles & Technology Stack
 Devrious builds software with zero technical debt shortcuts:
@@ -29,7 +31,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 1. Gym POS & Membership System (slug: gym-pos)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/gym-pos
+- Live URL: https://www.devrious.lk/pre-builds/gym-pos
 - Modules:
   * Membership plans (monthly, quarterly, annual, freeze, transfer)
   * QR & RFID member check-in with live payment status
@@ -40,7 +42,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 2. Pharmacy POS System (slug: pharmacy-pos)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/pharmacy-pos
+- Live URL: https://www.devrious.lk/pre-builds/pharmacy-pos
 - Modules:
   * Batch-wise stock management & FIFO picking
   * Expiry alert dashboard (30, 60, 90 days warning)
@@ -50,7 +52,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 3. Tuition Institute & Student POS (slug: tuition-institute-pos)
 - Price: LKR 85,000 (~$290 USD)
-- Live URL: https://devrious.lk/pre-builds/tuition-institute-pos
+- Live URL: https://www.devrious.lk/pre-builds/tuition-institute-pos
 - Modules:
   * Student barcode / QR card attendance
   * Class card billing & teacher revenue share calculation
@@ -59,7 +61,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 4. Grocery Store POS System (slug: grocery-pos)
 - Price: LKR 75,000 (~$255 USD)
-- Live URL: https://devrious.lk/pre-builds/grocery-pos
+- Live URL: https://www.devrious.lk/pre-builds/grocery-pos
 - Modules:
   * Fast cashier billing with shortcut keys
   * Weighing scale integration & loose item barcode printing
@@ -68,7 +70,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 5. Supermarket Multi-Lane POS & Inventory (slug: supermarket-pos)
 - Price: LKR 120,000 (~$410 USD)
-- Live URL: https://devrious.lk/pre-builds/supermarket-pos
+- Live URL: https://www.devrious.lk/pre-builds/supermarket-pos
 - Modules:
   * Multi-lane counter synchronization with offline fallback
   * Central back-office inventory & multi-branch transfer
@@ -77,7 +79,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 6. ERP & Business Operations System (slug: erp-system)
 - Price: LKR 280,000 (~$955 USD)
-- Live URL: https://devrious.lk/pre-builds/erp-system
+- Live URL: https://www.devrious.lk/pre-builds/erp-system
 - Modules:
   * Multi-department workflow management
   * Purchase order approval hierarchy
@@ -87,7 +89,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 7. Hotel & Resort Management System (slug: hotel-management)
 - Price: LKR 180,000 (~$615 USD)
-- Live URL: https://devrious.lk/pre-builds/hotel-management
+- Live URL: https://www.devrious.lk/pre-builds/hotel-management
 - Modules:
   * Room reservation calendar & online booking engine
   * Front desk check-in / check-out with passport scan
@@ -96,7 +98,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 8. Fleet Management & Vehicle Tracking (slug: fleet-management)
 - Price: LKR 150,000 (~$510 USD)
-- Live URL: https://devrious.lk/pre-builds/fleet-management
+- Live URL: https://www.devrious.lk/pre-builds/fleet-management
 - Modules:
   * Vehicle registry, revenue license & insurance expiry alerts
   * GPS tracking integration & route history
@@ -105,7 +107,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 9. Social Media Management & Automation (slug: social-media-management)
 - Price: LKR 95,000 (~$325 USD)
-- Live URL: https://devrious.lk/pre-builds/social-media-management
+- Live URL: https://www.devrious.lk/pre-builds/social-media-management
 - Modules:
   * Multi-channel post scheduler (Facebook, Instagram, LinkedIn)
   * Unified inbox for comments and direct messages
@@ -114,7 +116,7 @@ Devrious builds software with zero technical debt shortcuts:
 
 ### 10. FlexCore Modern eCommerce Platform (slug: flexcore-ecommerce)
 - Price: LKR 120,000 (~$410 USD)
-- Live URL: https://devrious.lk/pre-builds/flexcore-ecommerce
+- Live URL: https://www.devrious.lk/pre-builds/flexcore-ecommerce
 - Modules:
   * Headless React storefront with lightning-fast catalog search
   * Multi-currency support (LKR, USD, EUR, GBP)
