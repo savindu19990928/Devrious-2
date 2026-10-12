@@ -1,10 +1,8 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
-import { company } from './data/site';
-import { setFavicon } from './utils/document';
 
 const Services = lazy(() => import('./pages/Services').then((m) => ({ default: m.Services })));
 const PreBuilds = lazy(() => import('./pages/PreBuilds').then((m) => ({ default: m.PreBuilds })));
@@ -17,10 +15,6 @@ const Legal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal
 const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 export function App() {
-  useEffect(() => {
-    setFavicon(company.logo);
-  }, []);
-
   return (
     <CurrencyProvider>
       <BrowserRouter>

@@ -10,9 +10,11 @@ if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
 }
 
-// 1. Scalable SVG favicon
-const svgFaviconContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282 282" fill="none">
-  <g transform="translate(22.5, 2.5)">
+// 1. Scalable SVG favicon & Master Brand Mark
+// Bounding box of geometry: X: 5..232 (w=227, center=118.5), Y: 5..277 (h=272, center=141)
+// In a 300x300 viewBox with translate(31.5, 9), mark is perfectly centered with ~5% optical margin
+const svgFaviconContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <g transform="translate(31.5, 9)">
     <path fill="#12B57A" d="M75 60H232V118H85A25 25 0 0 0 60 143V195A25 25 0 0 0 85 220H175V277H75A70 70 0 0 1 5 207V130A70 70 0 0 1 75 60Z" />
     <path fill="#FFD400" d="M175 60V30A25 25 0 0 1 200 5H232V60Z" />
     <path fill="#FF5E5B" d="M175 118H232V195A25 25 0 0 1 207 220H175Z" />
@@ -22,7 +24,18 @@ const svgFaviconContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 
 fs.writeFileSync(path.join(publicDir, 'favicon.svg'), svgFaviconContent.trim());
 console.log('Created favicon.svg');
 
-// 2. Generate standard PNG icons from logo.png
+const svgBuffer = Buffer.from(svgFaviconContent);
+
+// 2. Generate high-resolution official brand logo (640x640) for Google Knowledge Graph & Schema.org Organization
+async function generateLogo() {
+  await sharp(svgBuffer, { density: 300 })
+    .resize(640, 640)
+    .png()
+    .toFile(logoPath);
+  console.log('Created high-resolution public/logo.png (640x640)');
+}
+
+// 3. Generate standard PNG icons directly from vector SVG for maximum clarity
 const pngSizes = [
   { file: 'favicon-16x16.png', size: 16 },
   { file: 'favicon-32x32.png', size: 32 },
@@ -34,24 +47,21 @@ const pngSizes = [
 
 async function generatePngs() {
   for (const { file, size } of pngSizes) {
-    await sharp(logoPath)
-      .resize(size, size, {
-        fit: 'contain',
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
-      })
+    await sharp(svgBuffer, { density: 300 })
+      .resize(size, size)
       .png()
       .toFile(path.join(publicDir, file));
     console.log(`Created ${file} (${size}x${size})`);
   }
 }
 
-// 3. Generate multi-resolution favicon.ico containing 16, 32, 48 sizes
+// 4. Generate multi-resolution favicon.ico containing 16, 32, 48 sizes from vector SVG
 async function generateIco() {
   const icoSizes = [16, 32, 48];
   const pngBuffers = await Promise.all(
     icoSizes.map(s =>
-      sharp(logoPath)
-        .resize(s, s, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      sharp(svgBuffer, { density: 300 })
+        .resize(s, s)
         .png()
         .toBuffer()
     )
@@ -210,6 +220,15 @@ Allow: /favicon-*.png
 Allow: /apple-touch-icon.png
 Allow: /android-chrome-*.png
 Allow: /og-image.png
+
+User-agent: Google Favicon
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /favicon-48x48.png
+Allow: /favicon-*.png
+Allow: /android-chrome-*.png
+Allow: /logo.png
 
 User-agent: Bingbot
 Allow: /
@@ -783,6 +802,7 @@ async function optimizeImages() {
 
 async function main() {
   try {
+    await generateLogo();
     await generatePngs();
     await generateIco();
     await generateOgImage();
