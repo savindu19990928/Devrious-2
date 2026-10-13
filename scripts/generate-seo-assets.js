@@ -216,19 +216,11 @@ Allow: /.well-known/
 Allow: /logo.png
 Allow: /favicon.ico
 Allow: /favicon.svg
+Allow: /favicon-48x48.png
 Allow: /favicon-*.png
 Allow: /apple-touch-icon.png
 Allow: /android-chrome-*.png
 Allow: /og-image.png
-
-User-agent: Google Favicon
-Allow: /
-Allow: /favicon.ico
-Allow: /favicon.svg
-Allow: /favicon-48x48.png
-Allow: /favicon-*.png
-Allow: /android-chrome-*.png
-Allow: /logo.png
 
 User-agent: Bingbot
 Allow: /
