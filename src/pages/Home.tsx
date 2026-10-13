@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon, ArrowUpRightIcon } from 'lucide-react';
+import { ArrowRightIcon, ArrowUpRightIcon, ChevronRightIcon } from 'lucide-react';
 import { HomeHero } from '../components/home/HomeHero';
 import { TestimonialSpotlight } from '../components/home/TestimonialSpotlight';
 import { Price } from '../components/Price';
@@ -19,7 +19,7 @@ export function Home() {
       'Devrious is a premier software engineering studio in Sri Lanka. We build high-performance web applications, custom business software, Django DRF platforms, AI assistants, and enterprise POS & ERP systems.',
     canonicalPath: '/',
   });
-  const featuredWork = projects.filter((p) => p.id === 'avenor-apparel' || p.id === 'zevora-custom');
+  const featuredWork = projects.filter((p) => p.id === 'zevora-custom' || p.id === 'avenor-apparel');
 
   return (
     <>
@@ -30,7 +30,7 @@ export function Home() {
           <p className="shrink-0 text-sm text-ink-500">Trusted by</p>
           <ul className="flex flex-wrap gap-x-10 gap-y-3">
             {clientNames.map((name) =>
-            <li key={name} className="font-display text-lg font-bold tracking-tight text-ink-400">
+              <li key={name} className="font-display text-lg font-bold tracking-tight text-ink-400">
                 {name}
               </li>
             )}
@@ -70,41 +70,67 @@ export function Home() {
       </section>
 
       <section className="band bg-ink-950">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Ready-made systems, tailored to you</h2>
-              <p className="mt-4 text-lg text-ink-300">
+              <h2 className="font-display text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl leading-tight">
+                Ready-made systems, tailored to you
+              </h2>
+              <p className="mt-3 text-base text-ink-300 sm:mt-4 sm:text-lg leading-relaxed">
                 Proven POS, ERP and management systems you can deploy quickly — or use as the starting point for a custom build.
               </p>
             </div>
-            <CurrencyToggle tone="dark" />
+            <div className="flex items-center gap-2 self-start md:self-auto">
+              <span className="text-xs font-medium text-ink-400 sm:hidden">Currency:</span>
+              <CurrencyToggle tone="dark" />
+            </div>
           </div>
-          <ul className="mt-12 grid gap-x-12 border-t border-white/10 md:grid-cols-2">
+          <ul className="mt-8 grid gap-x-8 border-t border-white/10 sm:mt-12 lg:gap-x-12 md:grid-cols-2">
             {preBuilds.map((p) => {
               const Icon = p.icon;
               return (
                 <li key={p.slug} className="border-b border-white/10">
-                  <Link to={`/pre-builds/${p.slug}`} className="group flex items-center gap-4 py-5">
-                    <Icon className="h-5 w-5 shrink-0 text-brand-400" aria-hidden="true" />
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate font-semibold text-white group-hover:text-brand-300">{p.name}</span>
-                      <span className="block text-sm text-ink-400">{p.category}</span>
+                  <Link
+                    to={`/pre-builds/${p.slug}`}
+                    className="group -mx-2 flex items-center gap-3.5 rounded-xl px-2 py-3.5 transition-colors duration-150 hover:bg-white/[0.04] active:bg-white/[0.08] sm:mx-0 sm:gap-4 sm:rounded-none sm:px-0 sm:py-5 sm:hover:bg-transparent"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] ring-1 ring-white/10 text-brand-400 transition-colors duration-150 group-hover:bg-brand-500/15 group-hover:ring-brand-400/30 group-hover:text-brand-300">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span className="shrink-0 text-right text-sm text-ink-400">
-                      from <Price lkr={p.priceLKR} className="font-semibold text-white" />
-                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="font-semibold text-white transition-colors duration-150 group-hover:text-brand-300 text-sm sm:text-base leading-snug">
+                          {p.name}
+                        </span>
+                        <span className="hidden sm:inline-flex shrink-0 items-baseline gap-1 text-right text-sm text-ink-400">
+                          from <Price lkr={p.priceLKR} className="font-semibold text-white" />
+                        </span>
+                      </div>
+                      <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs sm:text-sm text-ink-400">
+                        <span>{p.category}</span>
+                        <span className="text-white/20 sm:hidden">·</span>
+                        <span className="sm:hidden text-ink-300">
+                          from <Price lkr={p.priceLKR} className="font-semibold text-white" />
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRightIcon
+                      className="h-4 w-4 shrink-0 text-ink-500 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-brand-300 sm:hidden"
+                      aria-hidden="true"
+                    />
                   </Link>
-                </li>);
-
+                </li>
+              );
             })}
           </ul>
-          <Link
-            to="/pre-builds"
-            className="mt-10 inline-flex items-center gap-2 rounded-lg bg-brand-500 px-5 py-3 text-sm font-semibold text-ink-950 transition-colors duration-150 hover:bg-brand-400">
-            
-            Browse all Pre Builds <ArrowRightIcon className="h-4 w-4" />
-          </Link>
+          <div className="mt-8 sm:mt-10">
+            <Link
+              to="/pre-builds"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-brand-500 px-5 py-3.5 text-sm font-semibold text-ink-950 transition-colors duration-150 hover:bg-brand-400 active:scale-[0.99]"
+            >
+              Browse all Pre Builds <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

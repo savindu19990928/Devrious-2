@@ -8,17 +8,17 @@ import { projects } from '../../data/projects';
 import { easeOut } from '../../utils/motion';
 
 const facts = [
-{ value: '2024', label: 'Founded in Colombo' },
-{ value: '10', label: 'Ready-to-deploy systems' },
-{ value: 'LK & UK', label: 'Clients served' }];
+  { value: '2024', label: 'Founded in Colombo' },
+  { value: '10', label: 'Ready-to-deploy systems' },
+  { value: 'LK & UK', label: 'Clients served' }];
 
 
 const dots = ['bg-brand-500', 'bg-sun-500', 'bg-coral-500'];
 
 export function HomeHero() {
   const reduce = useReducedMotion();
+  const flexcore = projects.find((p) => p.id === 'flexcore');
   const avenor = projects.find((p) => p.id === 'avenor-apparel');
-  const zevora = projects.find((p) => p.id === 'zevora-custom');
 
   const fade = (delay: number, y = 8) => ({
     initial: reduce ? false : { opacity: 0.85, y },
@@ -98,7 +98,7 @@ export function HomeHero() {
             </motion.div>
           </motion.div>
 
-          {zevora?.screenshot && (
+          {flexcore?.screenshot && (
             <motion.div
               className="absolute -bottom-2 left-0 hidden w-[58%] sm:block"
               initial={reduce ? false : { opacity: 0, y: 24 }}
@@ -110,9 +110,9 @@ export function HomeHero() {
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               >
                 <BrowserFrame
-                  src={zevora.screenshot}
-                  url="zevoracustom.lk"
-                  alt="Zevora Custom website built by Devrious"
+                  src={flexcore.screenshot}
+                  url="devrious.flexcore.lk"
+                  alt="Flexcore website built by Devrious"
                   width={1918}
                   height={863}
                 />
@@ -125,7 +125,7 @@ export function HomeHero() {
             initial={reduce ? false : { opacity: 0, scale: 0.96, y: -6 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.25, ease: easeOut, delay: 0.5 }}>
-            
+
             <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-60 motion-reduce:hidden" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
