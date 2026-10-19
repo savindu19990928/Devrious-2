@@ -94,14 +94,25 @@ export function About() {
             <Reveal key={f.name} delay={i * 0.08}>
                 <article className="flex flex-col gap-6 sm:flex-row sm:gap-8">
                   <div className="aspect-[4/5] w-full max-w-xs shrink-0 overflow-hidden rounded-2xl bg-ink-100 sm:w-44 lg:w-48">
-                    {f.photo ?
-                  <img src={f.photo} alt={`Mr. ${f.name}`} className="h-full w-full object-cover" style={{ objectPosition: '30% 35%' }} /> :
-
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-ink-400">
+                    {f.photo ? (
+                      <picture className="block h-full w-full">
+                        <source srcSet={f.photo.replace(/\.(jpe?g|png)$/i, '.webp')} type="image/webp" />
+                        <img
+                          src={f.photo}
+                          alt={`Mr. ${f.name}`}
+                          className="h-full w-full object-cover object-center"
+                          loading="lazy"
+                          decoding="async"
+                          width={400}
+                          height={500}
+                        />
+                      </picture>
+                    ) : (
+                      <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-ink-400">
                         <UserIcon className="h-12 w-12" aria-hidden="true" />
                         <span className="text-sm font-medium">Photo coming soon</span>
                       </div>
-                  }
+                    )}
                   </div>
                   <div className="min-w-0 sm:pt-1">
                     <h3 className="font-display text-2xl font-bold tracking-tight text-ink-950">Mr. {f.name}</h3>

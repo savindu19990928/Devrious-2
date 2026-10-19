@@ -40,7 +40,7 @@ export const founders: Founder[] = [
 {
   name: 'Rangana Munasinghe',
   role: 'Co-Founder',
-  photo: null,
+  photo: "/Rangana.jpg",
   bio: 'Co-founded Devrious in 2024 with a focus on turning real operational problems into practical, maintainable systems that teams actually enjoy using.'
 }];
 

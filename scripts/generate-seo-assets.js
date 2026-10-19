@@ -324,7 +324,15 @@ function generateSitemapXml() {
     { loc: `${CANONICAL_BASE}/pre-builds/flexcore-ecommerce`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${CANONICAL_BASE}/portfolio`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${CANONICAL_BASE}/cybersecurity-services`, priority: '0.8', changefreq: 'monthly' },
-    { loc: `${CANONICAL_BASE}/about`, priority: '0.7', changefreq: 'monthly', image: `${CANONICAL_BASE}/Savindu.jpg`, imageTitle: 'Savindu Shiranjaya - Co-Founder Devrious' },
+    {
+      loc: `${CANONICAL_BASE}/about`,
+      priority: '0.7',
+      changefreq: 'monthly',
+      images: [
+        { loc: `${CANONICAL_BASE}/Savindu.jpg`, title: 'Savindu Shiranjaya - Co-Founder Devrious' },
+        { loc: `${CANONICAL_BASE}/Rangana.jpg`, title: 'Rangana Munasinghe - Co-Founder Devrious' }
+      ]
+    },
     { loc: `${CANONICAL_BASE}/contact`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${CANONICAL_BASE}/terms`, priority: '0.3', changefreq: 'yearly' },
     { loc: `${CANONICAL_BASE}/privacy`, priority: '0.3', changefreq: 'yearly' },
@@ -333,7 +341,11 @@ function generateSitemapXml() {
 
   const urlElements = routes.map(r => {
     let xml = `  <url>\n    <loc>${r.loc}</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority}</priority>`;
-    if (r.image) {
+    if (r.images && Array.isArray(r.images)) {
+      for (const img of r.images) {
+        xml += `\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${img.title}</image:title>\n    </image:image>`;
+      }
+    } else if (r.image) {
       xml += `\n    <image:image>\n      <image:loc>${r.image}</image:loc>\n      <image:title>${r.imageTitle}</image:title>\n    </image:image>`;
     }
     xml += `\n  </url>`;
@@ -780,14 +792,16 @@ async function optimizeImages() {
     }
   }
 
-  const savinduJpg = path.join(publicDir, 'Savindu.jpg');
-  if (fs.existsSync(savinduJpg)) {
-    const savinduWebp = path.join(publicDir, 'Savindu.webp');
-    try {
-      await sharp(savinduJpg).webp({ quality: 80 }).toFile(savinduWebp);
-      console.log('Generated Savindu.webp');
-    } catch (e) {
-      console.warn('Could not generate webp for Savindu.jpg:', e.message);
+  for (const founderImg of ['Savindu.jpg', 'Rangana.jpg']) {
+    const founderJpg = path.join(publicDir, founderImg);
+    if (fs.existsSync(founderJpg)) {
+      const founderWebp = path.join(publicDir, founderImg.replace(/\.jpg$/i, '.webp'));
+      try {
+        await sharp(founderJpg).webp({ quality: 85 }).toFile(founderWebp);
+        console.log(`Generated ${path.basename(founderWebp)}`);
+      } catch (e) {
+        console.warn(`Could not generate webp for ${founderImg}:`, e.message);
+      }
     }
   }
 }
