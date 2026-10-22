@@ -103,14 +103,14 @@ export function Home() {
                           {p.name}
                         </span>
                         <span className="hidden sm:inline-flex shrink-0 items-baseline gap-1 text-right text-sm text-ink-400">
-                          from <Price lkr={p.priceLKR} className="font-semibold text-white" />
+                          from <Price lkr={p.priceLKR} endsInNine={p.endsInNine} className="font-semibold text-white" />
                         </span>
                       </div>
                       <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs sm:text-sm text-ink-400">
                         <span>{p.category}</span>
                         <span className="text-white/20 sm:hidden">·</span>
                         <span className="sm:hidden text-ink-300">
-                          from <Price lkr={p.priceLKR} className="font-semibold text-white" />
+                          from <Price lkr={p.priceLKR} endsInNine={p.endsInNine} className="font-semibold text-white" />
                         </span>
                       </div>
                     </div>

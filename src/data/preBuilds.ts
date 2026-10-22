@@ -43,7 +43,7 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and data migration', 'Staff training', 'Receipt printer and barcode scanner setup', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'On-premise server', 'Multi-branch with central dashboard'],
-    priceLKR: 95000
+    priceLKR: 120000
   },
   {
     slug: 'pharmacy-pos',
@@ -74,7 +74,7 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and item master import', 'Staff training', 'Receipt printer and barcode scanner setup', '3 months of free support'],
     deployment: ['On-premise with offline billing', 'Cloud hosted (GCP, OCI or AWS)', 'Multi-branch with central stock'],
-    priceLKR: 120000
+    priceLKR: 85000
   },
   {
     slug: 'tuition-institute-pos',
@@ -105,7 +105,7 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and student data import', 'Staff training', 'ID card template design', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'On-premise server', 'Multi-branch with central reporting'],
-    priceLKR: 85000
+    priceLKR: 95000
   },
   {
     slug: 'grocery-pos',
@@ -136,7 +136,7 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and item import', 'Staff training', 'Printer, scanner and scale setup', '3 months of free support'],
     deployment: ['On-premise with offline billing', 'Cloud backup (GCP, OCI or AWS)'],
-    priceLKR: 75000
+    priceLKR: 85000
   },
   {
     slug: 'supermarket-pos',
@@ -167,7 +167,8 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation across counters', 'Data migration from your old POS', 'Cashier and manager training', '3 months of free support'],
     deployment: ['On-premise server with offline counters', 'Cloud hosted (GCP, OCI or AWS)', 'Hybrid multi-branch'],
-    priceLKR: 150000
+    priceLKR: 125000,
+    endsInNine: true
   },
   {
     slug: 'erp-system',
@@ -198,7 +199,8 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Process mapping workshop', 'Data migration', 'Department-level training', '6 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'Private on-premise server'],
-    priceLKR: 450000
+    priceLKR: 250000,
+    endsInNine: true
   },
   {
     slug: 'hotel-management',
@@ -229,7 +231,8 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and room setup', 'Front desk and housekeeping training', 'Booking engine on your website', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'On-premise server'],
-    priceLKR: 280000
+    priceLKR: 180000,
+    endsInNine: true
   },
   {
     slug: 'fleet-management',
@@ -260,7 +263,8 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Installation and vehicle data import', 'Admin and driver training', 'GPS tracker integration support', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'Mobile-friendly driver access'],
-    priceLKR: 220000
+    priceLKR: 120000,
+    endsInNine: true
   },
   {
     slug: 'social-media-management',
@@ -291,7 +295,7 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Workspace and account setup', 'Team training', 'Branded client reports', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)'],
-    priceLKR: 180000
+    priceLKR: 125000
   },
   {
     slug: 'flexcore-ecommerce',
@@ -322,7 +326,8 @@ export const preBuilds: PreBuild[] = [
 
     included: ['Branding with your logo and colours', 'Payment gateway integration', 'Product import (up to 200 items)', 'Deployment and SSL', '3 months of free support'],
     deployment: ['Cloud hosted (GCP, OCI or AWS)', 'Behind Cloudflare CDN'],
-    priceLKR: 165000,
+    priceLKR: 75000,
+    endsInNine: true,
     liveUrl: 'https://flexcore.devrious.lk/',
     screenshot: "/screenshot_of_flexcore.png",
     screenshotFallback: "/f05d0525-6f47-4436-92a0-707edd555787.png",

@@ -1,11 +1,11 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { formatPrice } from '../utils/currency';
+import { formatPrice, type PriceFormatOptions } from '../utils/currency';
 import type { Currency } from '../types/content';
 
 interface CurrencyContextValue {
   currency: Currency;
   setCurrency: (currency: Currency) => void;
-  format: (lkr: number) => string;
+  format: (lkr: number, options?: PriceFormatOptions) => string;
 }
 
 const STORAGE_KEY = 'devrious-currency';
@@ -24,7 +24,10 @@ export function CurrencyProvider({ children }: {children: React.ReactNode;}) {
   }, [currency]);
 
   const setCurrency = useCallback((next: Currency) => setCurrencyState(next), []);
-  const format = useCallback((lkr: number) => formatPrice(lkr, currency), [currency]);
+  const format = useCallback(
+    (lkr: number, options?: PriceFormatOptions) => formatPrice(lkr, currency, options),
+    [currency]
+  );
 
   const value = useMemo(() => ({ currency, setCurrency, format }), [currency, setCurrency, format]);
 

@@ -72,7 +72,7 @@ export function PreBuildDetail() {
               <div className="mt-8 flex flex-wrap items-end gap-x-6 gap-y-3">
                 <div>
                   <p className="text-sm text-ink-400">Starting from</p>
-                  <Price lkr={system.priceLKR} className="font-display text-3xl font-extrabold text-white" />
+                  <Price lkr={system.priceLKR} endsInNine={system.endsInNine} className="font-display text-3xl font-extrabold text-white" />
                 </div>
                 <CurrencyToggle tone="dark" />
               </div>

@@ -49,7 +49,7 @@ export function PreBuilds() {
               )}
               </ul>
               <p className="mt-6 text-sm text-ink-500">
-                Starting from <Price lkr={flexcore.priceLKR} className="font-display text-lg font-extrabold text-ink-950" />
+                Starting from <Price lkr={flexcore.priceLKR} endsInNine={flexcore.endsInNine} className="font-display text-lg font-extrabold text-ink-950" />
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link

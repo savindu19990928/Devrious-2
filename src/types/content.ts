@@ -47,6 +47,7 @@ export interface PreBuild {
   included: string[];
   deployment: string[];
   priceLKR: number;
+  endsInNine?: boolean;
   liveUrl?: string;
   screenshot?: string;
   screenshotFallback?: string;

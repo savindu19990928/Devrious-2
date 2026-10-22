@@ -26,7 +26,7 @@ export function SystemCard({ system }: SystemCardProps) {
       <p className="mt-2 text-[15px] leading-relaxed text-ink-600">{system.summary}</p>
       <div className="mt-auto pt-6">
         <p className="text-sm text-ink-500">
-          Starting from <Price lkr={system.priceLKR} className="font-semibold text-ink-950" />
+          Starting from <Price lkr={system.priceLKR} endsInNine={system.endsInNine} className="font-semibold text-ink-950" />
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
