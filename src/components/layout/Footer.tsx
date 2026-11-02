@@ -7,17 +7,19 @@ import { company, socials } from '../../data/site';
 import { preBuilds } from '../../data/preBuilds';
 
 const companyLinks = [
-{ to: '/about', label: 'About' },
-{ to: '/services', label: 'Services' },
-{ to: '/portfolio', label: 'Portfolio' },
-{ to: '/cybersecurity-services', label: 'Cybersecurity services' },
-{ to: '/contact', label: 'Contact' }];
+  { to: '/about', label: 'About' },
+  { to: '/services', label: 'Services' },
+  { to: '/portfolio', label: 'Portfolio' },
+  { to: '/cybersecurity-services', label: 'Cybersecurity services' },
+  { to: '/contact', label: 'Contact' }];
 
 
 const legalLinks = [
-{ to: '/terms', label: 'Terms of Service' },
-{ to: '/privacy', label: 'Privacy Policy' },
-{ to: '/cookies', label: 'Cookie Policy' }];
+  { to: '/refund', label: 'Refund Policy' },
+  { to: '/privacy', label: 'Privacy Policy' },
+  { to: '/terms', label: 'Terms & Conditions' },
+  { to: '/cookies', label: 'Cookie Policy' },
+];
 
 
 export function Footer() {
@@ -31,14 +33,14 @@ export function Footer() {
           </p>
           <div className="mt-6 flex gap-2">
             {socials.map((s) =>
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={s.label}
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-ink-300 ring-1 ring-white/10 transition-colors duration-150 hover:bg-white/10 hover:text-white">
-              
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-ink-300 ring-1 ring-white/10 transition-colors duration-150 hover:bg-white/10 hover:text-white">
+
                 <SocialIcon name={s.name} className="h-4 w-4" />
               </a>
             )}
@@ -48,7 +50,7 @@ export function Footer() {
               rel="noreferrer"
               aria-label="WhatsApp"
               className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-ink-300 ring-1 ring-white/10 transition-colors duration-150 hover:bg-white/10 hover:text-white">
-              
+
               <SocialIcon name="whatsapp" className="h-4 w-4" />
             </a>
           </div>
@@ -58,7 +60,7 @@ export function Footer() {
           <h2 className="text-sm font-semibold text-white">Company</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             {companyLinks.map((l) =>
-            <li key={l.to}>
+              <li key={l.to}>
                 <Link to={l.to} className="hover:text-white">{l.label}</Link>
               </li>
             )}
@@ -69,7 +71,7 @@ export function Footer() {
           <h2 className="text-sm font-semibold text-white">Pre Builds</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             {preBuilds.map((p) =>
-            <li key={p.slug}>
+              <li key={p.slug}>
                 <Link to={`/pre-builds/${p.slug}`} className="hover:text-white">{p.name}</Link>
               </li>
             )}
@@ -94,7 +96,7 @@ export function Footer() {
               <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
               <address className="not-italic leading-relaxed">
                 {company.addressLines.map((line) =>
-                <span key={line} className="block">{line}</span>
+                  <span key={line} className="block">{line}</span>
                 )}
               </address>
             </li>
@@ -107,7 +109,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} Devrious. All rights reserved.</p>
           <ul className="flex flex-wrap gap-5">
             {legalLinks.map((l) =>
-            <li key={l.to}>
+              <li key={l.to}>
                 <Link to={l.to} className="hover:text-white">{l.label}</Link>
               </li>
             )}

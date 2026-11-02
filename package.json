@@ -11,29 +11,32 @@
     "preview": "vite preview --port 8080 --host"
   },
   "dependencies": {
-    "@emailjs/browser": "^5.0.2",
-    "@emotion/react": "^11.13.3",
-    "framer-motion": "^11.5.4",
-    "lucide-react": "0.522.0",
+    "@emailjs/browser": "^5.0.3",
+    "@emotion/react": "^11.14.0",
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.522.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
-    "@types/node": "^20.11.18",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1",
-    "@typescript-eslint/eslint-plugin": "^8.71.1",
-    "@typescript-eslint/parser": "^8.71.1",
+    "@types/node": "^20.17.24",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "@typescript-eslint/parser": "^8.72.1",
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "latest",
-    "eslint": "^8.50.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.26",
     "postcss": "latest",
     "sharp": "^0.35.5",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.5.4",
-    "vite": "^8.2.2"
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  },
+  "overrides": {
+    "minimatch": "^11.0.3"
   }
 }

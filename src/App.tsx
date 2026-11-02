@@ -30,7 +30,12 @@ export function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms" element={<Legal doc="terms" />} />
+              <Route path="/terms-and-conditions" element={<Legal doc="terms" />} />
               <Route path="/privacy" element={<Legal doc="privacy" />} />
+              <Route path="/privacy-policy" element={<Legal doc="privacy" />} />
+              <Route path="/refund" element={<Legal doc="refund" />} />
+              <Route path="/refund-policy" element={<Legal doc="refund" />} />
+              <Route path="/cancellation-refund" element={<Legal doc="refund" />} />
               <Route path="/cookies" element={<Legal doc="cookies" />} />
               <Route path="*" element={<NotFound />} />
             </Route>

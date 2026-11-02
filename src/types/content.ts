@@ -101,11 +101,19 @@ export interface LegalListItem {
   text: string;
 }
 
+export interface LegalSubSection {
+  heading: string;
+  paragraphs?: string[];
+  list?: LegalListItem[];
+  after?: string[];
+}
+
 export interface LegalSection {
   heading: string;
   paragraphs?: string[];
   list?: LegalListItem[];
   after?: string[];
+  subsections?: LegalSubSection[];
 }
 
 export interface LegalDoc {
