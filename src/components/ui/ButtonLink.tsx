@@ -53,22 +53,22 @@ export function ButtonLink({
     y.set(0);
   };
 
-  const classes = `group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold transition-[background-color,border-color,color] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
-  size === 'md' ? 'px-7 py-[15px] text-[15px]' : 'px-5 py-2.5 text-sm'} ${
-  variantClasses[variant]} ${className}`;
+  const classes = `group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full text-center font-semibold transition-[background-color,border-color,color] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+    size === 'md' ? 'px-5 py-3.5 text-sm sm:px-7 sm:py-[15px] sm:text-[15px]' : 'px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm'
+  } ${variantClasses[variant]} ${className}`;
 
-  const content =
-  <>
+  const content = (
+    <>
       {icon}
-      {children}
-      {arrow &&
-    <span aria-hidden="true" className="relative h-4 w-4 overflow-hidden">
+      <span>{children}</span>
+      {arrow && (
+        <span aria-hidden="true" className="relative h-4 w-4 shrink-0 overflow-hidden">
           <ArrowRightIcon className="absolute inset-0 h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-full" />
           <ArrowRightIcon className="absolute inset-0 h-4 w-4 -translate-x-full transition-transform duration-200 ease-out group-hover:translate-x-0" />
         </span>
-    }
-    </>;
-
+      )}
+    </>
+  );
 
   return (
     <motion.span
@@ -78,17 +78,16 @@ export function ButtonLink({
       whileTap={reduce ? undefined : { scale: 0.97 }}
       transition={{ duration: 0.12 }}
       style={{ x, y }}
-      className="inline-flex">
-      
-      {external ?
-      <a href={to} target="_blank" rel="noopener noreferrer" className={classes} aria-label={ariaLabel}>
+      className="inline-flex w-full sm:w-auto">
+      {external ? (
+        <a href={to} target="_blank" rel="noopener noreferrer" className={classes} aria-label={ariaLabel}>
           {content}
-        </a> :
-
-      <Link to={to} className={classes} aria-label={ariaLabel}>
+        </a>
+      ) : (
+        <Link to={to} className={classes} aria-label={ariaLabel}>
           {content}
         </Link>
-      }
-    </motion.span>);
-
+      )}
+    </motion.span>
+  );
 }

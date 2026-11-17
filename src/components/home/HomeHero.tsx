@@ -32,8 +32,7 @@ export function HomeHero() {
     <section ref={ref} aria-labelledby="hero-title" className="bg-canvas p-2 sm:p-3 md:p-4">
       <div
         onPointerMove={onMove}
-        className="relative isolate flex h-[calc(100svh-1rem)] max-h-[1040px] min-h-[640px] items-center overflow-hidden rounded-[22px] bg-wine-deep sm:h-[calc(100svh-1.5rem)] md:h-[calc(100svh-2rem)] md:rounded-frame">
-        
+        className="relative isolate flex min-h-[calc(100svh-1rem)] items-center overflow-hidden rounded-[20px] bg-wine-deep py-24 sm:min-h-[calc(100svh-1.5rem)] sm:rounded-[22px] sm:py-28 md:h-[calc(100svh-2rem)] md:max-h-[1040px] md:min-h-[640px] md:rounded-frame md:py-0">
         <motion.div style={{ y: reduce ? 0 : imageY }} className="absolute -inset-y-10 inset-x-0 -z-20">
           <motion.img
             src={homeImages.hero}
@@ -42,38 +41,40 @@ export function HomeHero() {
             initial={reduce ? false : { opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1.04 }}
             transition={{ duration: 0.3, ease: easeOut }}
-            className="h-full w-full object-cover object-[72%_center]" />
-          
+            className="h-full w-full object-cover object-[72%_center]"
+          />
         </motion.div>
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-wine-deep/60 md:bg-wine-deep/10" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-wine-deep/65 md:bg-wine-deep/15" />
 
         <motion.div
           style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
-          className="relative mx-auto w-full max-w-[1400px] px-6 pt-20 sm:px-10 md:px-16">
-          
+          className="relative mx-auto w-full max-w-[1400px] px-5 pt-6 sm:px-10 md:px-16 md:pt-20">
           <motion.div variants={container} initial={reduce ? false : 'hidden'} animate="show" className="max-w-[640px]">
-            <motion.p variants={fade} className="font-display text-4xl font-bold italic lowercase leading-none tracking-tight text-white md:text-5xl">
+            <motion.p
+              variants={fade}
+              className="font-display text-3xl font-bold italic lowercase leading-none tracking-tight text-white sm:text-4xl md:text-5xl">
               devrious
             </motion.p>
             <h1
               id="hero-title"
-              className="mt-4 font-display text-[2.6rem] font-medium leading-[1.04] tracking-[-0.02em] text-white sm:text-6xl lg:text-[4.4rem]">
-              
-              {lines.map((l) =>
-              <span key={l} className="block overflow-hidden pb-[0.1em]">
+              className="mt-3 font-display text-[2.05rem] font-medium leading-[1.06] tracking-[-0.02em] text-white xs:text-[2.45rem] sm:mt-4 sm:text-5xl md:text-6xl lg:text-[4.4rem]">
+              {lines.map((l) => (
+                <span key={l} className="block overflow-hidden pb-[0.1em]">
                   <motion.span variants={line} className="block">
                     {l}
                   </motion.span>
                 </span>
-              )}
+              ))}
             </h1>
-            <motion.p variants={fade} className="mt-6 max-w-[520px] text-lg leading-relaxed text-white/75 md:text-[19px]">
+            <motion.p variants={fade} className="mt-5 max-w-[520px] text-base leading-relaxed text-white/80 sm:mt-6 sm:text-lg md:text-[19px]">
               Design-led websites, business systems and AI tools for brands that take their craft seriously.
             </motion.p>
-            <motion.p variants={fade} className="mt-5 text-[11px] font-semibold uppercase tracking-[0.26em] text-white/65">
+            <motion.p
+              variants={fade}
+              className="mt-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65 sm:mt-5 sm:text-[11px] sm:tracking-[0.26em]">
               Tech crafted with empathy · Purpose in every pixel
             </motion.p>
-            <motion.div variants={fade} className="mt-10 flex flex-wrap gap-3 sm:gap-4">
+            <motion.div variants={fade} className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
               <ButtonLink to="/contact" variant="light" arrow={false}>
                 Arrange a private consultation
               </ButtonLink>
@@ -84,17 +85,17 @@ export function HomeHero() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute bottom-6 right-6 hidden items-center gap-3 text-xs font-medium text-white/60 md:flex md:bottom-8 md:right-10">
+        <div className="absolute bottom-6 right-6 hidden items-center gap-3 text-xs font-medium text-white/60 md:bottom-8 md:right-10 md:flex">
           <span>Scroll</span>
           <span aria-hidden="true" className="relative h-10 w-px overflow-hidden bg-white/20">
             <motion.span
               className="absolute inset-x-0 top-0 h-1/2 bg-white"
               animate={reduce ? undefined : { y: ['-100%', '200%'] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }} />
-            
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }}
+            />
           </span>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

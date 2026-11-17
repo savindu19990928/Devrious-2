@@ -14,19 +14,19 @@ export function LiveDemo() {
   const tab = demoTabs.find((t) => t.id === active) ?? demoTabs[0];
 
   return (
-    <section aria-labelledby="demo-title" className="bg-canvas px-2 pb-24 sm:px-3 md:px-4 md:pb-36">
-      <div className="rounded-[22px] bg-wine py-20 text-white md:rounded-frame md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-10">
+    <section aria-labelledby="demo-title" className="bg-canvas px-2 pb-16 sm:px-3 sm:pb-24 md:px-4 md:pb-36">
+      <div className="rounded-[20px] bg-wine py-14 text-white sm:rounded-[22px] sm:py-20 md:rounded-frame md:py-28">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-6 md:px-10">
           <SectionHeading
             id="demo-title"
             label="Live demo"
             title="Try the kind of thing we build."
             description="Three working previews — a brand site, a store and a production system. Click around."
-            inverted />
-          
+            inverted
+          />
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-12">
-            <div role="tablist" aria-label="Demo type" className="flex flex-col gap-2 lg:col-span-4">
+          <div className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-12">
+            <div role="tablist" aria-label="Demo type" className="grid gap-2 sm:grid-cols-3 lg:col-span-4 lg:flex lg:flex-col">
               {demoTabs.map((t) => {
                 const selected = t.id === active;
                 return (
@@ -38,32 +38,33 @@ export function LiveDemo() {
                     aria-selected={selected}
                     aria-controls="demo-panel"
                     onClick={() => setActive(t.id)}
-                    className={`rounded-2xl border px-5 py-4 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-                    selected ? 'border-white/30 bg-white/10' : 'border-transparent hover:bg-white/5'}`
-                    }>
-                    
-                    <span className={`block font-display text-lg font-bold ${selected ? 'text-white' : 'text-white/60'}`}>{t.title}</span>
-                    <span className="mt-1 block text-sm text-white/55">{t.description}</span>
-                  </button>);
-
+                    className={`rounded-2xl border px-4 py-3.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-5 sm:py-4 ${
+                      selected ? 'border-white/30 bg-white/10' : 'border-transparent hover:bg-white/5'
+                    }`}>
+                    <span className={`block font-display text-base font-bold sm:text-lg ${selected ? 'text-white' : 'text-white/60'}`}>
+                      {t.title}
+                    </span>
+                    <span className="mt-1 block text-xs text-white/55 sm:text-sm">{t.description}</span>
+                  </button>
+                );
               })}
             </div>
 
             <div className="lg:col-span-8">
               <div className="overflow-hidden rounded-[20px] bg-white text-ink shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
-                <div className="flex items-center gap-4 border-b border-line bg-white px-4 py-3">
-                  <span className="flex gap-1.5" aria-hidden="true">
+                <div className="flex items-center justify-between gap-2 border-b border-line bg-white px-3.5 py-2.5 sm:gap-4 sm:px-4 sm:py-3">
+                  <span className="flex shrink-0 gap-1.5" aria-hidden="true">
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
                   </span>
-                  <span className="mx-auto flex items-center gap-1.5 rounded-full bg-canvas px-4 py-1 text-xs text-muted">
-                    <LockIcon className="h-3 w-3" aria-hidden="true" />
-                    {tab.url}
+                  <span className="mx-auto flex min-w-0 items-center gap-1.5 rounded-full bg-canvas px-3 py-1 text-xs text-muted sm:px-4">
+                    <LockIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                    <span className="truncate">{tab.url}</span>
                   </span>
-                  <span className="w-[42px]" aria-hidden="true" />
+                  <span className="hidden w-[42px] sm:block" aria-hidden="true" />
                 </div>
-                <div id="demo-panel" role="tabpanel" aria-labelledby={`demo-tab-${active}`} className="relative h-[520px] md:h-[460px]">
+                <div id="demo-panel" role="tabpanel" aria-labelledby={`demo-tab-${active}`} className="relative md:h-[460px]">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={active}
@@ -71,8 +72,7 @@ export function LiveDemo() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.2, ease: easeOut }}
-                      className="absolute inset-0">
-                      
+                      className="relative h-full md:absolute md:inset-0">
                       {active === 'website' && <DemoWebsite />}
                       {active === 'store' && <DemoStore />}
                       {active === 'system' && <DemoDashboard />}
@@ -84,6 +84,6 @@ export function LiveDemo() {
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

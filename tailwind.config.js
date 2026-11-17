@@ -73,11 +73,30 @@ export default {
         accent: '#12B57A',
         signal: '#ffd400',
       },
+      screens: {
+        xs: '480px',
+      },
       borderRadius: {
         frame: '28px',
       },
       boxShadow: {
         soft: '0 10px 30px -10px rgba(0,0,0,0.08)',
+        lift: '0 20px 40px -15px rgba(22,10,12,0.14)',
+        glow: '0 8px 24px -6px rgba(18,181,122,0.35)',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 28s linear infinite',
+        'marquee-reverse': 'marquee-reverse 28s linear infinite',
       },
       opacity,
       fontFamily: {
