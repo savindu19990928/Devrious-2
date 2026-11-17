@@ -37,7 +37,7 @@ interface WordProps {
 }
 
 function Word({ children, progress, range, reduce }: WordProps) {
-  const opacity = useTransform(progress, range, [0.16, 1]);
+  const opacity = useTransform(progress, range, [0.35, 1]);
   return (
     <>
       <motion.span style={{ opacity: reduce ? 1 : opacity }}>{children}</motion.span>{' '}
