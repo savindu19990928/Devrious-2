@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "generate:seo": "node scripts/generate-seo-assets.js",
-    "build": "node scripts/generate-seo-assets.js && npx vite build && node scripts/validate-seo.js",
+    "build": "npx vite build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview --port 8080 --host"
   },

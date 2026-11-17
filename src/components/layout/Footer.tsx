@@ -1,119 +1,106 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
-import { Logo } from '../Logo';
-import { SocialIcon } from '../SocialIcon';
-import { company, socials } from '../../data/site';
-import { preBuilds } from '../../data/preBuilds';
+import { Logo } from './Logo';
+import { companyLinks, contact, legalLinks } from '../../data/devrious';
+import { products } from '../../data/products';
+import { services } from '../../data/services';
 
-const companyLinks = [
-  { to: '/about', label: 'About' },
-  { to: '/services', label: 'Services' },
-  { to: '/portfolio', label: 'Portfolio' },
-  { to: '/cybersecurity-services', label: 'Cybersecurity services' },
-  { to: '/contact', label: 'Contact' }];
-
-
-const legalLinks = [
-  { to: '/refund', label: 'Refund Policy' },
-  { to: '/privacy', label: 'Privacy Policy' },
-  { to: '/terms', label: 'Terms & Conditions' },
-  { to: '/cookies', label: 'Cookie Policy' },
-];
-
+const linkClass =
+'text-[15px] text-white/60 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:underline';
 
 export function Footer() {
   return (
-    <footer className="band border-t border-white/10 bg-ink-950 text-ink-300">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 sm:gap-12 sm:py-16 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:px-8">
-        <div>
-          <Logo tone="dark" />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-400">
-            Custom software, ready-made business systems, AI and cybersecurity services — from Colombo, Sri Lanka, since {company.founded}.
-          </p>
-          <div className="mt-6 flex gap-2">
-            {socials.map((s) =>
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-ink-300 ring-1 ring-white/10 transition-colors duration-150 hover:bg-white/10 hover:text-white">
+    <footer className="bg-canvas px-2 pb-2 sm:px-3 sm:pb-3 md:px-4 md:pb-4">
+      <div className="relative overflow-hidden rounded-[22px] bg-ink text-white md:rounded-frame">
+        <div className="mx-auto max-w-[1320px] px-6 pb-10 pt-16 md:px-10 md:pt-20">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <Link
+                to="/"
+                aria-label="Devrious home"
+                className="inline-block rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
+                
+                <Logo inverted />
+              </Link>
+              <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
+                Design-led websites, business systems and AI tools — crafted in Colombo, Sri Lanka, since 2024.
+              </p>
+              <div className="mt-8 flex flex-col gap-1.5">
+                <a href={contact.emailHref} className="font-display text-xl font-bold text-white transition-colors duration-150 hover:text-jade">
+                  {contact.email}
+                </a>
+                <a href={contact.phoneHref} className={linkClass}>
+                  {contact.phone}
+                </a>
+              </div>
+            </div>
 
-                <SocialIcon name={s.name} className="h-4 w-4" />
-              </a>
-            )}
-            <a
-              href={company.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-ink-300 ring-1 ring-white/10 transition-colors duration-150 hover:bg-white/10 hover:text-white">
-
-              <SocialIcon name="whatsapp" className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold text-white">Company</h2>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {companyLinks.map((l) =>
-              <li key={l.to}>
-                <Link to={l.to} className="hover:text-white">{l.label}</Link>
-              </li>
-            )}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold text-white">Pre Builds</h2>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {preBuilds.map((p) =>
-              <li key={p.slug}>
-                <Link to={`/pre-builds/${p.slug}`} className="hover:text-white">{p.name}</Link>
-              </li>
-            )}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold text-white">Get in touch</h2>
-          <ul className="mt-4 space-y-4 text-sm">
-            <li className="flex gap-3">
-              <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-              <span>
-                <a href={company.phoneHref} className="hover:text-white">{company.phoneDisplay}</a>
-                <span className="block text-ink-500">WhatsApp available</span>
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-              <a href={`mailto:${company.email}`} className="hover:text-white">{company.email}</a>
-            </li>
-            <li className="flex gap-3">
-              <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-              <address className="not-italic leading-relaxed">
-                {company.addressLines.map((line) =>
-                  <span key={line} className="block">{line}</span>
+            <nav aria-label="Company" className="lg:col-span-2">
+              <h2 className="text-sm font-semibold text-white">Company</h2>
+              <ul className="mt-5 flex flex-col gap-3">
+                {companyLinks.map((link) =>
+                <li key={link.label}>
+                    <Link to={link.to} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
                 )}
-              </address>
-            </li>
-          </ul>
-        </div>
-      </div>
+              </ul>
+            </nav>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-sm text-ink-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <p>© {new Date().getFullYear()} Devrious. All rights reserved.</p>
-          <ul className="flex flex-wrap gap-5">
-            {legalLinks.map((l) =>
-              <li key={l.to}>
-                <Link to={l.to} className="hover:text-white">{l.label}</Link>
-              </li>
-            )}
-          </ul>
+            <nav aria-label="Services" className="lg:col-span-3">
+              <h2 className="text-sm font-semibold text-white">Services</h2>
+              <ul className="mt-5 flex flex-col gap-3">
+                {services.map((service) =>
+                <li key={service.slug}>
+                    <Link to={`/services/${service.slug}`} className={linkClass}>
+                      {service.title}
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </nav>
+
+            <nav aria-label="Pre Builds" className="lg:col-span-3">
+              <h2 className="text-sm font-semibold text-white">Pre Builds</h2>
+              <ul className="mt-5 flex flex-col gap-3">
+                {products.slice(0, 6).map((product) =>
+                <li key={product.slug}>
+                    <Link to={`/pre-builds/${product.slug}`} className={linkClass}>
+                      {product.name}
+                    </Link>
+                  </li>
+                )}
+                <li>
+                  <Link to="/pre-builds" className="text-[15px] font-semibold text-jade hover:text-white">
+                    View all systems
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <p
+            aria-hidden="true"
+            className="mt-20 select-none font-display text-[23vw] font-bold italic lowercase leading-[0.85] tracking-[-0.04em] text-white/[0.06] transition-colors duration-300 hover:text-brand lg:text-[17rem]">
+            
+            devrious
+          </p>
+
+          <div className="mt-8 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {legalLinks.map((link) =>
+              <li key={link.to}>
+                  <Link
+                  to={link.to}
+                  className="text-sm text-white/50 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:underline">
+                  
+                    {link.label}
+                  </Link>
+                </li>
+              )}
+            </ul>
+            <p className="text-sm text-white/50">© 2026 Devrious. Tech crafted with empathy.</p>
+          </div>
         </div>
       </div>
     </footer>);

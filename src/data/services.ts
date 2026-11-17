@@ -1,92 +1,121 @@
-import { BotIcon, BrainCircuitIcon, CodeIcon, LayersIcon, PlugIcon } from 'lucide-react';
-import type { Service } from '../types/content';
+import { BlocksIcon, BotIcon, BrainCircuitIcon, Code2Icon, NetworkIcon } from 'lucide-react';
+import type { ProcessStep, Service } from '../types/content';
 
 export const services: Service[] = [
-  {
-    id: 'custom-web-development',
-    icon: CodeIcon,
-    name: 'Custom Web Development',
-    summary: 'Corporate websites, portals and web applications that load fast and rank well.',
-    description:
-      'From corporate websites to customer portals and full web applications, we build on React and Django DRF so your site is fast, secure and easy to grow. Every launch includes search-engine groundwork and Cloudflare protection.',
-    includes: [
-      'Responsive React front-end, designed for your brand',
-      'Django DRF back-end with an admin you can manage yourself',
-      'SEO setup with Google Search Console and SEMrush',
-      'Cloudflare caching, SSL and DDoS protection',
-      'Hosting on GCP, OCI or AWS'],
+{
+  slug: 'custom-web-development',
+  title: 'Custom Web Development',
+  description: 'Fast, search-ready websites and web apps designed around how your customers actually buy.',
+  icon: Code2Icon,
+  accent: 'brand',
+  overview:
+  'Corporate websites, brand sites and web applications engineered for speed, search visibility and conversion. We map how your customers actually buy, design around that journey, and build it to load fast on any phone.',
+  features: [
+  'Responsive builds that load fast on any phone',
+  'Search-ready structure and on-page SEO',
+  'Content management your team can use',
+  'Enquiry and quote flows that capture complete leads',
+  'Cloud and edge hosting with Cloudflare'],
 
-    priceLKR: 85000
-  },
-  {
-    id: 'custom-software-development',
-    icon: LayersIcon,
-    name: 'Custom Software Development',
-    summary: 'Business software shaped around how your team actually works.',
-    description:
-      'Internal tools, operational platforms and management systems designed after we map your real process — not a generic template. We handle discovery, design, development, testing and the training your staff need to adopt it.',
-    includes: [
-      'Requirements workshops and process mapping',
-      'Role-based dashboards and approval flows',
-      'Integration with your existing tools and data',
-      'Automated testing with PyTest and Selenium',
-      'Staff training and post-launch support'],
+  benefits: [
+  'More enquiries from the traffic you already have',
+  'A site your team can update without waiting on a developer',
+  'Visibility in search, measured in Google Search Console'],
 
-    priceLKR: 75000
-  },
-  {
-    id: 'api-development',
-    icon: PlugIcon,
-    name: 'API Development',
-    summary: 'Secure, documented APIs that connect apps, devices and partners.',
-    description:
-      'We design and build REST APIs that connect your mobile apps, hardware devices, payment gateways and partner systems — documented, versioned and tested for load and security.',
-    includes: [
-      'REST API design with Django DRF',
-      'JWT / OAuth authentication and permissions',
-      'Interactive API documentation',
-      'Payment gateway and third-party integrations',
-      'Load and security testing before release'],
+  technologies: ['React JS', 'Django REST Framework', 'Cloudflare', 'Google Search Console', 'SEMrush']
+},
+{
+  slug: 'custom-software-development',
+  title: 'Custom Software Development',
+  description: 'Business software built for your workflow — from the factory floor to the front desk.',
+  icon: BlocksIcon,
+  accent: 'violet',
+  overview:
+  'Software shaped around the way your business already works. We sit with your team, map the workflow end to end, and build systems that give everyone clear visibility — like the production management system an apparel factory floor now runs on.',
+  features: [
+  'Workflow mapping with the people who use it',
+  'Role-based access for every team',
+  'Live visibility of orders, stock and progress',
+  'Reports and dashboards for decision-makers',
+  'Cloud deployment with proper documentation'],
 
-    priceLKR: 55000
-  },
-  {
-    id: 'ai-assistants',
-    icon: BotIcon,
-    name: 'AI Assistants & Tools',
-    summary: 'Assistants that answer customers, draft content and automate routine work.',
-    description:
-      'Practical AI assistants trained on your own documents and data — answering customer questions on your website or WhatsApp, drafting content, summarising records and taking repetitive work off your team.',
-    includes: [
-      'Customer support chat assistants',
-      'Knowledge-base assistants trained on your documents',
-      'Content, email and document automation',
-      'Website and WhatsApp integration',
-      'Usage analytics and conversation review'],
+  benefits: [
+  'Clear visibility of every order from start to finish',
+  'Fewer spreadsheets and manual hand-offs',
+  'Software that fits your process instead of fighting it'],
 
-    priceLKR: 125000
-  },
-  {
-    id: 'ai-systems',
-    icon: BrainCircuitIcon,
-    name: 'AI Systems & AI Development',
-    summary: 'End-to-end AI systems — prediction, recognition and intelligent automation.',
-    description:
-      'Any AI-related system your business needs: demand forecasting, image and document recognition, recommendation engines and intelligent automation, built into your operations with proper data pipelines and monitoring.',
-    includes: [
-      'Use-case discovery and feasibility assessment',
-      'Data collection and preparation pipelines',
-      'Model selection, integration and fine-tuning',
-      'AI-powered dashboards and workflows',
-      'Monitoring, evaluation and retraining plan'],
+  technologies: ['Django REST Framework', 'React JS', 'MySQL', 'Amazon Web Services (AWS)', 'Google Cloud (GCP)', 'PyTest']
+},
+{
+  slug: 'api-development',
+  title: 'API Development',
+  description: 'Secure, documented APIs that connect your systems, payment providers and partners.',
+  icon: NetworkIcon,
+  accent: 'jade',
+  overview:
+  'The connective tissue between your systems. We design and document APIs that let your software, payment providers and partners exchange data securely and reliably — and test them so they stay that way.',
+  features: [
+  'REST API design and clear documentation',
+  'Payment provider integrations',
+  'Authentication and access control',
+  'Partner and third-party system integrations',
+  'Automated testing on every release'],
 
-    priceLKR: 175000
-  }];
+  benefits: [
+  'Systems that share data without manual re-entry',
+  'Faster onboarding for partners and new tools',
+  'Secure connections you can audit'],
+
+  technologies: ['Django REST Framework', 'MySQL', 'Cloudflare', 'Oracle Cloud (OCI)', 'PyTest']
+},
+{
+  slug: 'ai-assistants-and-tools',
+  title: 'AI Assistants & Tools',
+  description: 'Assistants and internal tools that answer customers and take repetitive work off your team.',
+  icon: BotIcon,
+  accent: 'brand',
+  overview:
+  'Practical AI that does real work. Customer-facing assistants that answer questions on your website, and internal tools that take repetitive tasks off your team — grounded in your own information and handing over to a person when it matters.',
+  features: [
+  'Customer-facing assistants for your website',
+  'Internal tools that automate repetitive tasks',
+  'Answers grounded in your own documents and FAQs',
+  'Human hand-over for complex conversations',
+  'Usage reporting so you see the impact'],
+
+  benefits: [
+  'Faster answers for customers, at any hour',
+  'Hours returned to your team every week',
+  'Consistent, on-brand responses'],
+
+  technologies: ['Django REST Framework', 'React JS', 'Google Cloud (GCP)', 'Amazon Web Services (AWS)']
+},
+{
+  slug: 'ai-systems-and-ai-development',
+  title: 'AI Systems & AI Development',
+  description: 'Custom AI pipelines that turn your own data into forecasts, automation and decisions.',
+  icon: BrainCircuitIcon,
+  accent: 'violet',
+  overview:
+  'Custom AI built on the data your business already produces. We design pipelines that clean and connect that data, then turn it into forecasts, automated decisions and insight your team can act on.',
+  features: [
+  'Data pipelines from your existing systems',
+  'Forecasting models trained on your own data',
+  'Automated, rule-aware decisioning',
+  'Dashboards that explain the output',
+  'Cloud deployment and monitoring'],
+
+  benefits: [
+  'Decisions grounded in your own numbers',
+  'Earlier warning on demand and stock changes',
+  'Automation that scales as you grow'],
+
+  technologies: ['Django REST Framework', 'MySQL', 'Google Cloud (GCP)', 'Amazon Web Services (AWS)', 'PyTest']
+}];
 
 
-export const engagementSteps = [
-  { title: 'Discover', description: 'We learn your business, users and goals, then agree scope, timeline and price in writing.' },
-  { title: 'Design', description: 'Screens and data models are designed and approved before a line of production code.' },
-  { title: 'Build', description: 'Development in short cycles with regular demos, so you see progress every week.' },
-  { title: 'Test', description: 'Automated PyTest and Selenium suites plus manual QA on real devices.' },
-  { title: 'Launch & support', description: 'Deployment to GCP, OCI or AWS behind Cloudflare, followed by training and support.' }];
+export const processSteps: ProcessStep[] = [
+{ title: 'Discover', description: 'We learn how your business works and what success looks like.' },
+{ title: 'Design', description: 'Flows and interfaces shaped around your users, reviewed with you.' },
+{ title: 'Build & test', description: 'Engineered properly, tested with PyTest and Selenium before release.' },
+{ title: 'Launch & support', description: 'Deployed to the cloud, documented, and supported after go-live.' }];

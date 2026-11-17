@@ -1,20 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { usePageTitle } from '../hooks/usePageTitle';
+import { PageTransition } from '../components/layout/PageTransition';
+import { PageHero } from '../components/ui/PageHero';
+import { ButtonLink } from '../components/ui/ButtonLink';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export function NotFound() {
-  usePageTitle('Page Not Found', {
-    description: 'The requested page could not be found.',
-    noindex: true,
-  });
+  usePageMeta('Page not found', 'The page you were looking for could not be found.');
   return (
-    <section className="mx-auto flex max-w-3xl flex-col items-start px-6 py-32 lg:px-8">
-      <p className="text-sm font-semibold text-brand-700">404</p>
-      <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink-950">This page doesn’t exist.</h1>
-      <p className="mt-4 text-lg text-ink-600">The link may be broken or the page may have moved.</p>
-      <Link to="/" className="mt-8 rounded-lg bg-brand-500 px-5 py-3 text-sm font-semibold text-canvas transition-colors duration-150 hover:bg-brand-400">
-        Back to home
-      </Link>
-    </section>);
+    <PageTransition>
+      <PageHero
+        eyebrow="404"
+        title={
+        <>
+            This page wandered <span className="text-gradient">off the map.</span>
+          </>
+        }
+        description="The link may be outdated or mistyped. Everything else is right where you left it.">
+        
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <ButtonLink to="/">Back to home</ButtonLink>
+          <ButtonLink to="/pre-builds" variant="secondary">
+            Explore Pre Builds
+          </ButtonLink>
+        </div>
+      </PageHero>
+    </PageTransition>);
 
 }

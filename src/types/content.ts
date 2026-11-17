@@ -2,123 +2,142 @@ import type { LucideIcon } from 'lucide-react';
 
 export type Currency = 'LKR' | 'USD';
 
-export interface NavLinkItem {
-  to: string;
+export type Accent = 'brand' | 'violet' | 'jade';
+
+export interface NavLink {
   label: string;
-  end?: boolean;
+  to: string;
 }
 
-export interface Founder {
-  name: string;
-  role: string;
-  photo: string | null;
-  bio: string;
+export interface Stat {
+  value: string;
+  label: string;
+  detail: string;
+  countTo?: number;
+}
+
+export interface Project {
+  slug: string;
+  client: string;
+  type: string;
+  brief: string;
+  image: string;
+  tags: string[];
+  challenge: string;
+  approach: string;
+  highlights: string[];
 }
 
 export interface Service {
-  id: string;
-  icon: LucideIcon;
-  name: string;
-  summary: string;
-  description: string;
-  includes: string[];
-  priceLKR: number;
-}
-
-export type PreBuildFamily = 'pos' | 'business' | 'commerce';
-
-export interface PreBuildStep {
+  slug: string;
   title: string;
   description: string;
-}
-
-export interface PreBuild {
-  slug: string;
   icon: LucideIcon;
-  family: PreBuildFamily;
-  category: string;
-  name: string;
-  tagline: string;
-  summary: string;
-  overview: string[];
-  idealFor: string[];
-  modules: PreBuildStep[];
-  workflow: PreBuildStep[];
-  included: string[];
-  deployment: string[];
-  priceLKR: number;
-  endsInNine?: boolean;
-  liveUrl?: string;
-  screenshot?: string;
-  screenshotFallback?: string;
-  stack?: string[];
+  accent: Accent;
+  overview: string;
+  features: string[];
+  benefits: string[];
+  technologies: string[];
 }
 
-export type ProjectStatus = 'live' | 'retired' | 'internal' | 'product';
+export type ProductCategory = 'POS' | 'Management' | 'ERP' | 'Marketing' | 'E-Commerce';
 
-export interface Project {
-  id: string;
+export interface Product {
+  slug: string;
   name: string;
-  client: string;
-  type: string;
-  status: ProjectStatus;
-  url?: string;
-  screenshot?: string;
-  screenshotFallback?: string;
+  priceLkr: number;
+  category: ProductCategory;
+  icon: LucideIcon;
   summary: string;
-  challenges: string[];
-  solutions: string[];
-  stack: string[];
-  testimonialId?: string;
-  internalLink?: string;
+  bestFor: string;
 }
 
 export interface Testimonial {
-  id: string;
   name: string;
   role: string;
   company: string;
   quote: string;
-  projects: string[];
 }
 
-export interface CyberPackage {
-  id: string;
+export interface TechItem {
   name: string;
-  description: string;
-  priceLKR: number;
-  includes: string[];
-  featured?: boolean;
+  mark: string;
 }
 
 export interface TechGroup {
-  category: string;
-  tools: string[];
-}
-
-export interface LegalListItem {
-  label?: string;
-  text: string;
-}
-
-export interface LegalSubSection {
-  heading: string;
-  paragraphs?: string[];
-  list?: LegalListItem[];
-  after?: string[];
-}
-
-export interface LegalSection {
-  heading: string;
-  paragraphs?: string[];
-  list?: LegalListItem[];
-  after?: string[];
-  subsections?: LegalSubSection[];
-}
-
-export interface LegalDoc {
-  slug: string;
   title: string;
-  updated: string;
-  sections: LegalSection[];
+  items: TechItem[];
+}
+
+export interface TimelineItem {
+  marker: string;
+  title: string;
+  description: string;
+}
+
+export interface Pillar {
+  title: string;
+  body: string;
+}
+
+export interface ProcessStep {
+  title: string;
+  description: string;
+}
+
+export interface ShowcaseService {
+  number: string;
+  title: string;
+  description: string;
+  image: string;
+  to: string;
+}
+
+export interface Principle {
+  title: string;
+  body: string;
+}
+
+export interface Difference {
+  topic: string;
+  typical: string;
+  devrious: string;
+}
+
+export interface Industry {
+  name: string;
+  clients: string;
+  description: string;
+  image: string;
+}
+
+export interface FeaturedTestimonial {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+}
+
+export type DemoTabId = 'website' | 'store' | 'system';
+
+export interface DemoTab {
+  id: DemoTabId;
+  title: string;
+  description: string;
+  url: string;
+}
+
+export interface DemoProduct {
+  id: string;
+  name: string;
+  tag: string;
+  priceLkr: number;
+  image: string;
+}
+
+export interface DemoOrder {
+  id: string;
+  client: string;
+  item: string;
+  stage: number;
 }

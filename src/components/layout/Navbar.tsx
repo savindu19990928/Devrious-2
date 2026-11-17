@@ -1,95 +1,120 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { MenuIcon, XIcon } from 'lucide-react';
-import { Logo } from '../Logo';
-import { CurrencyToggle } from '../CurrencyToggle';
-import { navLinks } from '../../data/site';
-import { easeOut } from '../../utils/motion';
+import { ArrowUpRightIcon, PhoneIcon } from 'lucide-react';
+import { Logo } from './Logo';
+import { MenuOverlay } from './MenuOverlay';
+import { contact, navLinks } from '../../data/devrious';
+import { easeOut } from '../../utils/accent';
+
+const circleClass =
+'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-[background-color,transform] duration-150 ease-out hover:bg-brand active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2';
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const reduce = useReducedMotion();
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  const linkClass = ({ isActive }: {isActive: boolean;}) =>
-  `whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150 ${
-  isActive ? 'text-brand-700' : 'text-ink-600 hover:text-ink-950'}`;
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
+  const isActive = (to: string) => to === '/' ? pathname === '/' : pathname === to || pathname.startsWith(`${to}/`);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink-100 bg-canvas/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-6 lg:px-8" aria-label="Main">
-        <Logo />
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-4 md:pt-7">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-white">
+        
+        Skip to content
+      </a>
+      <motion.nav
+        aria-label="Main"
+        initial={reduce ? false : { opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: easeOut, delay: 0.1 }}
+        className={`relative z-50 mx-auto flex h-[56px] max-w-[880px] items-center justify-between gap-4 rounded-full border px-2 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 md:h-[60px] ${
+        scrolled || open ? 'border-white/70 bg-white/80 shadow-soft' : 'border-white/40 bg-white/45'}`
+        }>
+        
+        <Link to="/" aria-label="Devrious home" className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
+          <Logo showWordmark={false} />
+        </Link>
 
-        <div className="hidden items-center gap-1 xl:flex">
-          {navLinks.map((link) =>
-          <NavLink key={link.to} to={link.to} end={link.end} className={linkClass}>
-              {link.label}
-            </NavLink>
-          )}
-        </div>
+        <ul className="hidden items-center gap-0.5 lg:flex">
+          {navLinks.map((link) => {
+            const active = isActive(link.to);
+            return (
+              <li key={link.to} className="relative">
+                <Link
+                  to={link.to}
+                  aria-current={active ? 'page' : undefined}
+                  className={`relative block rounded-full px-3.5 py-2 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                  active ? 'text-ink' : 'text-ink/70 hover:text-ink'}`
+                  }>
+                  
+                  {active &&
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-0 rounded-full bg-white/80"
+                    transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }} />
 
-        <div className="hidden items-center gap-3 xl:flex">
-          <CurrencyToggle />
-          <Link
-            to="/contact"
-            className="whitespace-nowrap rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-canvas transition-colors duration-150 hover:bg-brand-400">
-            
-            Contact us
+                  }
+                  <span className="relative">{link.label}</span>
+                </Link>
+              </li>);
+
+          })}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <Link to="/contact" aria-label="Start a project" className={`${circleClass} hidden sm:flex`}>
+            <ArrowUpRightIcon className="h-[18px] w-[18px]" aria-hidden="true" />
           </Link>
+          <a href={contact.phoneHref} aria-label={`Call ${contact.phone}`} className={circleClass}>
+            <PhoneIcon className="h-[17px] w-[17px]" aria-hidden="true" />
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            className={`${circleClass} relative`}>
+            
+            <motion.span
+              aria-hidden="true"
+              className="absolute h-[2px] w-[18px] rounded-full bg-white"
+              animate={open ? { rotate: 45, y: 0 } : { rotate: 0, y: -3.5 }}
+              transition={{ duration: 0.2, ease: easeOut }} />
+            
+            <motion.span
+              aria-hidden="true"
+              className="absolute h-[2px] w-[18px] rounded-full bg-white"
+              animate={open ? { rotate: -45, y: 0 } : { rotate: 0, y: 3.5 }}
+              transition={{ duration: 0.2, ease: easeOut }} />
+            
+          </button>
         </div>
+      </motion.nav>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink-800 ring-1 ring-ink-200 xl:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((v) => !v)}>
-          
-          {open ? <XIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-        </button>
-      </nav>
-
-      <AnimatePresence initial={false}>
-      {open &&
-        <motion.div
-          id="mobile-menu"
-          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ink-100 bg-canvas xl:hidden"
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-          transition={{ duration: 0.2, ease: easeOut }}>
-          
-          <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            {navLinks.map((link) =>
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.end}
-              className={({ isActive }) =>
-              `rounded-lg px-3 py-2.5 text-base font-medium ${isActive ? 'bg-brand-50 text-brand-700' : 'text-ink-700 hover:bg-ink-50'}`
-              }>
-              
-                {link.label}
-              </NavLink>
-            )}
-            <div className="mt-3 flex items-center justify-between border-t border-ink-100 pt-4">
-              <span className="text-sm text-ink-500">Show prices in</span>
-              <CurrencyToggle />
-            </div>
-            <Link to="/contact" className="mt-3 rounded-lg bg-brand-500 px-4 py-3 text-center text-sm font-semibold text-canvas">
-              Contact us
-            </Link>
-          </div>
-        </motion.div>
-        }
-      </AnimatePresence>
+      <AnimatePresence>{open && <MenuOverlay isActive={isActive} />}</AnimatePresence>
     </header>);
 
 }

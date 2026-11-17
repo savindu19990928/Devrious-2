@@ -1,142 +1,115 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailjs';
-import { preBuilds } from '../data/preBuilds';
-import { cyberPackages } from '../data/cyberPackages';
+import { useMemo, useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { services } from '../data/services';
-
-export type InquiryType = 'project' | 'demo' | 'cyber' | 'general';
+import { products } from '../data/products';
+import { contact } from '../data/devrious';
 
 export interface ContactValues {
   name: string;
   email: string;
   phone: string;
   company: string;
-  type: InquiryType;
-  system: string;
-  pkg: string;
   service: string;
-  message: string;
+  budget: string;
+  description: string;
 }
 
 export type ContactErrors = Partial<Record<keyof ContactValues, string>>;
-export type ContactStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-export const INQUIRY_LABELS: Record<InquiryType, string> = {
-  project: 'Start a custom project',
-  demo: 'Request for Demo',
-  cyber: 'Cybersecurity services',
-  general: 'General question'
-};
+export const serviceOptions = [...services.map((s) => s.title), 'Pre Build system', 'Cybersecurity services', 'Not sure yet'];
+
+export const budgetOptions = [
+'Under LKR 100,000',
+'LKR 100,000 – 250,000',
+'LKR 250,000 – 500,000',
+'LKR 500,000+',
+'Not sure yet'];
+
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function validate(values: ContactValues): ContactErrors {
-  const errors: ContactErrors = {};
-  if (!values.name.trim()) errors.name = 'Please enter your name.';
-  if (!values.email.trim()) errors.email = 'Please enter your email address.';
-  else if (!emailPattern.test(values.email.trim())) errors.email = 'Please enter a valid email address.';
-  if (values.type === 'demo' && !values.system) errors.system = 'Please choose a system for the demo.';
-  if (values.message.trim().length < 10) errors.message = 'Please tell us a little more (at least 10 characters).';
-  return errors;
-}
+export function useContactForm() {
+  const [params] = useSearchParams();
+  const initial = useMemo<ContactValues>(() => {
+    const product = products.find((p) => p.slug === params.get('product'));
+    const service = services.find((s) => s.slug === params.get('service'));
+    const intent = params.get('intent');
+    let description = '';
+    if (product) {
+      description =
+      intent === 'quote' ?
+      `I'd like a quote for the ${product.name}.` :
+      `I'd like to request a demo of the ${product.name}.`;
+    } else if (intent === 'demo') {
+      description = "I'd like to request a demo of a Pre Build system.";
+    } else if (intent === 'quote') {
+      description = "I'd like a quote for a Pre Build system.";
+    }
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: service?.title ?? (product || intent ? 'Pre Build system' : ''),
+      budget: '',
+      description
+    };
+  }, [params]);
 
-export function getSelectedOption(values: ContactValues): string {
-  if (values.type === 'demo' && values.system) {
-    const item = preBuilds.find((p) => p.slug === values.system);
-    return item ? item.name : values.system;
-  }
-  if (values.type === 'cyber' && values.pkg) {
-    const item = cyberPackages.find((p) => p.id === values.pkg);
-    return item ? item.name : values.pkg;
-  }
-  if (values.type === 'project' && values.service) {
-    const item = services.find((s) => s.id === values.service);
-    return item ? item.name : values.service;
-  }
-  return 'N/A';
-}
-
-export function useContactForm(initial: ContactValues) {
   const [values, setValues] = useState<ContactValues>(initial);
   const [errors, setErrors] = useState<ContactErrors>({});
-  const [status, setStatus] = useState<ContactStatus>('idle');
+  const [submitted, setSubmitted] = useState(false);
 
-  const setField = <K extends keyof ContactValues,>(key: K, value: ContactValues[K]) => {
-    setValues((v) => ({ ...v, [key]: value }));
-    if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setValues((v) => ({ ...v, [name]: value }));
+    if (errors[name as keyof ContactValues]) setErrors((er) => ({ ...er, [name]: undefined }));
   };
 
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const found = validate(values);
-    setErrors(found);
-    if (Object.keys(found).length > 0) {
-      const firstKey = Object.keys(found)[0];
-      document.getElementById(`field-${firstKey}`)?.focus();
+  const validate = (v: ContactValues): ContactErrors => {
+    const next: ContactErrors = {};
+    if (!v.name.trim()) next.name = 'Please enter your name.';
+    if (!emailPattern.test(v.email.trim())) next.email = 'Please enter a valid email address.';
+    if (!v.service) next.service = 'Please choose a service.';
+    if (v.description.trim().length < 20) next.description = 'Tell us a little more — at least 20 characters.';
+    return next;
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const next = validate(values);
+    setErrors(next);
+    if (Object.keys(next).length > 0) {
+      const first = Object.keys(next)[0];
+      document.getElementById(`field-${first}`)?.focus();
       return;
     }
-
-    setStatus('submitting');
-
-    try {
-      if (typeof navigator !== 'undefined' && !navigator.onLine) {
-        throw new Error('Network offline');
-      }
-
-      const selectedOption = getSelectedOption(values);
-      const service = INQUIRY_LABELS[values.type] || values.type || 'N/A';
-
-      const templateParams = {
-        service,
-        selected_option: selectedOption,
-        name: values.name.trim(),
-        email: values.email.trim(),
-        phone: values.phone.trim() || 'N/A',
-        company: values.company.trim() || 'N/A',
-        message: values.message.trim() || 'N/A',
-        // Common template aliases
-        from_name: values.name.trim(),
-        from_email: values.email.trim(),
-        reply_to: values.email.trim()
-      };
-
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          service_id: EMAILJS_CONFIG.serviceId,
-          template_id: EMAILJS_CONFIG.templateId,
-          user_id: EMAILJS_CONFIG.publicKey,
-          accessToken: EMAILJS_CONFIG.privateKey,
-          template_params: templateParams
-        })
-      });
-
-      if (!response.ok) {
-        await emailjs.send(
-          EMAILJS_CONFIG.serviceId,
-          EMAILJS_CONFIG.templateId,
-          templateParams,
-          EMAILJS_CONFIG.publicKey
-        );
-      }
-
-      setStatus('success');
-    } catch (err) {
-      console.error('EmailJS submission error:', err);
-      setStatus('error');
-    }
+    setSubmitted(true);
   };
 
   const reset = () => {
-    setValues({ ...initial, message: '' });
+    setValues(initial);
     setErrors({});
-    setStatus('idle');
+    setSubmitted(false);
   };
 
-  return { values, errors, status, setField, submit, reset };
+  const message = [
+  `Name: ${values.name}`,
+  `Email: ${values.email}`,
+  values.phone ? `Phone: ${values.phone}` : null,
+  values.company ? `Company: ${values.company}` : null,
+  `Service: ${values.service}`,
+  values.budget ? `Budget: ${values.budget}` : null,
+  '',
+  values.description].
+
+  filter((line): line is string => line !== null).
+  join('\n');
+
+  const subject = `Project enquiry — ${values.service || 'General'}${values.company ? ` · ${values.company}` : ''}`;
+  const mailtoHref = `${contact.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  const whatsappHref = `${contact.whatsappHref}?text=${encodeURIComponent(`Hi Devrious,\n\n${message}`)}`;
+
+  return { values, errors, submitted, onChange, onSubmit, reset, mailtoHref, whatsappHref };
 }

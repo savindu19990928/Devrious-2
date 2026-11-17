@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <g transform="translate(31.5, 9)">
-    <path fill="#12B57A" d="M75 60H232V118H85A25 25 0 0 0 60 143V195A25 25 0 0 0 85 220H175V277H75A70 70 0 0 1 5 207V130A70 70 0 0 1 75 60Z" />
-    <path fill="#FFD400" d="M175 60V30A25 25 0 0 1 200 5H232V60Z" />
-    <path fill="#FF5E5B" d="M175 118H232V195A25 25 0 0 1 207 220H175Z" />
-  </g>
-</svg>

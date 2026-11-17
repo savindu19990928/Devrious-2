@@ -1,47 +1,49 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { CurrencyProvider } from './contexts/CurrencyContext';
-import { Layout } from './components/layout/Layout';
+import { Navbar } from './components/layout/Navbar';
 import { Home } from './pages/Home';
-
-const Services = lazy(() => import('./pages/Services').then((m) => ({ default: m.Services })));
-const PreBuilds = lazy(() => import('./pages/PreBuilds').then((m) => ({ default: m.PreBuilds })));
-const PreBuildDetail = lazy(() => import('./pages/PreBuildDetail').then((m) => ({ default: m.PreBuildDetail })));
-const Portfolio = lazy(() => import('./pages/Portfolio').then((m) => ({ default: m.Portfolio })));
-const Cybersecurity = lazy(() => import('./pages/Cybersecurity').then((m) => ({ default: m.Cybersecurity })));
-const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })));
-const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })));
-const Legal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal })));
-const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
+import { Services } from './pages/Services';
+import { ServiceDetail } from './pages/ServiceDetail';
+import { PreBuilds } from './pages/PreBuilds';
+import { ProductDetail } from './pages/ProductDetail';
+import { Portfolio } from './pages/Portfolio';
+import { ProjectDetail } from './pages/ProjectDetail';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
+import { NotFound } from './pages/NotFound';
+import { Policy } from './pages/Policy';
 
 export function App() {
   return (
-    <CurrencyProvider>
-      <BrowserRouter>
-        <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/pre-builds" element={<PreBuilds />} />
-              <Route path="/pre-builds/:slug" element={<PreBuildDetail />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/cybersecurity-services" element={<Cybersecurity />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/terms" element={<Legal doc="terms" />} />
-              <Route path="/terms-and-conditions" element={<Legal doc="terms" />} />
-              <Route path="/privacy" element={<Legal doc="privacy" />} />
-              <Route path="/privacy-policy" element={<Legal doc="privacy" />} />
-              <Route path="/refund" element={<Legal doc="refund" />} />
-              <Route path="/refund-policy" element={<Legal doc="refund" />} />
-              <Route path="/cancellation-refund" element={<Legal doc="refund" />} />
-              <Route path="/cookies" element={<Legal doc="cookies" />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </CurrencyProvider>
-  );
+    <BrowserRouter>
+      <CurrencyProvider>
+        <div className="min-h-screen w-full bg-canvas font-sans text-ink">
+          <Navbar />
+          <AppRoutes />
+        </div>
+      </CurrencyProvider>
+    </BrowserRouter>);
+
+}
+
+function AppRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/pre-builds" element={<PreBuilds />} />
+        <Route path="/pre-builds/:slug" element={<ProductDetail />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/:slug" element={<ProjectDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/legal/:slug" element={<Policy />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>);
+
 }
