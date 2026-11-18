@@ -13,6 +13,13 @@
       "skillPath": "skill-data/derive-client/SKILL.md",
       "computedHash": "5f861033b5dc9e7f7665877214b5a73e1ec5f978f0151dd9c17e05a266cee9b2"
     },
+    "imagegen": {
+      "source": "openai/skills",
+      "commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "sourceType": "github",
+      "skillPath": "skills/.system/imagegen/SKILL.md",
+      "computedHash": "350968bf5dda3bf1261fe5c6af570ca79cf25252cbb3ddd0d5dfe91cd516885d"
+    },
     "modern-web-guidance": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
