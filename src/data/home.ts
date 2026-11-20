@@ -2,15 +2,15 @@ import type { Difference, FeaturedTestimonial, Industry, Principle, ShowcaseServ
 
 export const homeImages = {
   hero: "/26aaea80-a4e2-4a84-97f6-73f7a6ac4706.jpg",
-  about: "/69bbfb5b-dd34-4928-85dd-5b52018321e9.jpg",
+  about: "/home-about-red.jpg",
   demo: "/99aa5152-cd01-4e6b-9d56-3aa927e5c512.jpg",
   work: "/7684d2df-3013-4b28-8e86-3033bcf76a4f.jpg",
   abstract: "/9397414e-1bd5-4ccc-9b3e-e1f38dd6593b.jpg",
   aiMedia: "/6ea8e966-7a29-49e1-862c-e99361faf03f.jpg",
   fashion: "/8b9ee339-45ac-4bcf-bba0-513250b6f5da.jpg",
-  hospitality: "/b6d54aba-ab62-4c31-a1d5-4c0d9b3620ec.jpg",
+  hospitality: "/home-hospitality-red.jpg",
   fitness: "/ce031581-7827-446a-8384-35b957ad3432.jpg",
-  mobility: "/ef350dbe-b008-4e8d-8ad7-e911229e9940.jpg"
+  mobility: "/home-mobility-red.jpg"
 };
 
 export const aboutStatement =

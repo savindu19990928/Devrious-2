@@ -2,10 +2,9 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { Reveal } from '../ui/Reveal';
 import { ShowcaseTile } from './ShowcaseTile';
 import { projects } from '../../data/projects';
-import { homeImages } from '../../data/home';
 
 export function VisualShowcase() {
-  const [first, second] = projects;
+  const [first, second, third, fourth] = projects;
 
   return (
     <section aria-labelledby="work-title" className="bg-canvas pb-16 sm:pb-24 md:pb-36">
@@ -23,34 +22,61 @@ export function VisualShowcase() {
               <ShowcaseTile
                 to={`/portfolio/${first.slug}`}
                 image={first.image}
-                title={first.client}
-                meta={first.type}
-                className="aspect-[4/3] sm:aspect-[16/10] md:aspect-auto md:h-[680px]"
+                desktopImage={first.desktopImage}
+                desktopVideo={first.desktopVideo}
+                mobileImage={first.mobileImage}
+                externalUrl={first.url}
+                title={first.title}
+                meta={first.category}
+                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
               />
             </Reveal>
           )}
-          <div className="grid gap-3 sm:grid-cols-2 md:col-span-5 md:grid-cols-1 md:gap-4">
-            {second && (
-              <Reveal delay={0.05}>
-                <ShowcaseTile
-                  to={`/portfolio/${second.slug}`}
-                  image={second.image}
-                  title={second.client}
-                  meta={second.type}
-                  className="aspect-[4/3] md:aspect-auto md:h-[392px]"
-                />
-              </Reveal>
-            )}
-            <Reveal delay={0.1}>
+          {second && (
+            <Reveal delay={0.05} className="md:col-span-5">
               <ShowcaseTile
-                to="/services"
-                image={homeImages.aiMedia}
-                title="AI Media studio"
-                meta="Imagery, motion & 3D for brands"
-                className="aspect-[4/3] md:aspect-auto md:h-[272px]"
+                to={`/portfolio/${second.slug}`}
+                image={second.image}
+                desktopImage={second.desktopImage}
+                desktopVideo={second.desktopVideo}
+                mobileImage={second.mobileImage}
+                externalUrl={second.url}
+                title={second.title}
+                meta={second.category}
+                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
               />
             </Reveal>
-          </div>
+          )}
+          {third && (
+            <Reveal delay={0.08} className="md:col-span-5">
+              <ShowcaseTile
+                to={`/portfolio/${third.slug}`}
+                image={third.image}
+                desktopImage={third.desktopImage}
+                desktopVideo={third.desktopVideo}
+                mobileImage={third.mobileImage}
+                externalUrl={third.url}
+                title={third.title}
+                meta={third.category}
+                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+              />
+            </Reveal>
+          )}
+          {fourth && (
+            <Reveal delay={0.12} className="md:col-span-7">
+              <ShowcaseTile
+                to={`/portfolio/${fourth.slug}`}
+                image={fourth.image}
+                desktopImage={fourth.desktopImage}
+                desktopVideo={fourth.desktopVideo}
+                mobileImage={fourth.mobileImage}
+                externalUrl={fourth.url}
+                title={fourth.title}
+                meta={fourth.category}
+                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+              />
+            </Reveal>
+          )}
         </div>
       </div>
     </section>

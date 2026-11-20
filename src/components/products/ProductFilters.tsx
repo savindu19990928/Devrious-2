@@ -21,7 +21,7 @@ export function ProductFilters({ query, onQueryChange, category, onCategoryChang
       <div className="flex flex-col gap-3.5 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
         <div className="relative w-full lg:max-w-md">
           <label htmlFor="product-search" className="sr-only">
-            Search Pre Builds
+            Search Pre Builts
           </label>
           <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted sm:left-5" aria-hidden="true" />
           <input
@@ -29,7 +29,7 @@ export function ProductFilters({ query, onQueryChange, category, onCategoryChang
             type="search"
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="Search systems — e.g. pharmacy, hotel, ERP"
+            placeholder="Search systems — e.g. CMS, pharmacy, hotel, ERP"
             className="w-full rounded-full border border-line bg-white py-3.5 pl-11 pr-11 text-sm font-semibold text-ink shadow-soft transition-[border-color,box-shadow] duration-150 placeholder:font-medium placeholder:text-muted focus:border-jade focus:outline-none focus:ring-4 focus:ring-jade/20 sm:py-4 sm:pl-12 sm:pr-12"
           />
           {query && (

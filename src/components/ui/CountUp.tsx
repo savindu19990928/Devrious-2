@@ -9,7 +9,7 @@ interface CountUpProps {
 
 export function CountUp({ to, from = 0, duration = 1.1 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '0px 0px -24px 0px' });
   const reduce = useReducedMotion();
   const [value, setValue] = useState(reduce ? to : from);
 
@@ -28,7 +28,7 @@ export function CountUp({ to, from = 0, duration = 1.1 }: CountUpProps) {
   }, [inView, reduce, from, to, duration]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="inline-block tabular-nums">
       {value}
     </span>);
 

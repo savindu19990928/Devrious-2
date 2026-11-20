@@ -61,18 +61,18 @@ export function Footer() {
               </ul>
             </nav>
 
-            <nav aria-label="Pre Builds" className="sm:col-span-2 lg:col-span-3">
-              <h2 className="text-sm font-semibold text-white">Pre Builds</h2>
+            <nav aria-label="Pre Builts" className="sm:col-span-2 lg:col-span-3">
+              <h2 className="text-sm font-semibold text-white">Pre Builts</h2>
               <ul className="mt-4 grid gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-1">
                 {products.slice(0, 6).map((product) => (
                   <li key={product.slug}>
-                    <Link to={`/pre-builds/${product.slug}`} className={linkClass}>
+                    <Link to={`/pre-builts/${product.slug}`} className={linkClass}>
                       {product.name}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link to="/pre-builds" className="text-sm font-semibold text-jade hover:text-white sm:text-[15px]">
+                  <Link to="/pre-builts" className="text-sm font-semibold text-jade hover:text-white sm:text-[15px]">
                     View all systems
                   </Link>
                 </li>

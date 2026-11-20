@@ -9,8 +9,6 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 import { pillars } from '../data/about';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-const ABOUT_IMAGE = '/60a326ce-bd29-4d29-a30c-088e2944da03.jpg';
-
 export function About() {
   usePageMeta(
     'About',
@@ -21,22 +19,16 @@ export function About() {
     <PageTransition>
       <PageHero
         eyebrow="About Devrious · Est. 2024"
+        bannerImage="/banners/about-banner.jpg"
         title={
           <>
-            Technology with purpose. <span className="text-gradient">Innovation with direction.</span>
+            Technology with purpose. <span className="text-[#ff5c78]">Innovation with direction.</span>
           </>
         }
-        description="Devrious is a software company founded in Colombo, Sri Lanka in 2024. We design, build and secure software that runs businesses — properly."
-        aside={
-          <div className="relative overflow-hidden rounded-[1.5rem] shadow-lift sm:rounded-[2rem]">
-            <img
-              src={ABOUT_IMAGE}
-              alt="Abstract composition of frosted glass panels, a glossy sphere and a torus"
-              className="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[4/5]"
-            />
-          </div>
-        }>
-        <ButtonLink to="/contact">Work with us</ButtonLink>
+        description="Devrious is a software company founded in Colombo, Sri Lanka in 2024. We design, build and secure software that runs businesses — properly.">
+        <ButtonLink to="/contact" variant="light">
+          Work with us
+        </ButtonLink>
       </PageHero>
 
       <section aria-labelledby="pillars-heading" className="bg-canvas py-16 sm:py-20 md:py-28">

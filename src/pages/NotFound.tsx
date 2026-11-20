@@ -9,17 +9,18 @@ export function NotFound() {
     <PageTransition>
       <PageHero
         eyebrow="404"
+        bannerImage="/banners/legal-banner.jpg"
         title={
         <>
-            This page wandered <span className="text-gradient">off the map.</span>
+            This page wandered <span className="text-[#ff5c78]">off the map.</span>
           </>
         }
         description="The link may be outdated or mistyped. Everything else is right where you left it.">
         
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink to="/">Back to home</ButtonLink>
-          <ButtonLink to="/pre-builds" variant="secondary">
-            Explore Pre Builds
+          <ButtonLink to="/" variant="light">Back to home</ButtonLink>
+          <ButtonLink to="/pre-builts" variant="outlineLight">
+            Explore Pre Builts
           </ButtonLink>
         </div>
       </PageHero>

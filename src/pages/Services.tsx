@@ -7,8 +7,6 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 import { services, processSteps } from '../data/services';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-const SERVICES_IMAGE = '/67a46086-98f9-4661-81a0-cef413519935.jpg';
-
 export function Services() {
   usePageMeta(
     'Services',
@@ -19,28 +17,24 @@ export function Services() {
     <PageTransition>
       <PageHero
         eyebrow="Services · Five disciplines, one team"
+        bannerImage="/banners/services-banner.jpg"
         title={
           <>
-            Engineering the <span className="text-gradient">future</span> of your business.
+            Engineering the <span className="text-[#ff5c78]">future</span> of your business.
           </>
         }
-        description="From custom digital experiences to intelligent automation, we build technology that helps businesses move forward."
-        aside={
-          <img
-            src={SERVICES_IMAGE}
-            alt="Three interlocking glossy rings in blue, purple and emerald"
-            className="mx-auto w-full max-w-xs mix-blend-multiply sm:max-w-md"
-          />
-        }>
+        description="From custom digital experiences to intelligent automation, we build technology that helps businesses move forward.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink to="/contact">Start a project</ButtonLink>
-          <ButtonLink to="/pre-builds" variant="secondary">
+          <ButtonLink to="/contact" variant="light">
+            Start a project
+          </ButtonLink>
+          <ButtonLink to="/pre-builts" variant="outlineLight">
             See ready-made systems
           </ButtonLink>
         </div>
       </PageHero>
 
-      <section aria-label="All services" className="bg-canvas pb-8">
+      <section aria-label="All services" className="bg-canvas pb-8 pt-6 sm:pt-8 md:pt-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
           {services.map((service, i) => (
             <ServiceRow key={service.slug} service={service} reversed={i % 2 === 1} />

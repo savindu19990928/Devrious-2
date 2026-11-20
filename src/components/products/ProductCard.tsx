@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRightIcon } from 'lucide-react';
-import { ProductPreview, productAccent } from './ProductPreview';
+import { ArrowUpRightIcon, Building2Icon, ShieldCheckIcon } from 'lucide-react';
+import { ProductPreview } from './ProductPreview';
 import { AnimatedPrice } from '../ui/AnimatedPrice';
-import { accentClasses } from '../../utils/accent';
+import { accentClasses, productAccent } from '../../utils/accent';
 import type { Product } from '../../types/content';
 
 interface ProductCardProps {
@@ -25,12 +25,22 @@ export function ProductCard({ product, showActions = true }: ProductCardProps) {
         </div>
         <h3 className="mt-3.5 text-lg font-extrabold leading-snug tracking-tight text-ink sm:mt-4">
           <Link
-            to={`/pre-builds/${product.slug}`}
+            to={`/pre-builts/${product.slug}`}
             className="after:absolute after:inset-0 after:rounded-3xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-brand">
             {product.name}
           </Link>
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{product.summary}</p>
+        <ul className="mt-3.5 flex flex-wrap gap-1.5" aria-label="Included core capabilities">
+          <li className="inline-flex items-center gap-1 rounded-full bg-canvas px-2.5 py-1 text-[11px] font-semibold text-ink/75">
+            <ShieldCheckIcon className="h-3 w-3 text-jade-deep" aria-hidden="true" />
+            Role-based access
+          </li>
+          <li className="inline-flex items-center gap-1 rounded-full bg-canvas px-2.5 py-1 text-[11px] font-semibold text-ink/75">
+            <Building2Icon className="h-3 w-3 text-brand" aria-hidden="true" />
+            Multi-branch
+          </li>
+        </ul>
         <div className="mt-auto flex items-end justify-between gap-3 pt-5 sm:pt-6">
           <div>
             <p className="text-xs font-semibold text-muted">Starting from</p>

@@ -18,10 +18,21 @@ export interface Stat {
 
 export interface Project {
   slug: string;
+  title: string;
+  subtitle?: string;
   client: string;
+  clientRep?: string;
+  industry?: string;
+  category: string;
   type: string;
   brief: string;
+  description?: string;
+  statusNote?: string;
+  url?: string;
   image: string;
+  desktopImage: string;
+  desktopVideo?: string;
+  mobileImage?: string;
   tags: string[];
   challenge: string;
   approach: string;
@@ -34,13 +45,14 @@ export interface Service {
   description: string;
   icon: LucideIcon;
   accent: Accent;
+  image: string;
   overview: string;
   features: string[];
   benefits: string[];
   technologies: string[];
 }
 
-export type ProductCategory = 'POS' | 'Management' | 'ERP' | 'Marketing' | 'E-Commerce';
+export type ProductCategory = 'POS' | 'Management' | 'ERP' | 'CMS' | 'Marketing' | 'E-Commerce';
 
 export interface Product {
   slug: string;
@@ -48,8 +60,16 @@ export interface Product {
   priceLkr: number;
   category: ProductCategory;
   icon: LucideIcon;
+  image: string;
   summary: string;
   bestFor: string;
+  features: string[];
+}
+
+export interface SharedPlatformFeature {
+  title: string;
+  description: string;
+  icon: LucideIcon;
 }
 
 export interface Testimonial {

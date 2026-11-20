@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import { Navbar } from './components/layout/Navbar';
@@ -14,6 +14,11 @@ import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
 import { Policy } from './pages/Policy';
 
+function LegacyProductRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={slug ? `/pre-builts/${slug}` : '/pre-builts'} replace />;
+}
+
 export function App() {
   return (
     <BrowserRouter>
@@ -23,8 +28,8 @@ export function App() {
           <AppRoutes />
         </div>
       </CurrencyProvider>
-    </BrowserRouter>);
-
+    </BrowserRouter>
+  );
 }
 
 function AppRoutes() {
@@ -35,8 +40,10 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
-        <Route path="/pre-builds" element={<PreBuilds />} />
-        <Route path="/pre-builds/:slug" element={<ProductDetail />} />
+        <Route path="/pre-builts" element={<PreBuilds />} />
+        <Route path="/pre-builts/:slug" element={<ProductDetail />} />
+        <Route path="/pre-builds" element={<Navigate to="/pre-builts" replace />} />
+        <Route path="/pre-builds/:slug" element={<LegacyProductRedirect />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/:slug" element={<ProjectDetail />} />
         <Route path="/about" element={<About />} />
@@ -44,6 +51,6 @@ function AppRoutes() {
         <Route path="/legal/:slug" element={<Policy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </AnimatePresence>);
-
+    </AnimatePresence>
+  );
 }

@@ -10,7 +10,7 @@ export function CtaBanner() {
       <motion.div
         initial={reduce ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: true, margin: '0px 0px -40px 0px' }}
         transition={{ duration: 0.3, ease: easeOut }}
         className="rounded-[20px] bg-brand text-white sm:rounded-[22px] md:rounded-frame">
         <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 sm:gap-12 sm:px-8 sm:py-20 md:px-10 md:py-28 lg:grid-cols-12 lg:items-end">

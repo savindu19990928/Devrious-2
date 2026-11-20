@@ -1,4 +1,4 @@
-import type { Accent } from '../types/content';
+import type { Accent, ProductCategory } from '../types/content';
 
 interface AccentClasses {
   solid: string;
@@ -13,8 +13,21 @@ const accentMap: Record<Accent, AccentClasses> = {
   jade: { solid: 'bg-jade text-white', soft: 'bg-jade-light', text: 'text-jade-deep', ring: 'ring-jade/30' }
 };
 
+const productCategoryAccent: Record<ProductCategory, Accent> = {
+  POS: 'brand',
+  Management: 'violet',
+  ERP: 'brand',
+  CMS: 'brand',
+  Marketing: 'jade',
+  'E-Commerce': 'jade'
+};
+
 export function accentClasses(accent: Accent): AccentClasses {
   return accentMap[accent];
+}
+
+export function productAccent(category: ProductCategory): Accent {
+  return productCategoryAccent[category];
 }
 
 export const easeOut = [0.23, 1, 0.32, 1] as const;

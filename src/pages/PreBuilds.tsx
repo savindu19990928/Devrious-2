@@ -4,19 +4,21 @@ import { SearchXIcon } from 'lucide-react';
 import { PageTransition } from '../components/layout/PageTransition';
 import { PageHero } from '../components/ui/PageHero';
 import { ButtonLink } from '../components/ui/ButtonLink';
+import { Reveal } from '../components/ui/Reveal';
+import { SectionHeading } from '../components/ui/SectionHeading';
 import { ProductFilters } from '../components/products/ProductFilters';
 import { ProductCard } from '../components/products/ProductCard';
 import { StepsTimeline } from '../components/sections/StepsTimeline';
 import { CtaBanner } from '../components/sections/CtaBanner';
-import { preBuildSteps, products } from '../data/products';
+import { preBuildSteps, products, sharedPreBuildFeatures } from '../data/products';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { easeOut } from '../utils/accent';
 import type { ProductCategory } from '../types/content';
 
 export function PreBuilds() {
   usePageMeta(
-    'Pre Builds',
-    'Ready-made POS, ERP, hotel, fleet, social media and e-commerce systems from Devrious. Deploy in weeks, not months.'
+    'Pre Builts',
+    'Ready-made sale & rental POS, CMS, ERP, hotel, fleet, social media and e-commerce systems from Devrious with role-based access and multi-branch management.'
   );
   const reduce = useReducedMotion();
   const [query, setQuery] = useState('');
@@ -27,7 +29,12 @@ export function PreBuilds() {
     return products.filter((p) => {
       const matchesCategory = category === 'All' || p.category === category;
       const matchesQuery =
-        !q || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.bestFor.toLowerCase().includes(q);
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.bestFor.toLowerCase().includes(q) ||
+        p.summary.toLowerCase().includes(q) ||
+        p.features.some((f) => f.toLowerCase().includes(q));
       return matchesCategory && matchesQuery;
     });
   }, [query, category]);
@@ -35,24 +42,25 @@ export function PreBuilds() {
   return (
     <PageTransition>
       <PageHero
-        eyebrow={`Pre Builds · ${products.length} ready-to-deploy systems`}
+        eyebrow={`Pre Builts · ${products.length} ready-to-deploy systems`}
+        bannerImage="/banners/prebuilds-banner.jpg"
         title={
           <>
-            Powerful business systems. <span className="text-gradient">Ready when you are.</span>
+            Powerful business systems. <span className="text-[#ff5c78]">Ready when you are.</span>
           </>
         }
-        description="Skip months of development. Deploy proven business management systems tailored to your workflow.">
+        description="Skip months of development. Deploy proven business management systems with role-based user access and multi-branch control built in.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink to="/contact?intent=demo" variant="jade">
+          <ButtonLink to="/contact?intent=demo" variant="light">
             Request a demo
           </ButtonLink>
-          <ButtonLink to="/contact?intent=quote" variant="secondary">
+          <ButtonLink to="/contact?intent=quote" variant="outlineLight">
             Get a quote
           </ButtonLink>
         </div>
       </PageHero>
 
-      <section aria-label="Pre Build catalogue" className="bg-canvas pb-16 sm:pb-20 md:pb-28">
+      <section aria-label="Pre Built catalogue" className="bg-canvas pb-16 pt-6 sm:pb-20 sm:pt-8 md:pb-28 md:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
           <div className="glass relative z-30 overflow-hidden rounded-[1.5rem] p-3.5 shadow-soft sm:rounded-[1.75rem] sm:p-4 md:p-5 lg:sticky lg:top-[84px]">
             <ProductFilters
@@ -103,11 +111,41 @@ export function PreBuilds() {
         </div>
       </section>
 
+      <section aria-labelledby="standard-features-heading" className="bg-white py-16 sm:py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
+          <SectionHeading
+            id="standard-features-heading"
+            label="Included in every Pre Built"
+            title="Enterprise foundations, standard from day one."
+            description="Every system in our catalogue ships with multi-branch architecture, granular user permissions, live reporting and automated cloud backups."
+          />
+          <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {sharedPreBuildFeatures.map((feature, i) => {
+              const Icon = feature.icon;
+              return (
+                <li key={feature.title}>
+                  <Reveal delay={i * 0.04} className="h-full">
+                    <div className="flex h-full flex-col rounded-3xl border border-line bg-canvas p-5 sm:p-6">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-brand shadow-soft">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <h3 className="mt-4 text-lg font-extrabold tracking-tight text-ink">{feature.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{feature.description}</p>
+                    </div>
+                  </Reveal>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
       <StepsTimeline
         id="prebuild-steps-heading"
-        label="How Pre Builds work"
+        label="How Pre Builts work"
         title="From demo to deployed in weeks, not months."
         steps={preBuildSteps}
+        tone="canvas"
       />
       <CtaBanner />
     </PageTransition>

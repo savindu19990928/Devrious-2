@@ -29,9 +29,9 @@ function PolicyView({ slug }: { slug: string }) {
 
   return (
     <PageTransition>
-      <PageHero eyebrow="Legal" title={policy.title} description={policy.summary}>
-        <p className="text-xs text-muted sm:text-sm">
-          Last updated <time className="font-semibold text-ink">{policy.lastUpdated}</time>
+      <PageHero eyebrow="Legal" bannerImage="/banners/legal-banner.jpg" title={policy.title} description={policy.summary}>
+        <p className="text-xs text-white/75 sm:text-sm">
+          Last updated <time className="font-semibold text-white">{policy.lastUpdated}</time>
         </p>
       </PageHero>
 
@@ -57,7 +57,7 @@ function PolicyView({ slug }: { slug: string }) {
         </nav>
       </div>
 
-      <section className="bg-canvas pb-16 pt-8 sm:pb-24 sm:pt-12 md:pb-32 lg:pt-4">
+      <section className="bg-canvas pb-16 pt-8 sm:pb-24 sm:pt-10 md:pb-32 lg:pt-12">
         <div className="mx-auto grid max-w-[1320px] gap-10 px-4 sm:gap-12 sm:px-6 md:px-10 lg:grid-cols-12">
           <aside className="hidden lg:col-span-3 lg:block">
             <PolicySidebar policies={policies} currentSlug={policy.slug} headings={headings} activeId={activeId} />

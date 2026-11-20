@@ -1,4 +1,5 @@
 import type { Pillar, TimelineItem } from '../types/content';
+import { products } from './products';
 
 export const pillars: Pillar[] = [
 {
@@ -45,9 +46,9 @@ export const timeline: TimelineItem[] = [
   description: 'Sunrise Apartments, Smart Metro Tech and Smart Park n Fly join our client list.'
 },
 {
-  marker: 'Pre Builds',
-  title: '10 ready-to-deploy systems',
-  description: 'A library of POS, ERP, management and e-commerce systems businesses can deploy in weeks.'
+  marker: 'Pre Builts',
+  title: `${products.length} ready-to-deploy systems`,
+  description: 'A library of POS, ERP, CMS, management and e-commerce systems businesses can deploy in weeks.'
 },
 {
   marker: 'Next',

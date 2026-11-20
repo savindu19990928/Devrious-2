@@ -36,15 +36,16 @@ export function Contact() {
     <PageTransition>
       <PageHero
         eyebrow="Contact · We reply within one business day"
+        bannerImage="/banners/contact-banner.jpg"
         title={
           <>
-            Let’s build something <span className="text-gradient">meaningful.</span>
+            Let’s build something <span className="text-[#ff5c78]">meaningful.</span>
           </>
         }
         description="Tell us about your idea. Let's turn it into something real."
       />
 
-      <section aria-label="Contact Devrious" className="bg-canvas pb-16 sm:pb-20 md:pb-28">
+      <section aria-label="Contact Devrious" className="bg-canvas pb-16 pt-6 sm:pb-20 sm:pt-8 md:pb-28 md:pt-12">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:gap-8 sm:px-6 md:px-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <ContactForm />

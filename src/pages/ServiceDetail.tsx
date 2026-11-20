@@ -29,6 +29,7 @@ export function ServiceDetail() {
     <PageTransition>
       <PageHero
         eyebrow="Service"
+        bannerImage="/banners/services-banner.jpg"
         title={service.title}
         description={service.description}
         aside={
@@ -37,10 +38,12 @@ export function ServiceDetail() {
           </div>
         }>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <ButtonLink to={`/contact?service=${service.slug}`}>Discuss your project</ButtonLink>
+          <ButtonLink to={`/contact?service=${service.slug}`} variant="light">
+            Discuss your project
+          </ButtonLink>
           <Link
             to="/services"
-            className="inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-ink/70 transition-colors duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:justify-start">
+            className="inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-white/80 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:justify-start">
             <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> All services
           </Link>
         </div>

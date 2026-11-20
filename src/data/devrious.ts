@@ -1,4 +1,5 @@
 import type { NavLink, Stat, TechGroup, Testimonial } from '../types/content';
+import { products } from './products';
 
 export const contact = {
   phone: '+94 70 661 1936',
@@ -13,7 +14,7 @@ export const contact = {
 export const navLinks: NavLink[] = [
 { label: 'Home', to: '/' },
 { label: 'Services', to: '/services' },
-{ label: 'Pre Builds', to: '/pre-builds' },
+{ label: 'Pre Builts', to: '/pre-builts' },
 { label: 'Portfolio', to: '/portfolio' },
 { label: 'About', to: '/about' },
 { label: 'Contact', to: '/contact' }];
@@ -21,16 +22,18 @@ export const navLinks: NavLink[] = [
 
 export const stats: Stat[] = [
 { value: '2024', label: 'Founded in Colombo', detail: 'Software company · Colombo, Sri Lanka', countTo: 2024 },
-{ value: '10', label: 'Ready-to-deploy systems', detail: 'POS, ERP, management & e-commerce', countTo: 10 },
+{ value: String(products.length), label: 'Ready-to-deploy systems', detail: 'POS, ERP, CMS, management & e-commerce', countTo: products.length },
 { value: 'LK & UK', label: 'Clients served', detail: 'From Maharagama to the United Kingdom' }];
 
 
 export const clients: string[] = [
 'Avenor Apparel',
 'Zevora Custom',
-'Sunrise Apartments',
+'Universal Tool Depot',
+'Arrow Ventures',
+'Sunrise Residencies',
 'Smart Metro Tech',
-'Smart Park n Fly'];
+'Smart Part and Fly'];
 
 
 export const testimonials: Testimonial[] = [
