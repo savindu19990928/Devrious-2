@@ -41,14 +41,16 @@ export function Portfolio() {
   return (
     <PageTransition>
       <PageHero
+        immersive
         eyebrow={`Portfolio · ${projects.length} delivered systems & platforms`}
         bannerImage="/banners/portfolio-banner.jpg"
-        title={
-          <>
-            Digital experiences and systems built to <span className="text-[#ff5c78]">make an impact.</span>
-          </>
-        }
+        titleLines={[
+          'Digital craft &',
+          'systems built to',
+          <span className="text-[#ff5c78]">make an impact.</span>
+        ]}
         description="From e-commerce storefronts and equipment rental platforms to factory floor production systems, accommodation management and REST API infrastructure."
+        tagline="Websites · E-Commerce · Enterprise Systems · APIs"
       />
 
       <section aria-label="Projects" className="bg-canvas pb-16 pt-6 sm:pb-20 sm:pt-8 md:pb-28 md:pt-12">
@@ -101,7 +103,7 @@ export function Portfolio() {
             title="Every engagement at a glance."
             description="Websites, e-commerce platforms, enterprise operations software and backend APIs delivered by Devrious."
           />
-          <Reveal delay={0.05} className="mt-10 sm:mt-12">
+          <div className="mt-10 sm:mt-12">
             <div className="hidden overflow-x-auto md:block">
               <table className="w-full min-w-[680px] border-collapse text-left">
                 <thead>
@@ -185,7 +187,7 @@ export function Portfolio() {
                 </div>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 

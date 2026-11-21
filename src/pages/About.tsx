@@ -18,14 +18,16 @@ export function About() {
   return (
     <PageTransition>
       <PageHero
+        immersive
         eyebrow="About Devrious · Est. 2024"
         bannerImage="/banners/about-banner.jpg"
-        title={
-          <>
-            Technology with purpose. <span className="text-[#ff5c78]">Innovation with direction.</span>
-          </>
-        }
-        description="Devrious is a software company founded in Colombo, Sri Lanka in 2024. We design, build and secure software that runs businesses — properly.">
+        titleLines={[
+          'Technology with',
+          'purpose.',
+          <span className="text-[#ff5c78]">Built to last.</span>
+        ]}
+        description="Devrious is a software company founded in Colombo, Sri Lanka in 2024. We design, build and secure software that runs businesses — properly."
+        tagline="Colombo, Sri Lanka · Est. 2024 · LK & UK Clients">
         <ButtonLink to="/contact" variant="light">
           Work with us
         </ButtonLink>

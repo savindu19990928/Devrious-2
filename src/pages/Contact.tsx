@@ -35,14 +35,16 @@ export function Contact() {
   return (
     <PageTransition>
       <PageHero
+        immersive
         eyebrow="Contact · We reply within one business day"
         bannerImage="/banners/contact-banner.jpg"
-        title={
-          <>
-            Let’s build something <span className="text-[#ff5c78]">meaningful.</span>
-          </>
-        }
+        titleLines={[
+          'Let’s build',
+          'something',
+          <span className="text-[#ff5c78]">meaningful.</span>
+        ]}
         description="Tell us about your idea. Let's turn it into something real."
+        tagline="Direct response within one business day"
       />
 
       <section aria-label="Contact Devrious" className="bg-canvas pb-16 pt-6 sm:pb-20 sm:pt-8 md:pb-28 md:pt-12">

@@ -38,10 +38,10 @@ export function ProjectCard({ project, index, large = false }: ProjectCardProps)
         <motion.div
           ref={frame}
           onPointerMove={onMove}
-          initial={reduce ? false : { clipPath: 'inset(12% 8% 12% 8% round 32px)', opacity: 0.4 }}
-          whileInView={{ clipPath: 'inset(0% 0% 0% 0% round 32px)', opacity: 1 }}
-          viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-          transition={{ duration: 0.3, delay: index * 0.06, ease: easeOut }}
+          initial={reduce ? false : { opacity: 0.01, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 'some' }}
+          transition={{ duration: 0.3, delay: index * 0.05, ease: easeOut }}
           className="relative overflow-hidden rounded-[1.5rem] border border-line bg-wine-deep sm:rounded-[2rem] md:cursor-none">
           <ProjectDevices
             client={project.title}

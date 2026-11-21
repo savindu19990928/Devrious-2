@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import { Navbar } from './components/layout/Navbar';
+import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
 import { ServiceDetail } from './pages/ServiceDetail';
@@ -34,8 +35,13 @@ export function App() {
 
 function AppRoutes() {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [location.pathname]);
+
   return (
-    <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })}>
+    <ErrorBoundary resetKey={location.pathname}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -51,6 +57,6 @@ function AppRoutes() {
         <Route path="/legal/:slug" element={<Policy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </AnimatePresence>
+    </ErrorBoundary>
   );
 }

@@ -16,14 +16,18 @@ export function Services() {
   return (
     <PageTransition>
       <PageHero
+        immersive
         eyebrow="Services · Five disciplines, one team"
         bannerImage="/banners/services-banner.jpg"
-        title={
+        titleLines={[
+          'Engineering the',
           <>
-            Engineering the <span className="text-[#ff5c78]">future</span> of your business.
-          </>
-        }
-        description="From custom digital experiences to intelligent automation, we build technology that helps businesses move forward.">
+            <span className="text-[#ff5c78]">future</span> of
+          </>,
+          'your business.'
+        ]}
+        description="From custom digital experiences to intelligent automation, we build technology that helps businesses move forward."
+        tagline="Custom Web · Software · APIs · Practical AI">
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink to="/contact" variant="light">
             Start a project

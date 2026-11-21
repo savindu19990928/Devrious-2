@@ -57,6 +57,7 @@ function DesktopFrame({
           loop
           muted
           playsInline
+          preload="metadata"
           aria-label={`${client} desktop website view`}
           className="block h-auto w-full object-cover object-top"
         />
@@ -65,6 +66,7 @@ function DesktopFrame({
           src={src}
           alt={`${client} desktop view`}
           loading="lazy"
+          decoding="async"
           className="block h-auto w-full object-cover object-top"
         />
       )}
@@ -79,7 +81,7 @@ function MobileFrame({ client, src, className = '' }: { client: string; src: str
       <div className="flex justify-center bg-ink py-1" aria-hidden="true">
         <span className="h-1 w-7 rounded-full bg-white/20 sm:w-9" />
       </div>
-      <img src={src} alt={`${client} mobile website view`} loading="lazy" className="block h-auto w-full object-cover object-top" />
+      <img src={src} alt={`${client} mobile website view`} loading="lazy" decoding="async" className="block h-auto w-full object-cover object-top" />
     </div>
   );
 }

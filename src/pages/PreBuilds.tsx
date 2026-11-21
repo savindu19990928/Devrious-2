@@ -42,14 +42,16 @@ export function PreBuilds() {
   return (
     <PageTransition>
       <PageHero
+        immersive
         eyebrow={`Pre Builts · ${products.length} ready-to-deploy systems`}
         bannerImage="/banners/prebuilds-banner.jpg"
-        title={
-          <>
-            Powerful business systems. <span className="text-[#ff5c78]">Ready when you are.</span>
-          </>
-        }
-        description="Skip months of development. Deploy proven business management systems with role-based user access and multi-branch control built in.">
+        titleLines={[
+          'Powerful business',
+          'systems.',
+          <span className="text-[#ff5c78]">Ready when you are.</span>
+        ]}
+        description="Skip months of development. Deploy proven business management systems with role-based user access and multi-branch control built in."
+        tagline="Role-based access · Multi-branch ready · Deploy in weeks">
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink to="/contact?intent=demo" variant="light">
             Request a demo
