@@ -26,6 +26,7 @@ export function VisualShowcase() {
                 desktopVideo={first.desktopVideo}
                 mobileImage={first.mobileImage}
                 externalUrl={first.url}
+                confidentialUi={first.confidentialUi}
                 title={first.title}
                 meta={first.category}
                 className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
@@ -41,6 +42,7 @@ export function VisualShowcase() {
                 desktopVideo={second.desktopVideo}
                 mobileImage={second.mobileImage}
                 externalUrl={second.url}
+                confidentialUi={second.confidentialUi}
                 title={second.title}
                 meta={second.category}
                 className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
@@ -56,6 +58,7 @@ export function VisualShowcase() {
                 desktopVideo={third.desktopVideo}
                 mobileImage={third.mobileImage}
                 externalUrl={third.url}
+                confidentialUi={third.confidentialUi}
                 title={third.title}
                 meta={third.category}
                 className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
@@ -71,6 +74,7 @@ export function VisualShowcase() {
                 desktopVideo={fourth.desktopVideo}
                 mobileImage={fourth.mobileImage}
                 externalUrl={fourth.url}
+                confidentialUi={fourth.confidentialUi}
                 title={fourth.title}
                 meta={fourth.category}
                 className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"

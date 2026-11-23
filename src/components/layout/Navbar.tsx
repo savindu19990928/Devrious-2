@@ -58,7 +58,7 @@ export function Navbar() {
         initial={reduce ? false : { opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: easeOut, delay: 0.1 }}
-        className={`relative z-50 mx-auto flex h-[52px] max-w-[1040px] items-center justify-between gap-2 rounded-full border px-2 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 sm:h-[56px] sm:gap-3 sm:px-2.5 md:h-[60px] lg:px-3 ${
+        className={`relative z-50 mx-auto flex h-[52px] max-w-[1220px] items-center justify-between gap-2 rounded-full border px-2 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 sm:h-[56px] sm:gap-3 sm:px-2.5 md:h-[60px] lg:px-3 ${
           scrolled || open ? 'border-white/80 bg-white/90 shadow-soft' : 'border-white/55 bg-white/75 shadow-soft'
         }`}>
         <Link
@@ -76,7 +76,7 @@ export function Navbar() {
                 <Link
                   to={link.to}
                   aria-current={active ? 'page' : undefined}
-                  className={`relative block whitespace-nowrap rounded-full px-3.5 py-2 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                  className={`relative block whitespace-nowrap rounded-full px-2.5 py-2 text-[13.5px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand xl:px-3.5 xl:text-[15px] ${
                     active ? 'text-brand font-semibold' : 'text-ink/75 hover:text-ink'
                   }`}>
                   {active && (
@@ -96,7 +96,13 @@ export function Navbar() {
         <div className="flex items-center gap-1.5 sm:gap-2">
           <Link
             to="/contact"
-            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition-[background-color,transform] duration-150 ease-out hover:bg-brand active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:inline-flex">
+            aria-label="Start a project"
+            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-[background-color,transform] duration-150 ease-out hover:bg-brand active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:h-10 sm:w-10 lg:flex xl:hidden">
+            <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
+          </Link>
+          <Link
+            to="/contact"
+            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition-[background-color,transform] duration-150 ease-out hover:bg-brand active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 xl:inline-flex">
             <span>Start a project</span>
             <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
           </Link>

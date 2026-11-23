@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, LockIcon } from 'lucide-react';
 import { ProjectDevices } from '../portfolio/ProjectDevices';
 import { formatProjectHost } from '../../utils/url';
 
@@ -14,6 +14,7 @@ interface ShowcaseTileProps {
   desktopVideo?: string;
   mobileImage?: string;
   externalUrl?: string;
+  confidentialUi?: boolean;
   className?: string;
 }
 
@@ -26,6 +27,7 @@ export function ShowcaseTile({
   desktopVideo,
   mobileImage,
   externalUrl,
+  confidentialUi = false,
   className = ''
 }: ShowcaseTileProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -72,7 +74,15 @@ export function ShowcaseTile({
 
       <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-black/55 px-4 py-3 backdrop-blur-md sm:inset-x-4 sm:bottom-4 sm:px-5 sm:py-3.5">
         <div className="min-w-0">
-          <span className="block font-display text-base font-bold text-white sm:text-lg md:text-xl">{title}</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="block font-display text-base font-bold text-white sm:text-lg md:text-xl">{title}</span>
+            {confidentialUi && (
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-white/25 bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                <LockIcon className="h-2.5 w-2.5 shrink-0 text-[#ff5c78]" aria-hidden="true" />
+                Confidential UI
+              </span>
+            )}
+          </div>
           <span className="mt-0.5 block text-xs text-white/75 sm:text-sm">{meta}</span>
         </div>
         {externalUrl && (

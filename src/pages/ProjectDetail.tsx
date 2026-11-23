@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeftIcon, ArrowUpRightIcon, CheckIcon, InfoIcon, QuoteIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowUpRightIcon, CheckIcon, InfoIcon, LockIcon, QuoteIcon } from 'lucide-react';
 import { PageTransition } from '../components/layout/PageTransition';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/ui/Reveal';
@@ -28,18 +28,15 @@ export function ProjectDetail() {
   if (!project) return <NotFound />;
 
   const next = projects[(index + 1) % projects.length];
-  const matchedQuote =
-    testimonials.find(
-      (t) =>
-        (project.clientRep && t.name === project.clientRep) ||
-        t.company.toLowerCase().includes(project.client.toLowerCase())
-    ) ?? testimonials[0];
+  const matchedQuote = project.clientRep
+    ? testimonials.find((t) => t.name === project.clientRep)
+    : undefined;
   const host = project.url ? formatProjectHost(project.url) : undefined;
 
   return (
     <PageTransition>
       <PageHero
-        eyebrow={`Case study · ${project.category}`}
+        eyebrow={project.confidentialUi ? `Case study · ${project.category} · Confidential UI` : `Case study · ${project.category}`}
         bannerImage="/banners/portfolio-banner.jpg"
         title={heading}
         description={project.description ?? project.brief}
@@ -78,6 +75,13 @@ export function ProjectDetail() {
               layout="split"
             />
           </motion.div>
+
+          {project.confidentialUi && (
+            <div className="mt-6 flex items-center gap-3 rounded-2xl border border-brand/20 bg-white px-4 py-3 text-xs font-semibold text-ink shadow-soft sm:text-sm">
+              <LockIcon className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+              <span>Confidential UI — illustrative interface preview shown; the live client system UI is private.</span>
+            </div>
+          )}
 
           {project.statusNote && (
             <div className="mt-6 flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50/90 px-4 py-3 text-xs font-semibold text-amber-900 sm:text-sm">
@@ -160,23 +164,25 @@ export function ProjectDetail() {
         </div>
       </section>
 
-      <section aria-label="Client testimonial" className="bg-white py-16 sm:py-20 md:py-28">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-10">
-          <Reveal>
-            <figure>
-              <QuoteIcon className="h-7 w-7 text-violet sm:h-8 sm:w-8" aria-hidden="true" />
-              <blockquote className="mt-5 text-lg font-bold leading-relaxed text-ink sm:mt-6 sm:text-xl md:text-2xl">“{matchedQuote.quote}”</blockquote>
-              <figcaption className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 sm:mt-8">
-                <span aria-hidden="true" className="h-0.5 w-8 rounded-full bg-jade" />
-                <span className="font-bold text-ink">{matchedQuote.name}</span>
-                <span className="text-sm text-muted sm:text-base">
-                  {matchedQuote.role}, {matchedQuote.company}
-                </span>
-              </figcaption>
-            </figure>
-          </Reveal>
-        </div>
-      </section>
+      {matchedQuote && (
+        <section aria-label="Client testimonial" className="bg-white py-16 sm:py-20 md:py-28">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-10">
+            <Reveal>
+              <figure>
+                <QuoteIcon className="h-7 w-7 text-violet sm:h-8 sm:w-8" aria-hidden="true" />
+                <blockquote className="mt-5 text-lg font-bold leading-relaxed text-ink sm:mt-6 sm:text-xl md:text-2xl">“{matchedQuote.quote}”</blockquote>
+                <figcaption className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 sm:mt-8">
+                  <span aria-hidden="true" className="h-0.5 w-8 rounded-full bg-jade" />
+                  <span className="font-bold text-ink">{matchedQuote.name}</span>
+                  <span className="text-sm text-muted sm:text-base">
+                    {matchedQuote.role}, {matchedQuote.company}
+                  </span>
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section aria-label="Next project" className="bg-canvas py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
@@ -206,9 +212,17 @@ export function ProjectDetail() {
             <div className="flex items-center justify-between gap-4 px-1 pb-1 sm:gap-6 sm:px-0 sm:pb-0 md:col-span-7 md:pr-6">
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-muted sm:text-sm">Next project</p>
-                <p className="mt-1.5 text-2xl font-extrabold tracking-tight text-ink sm:mt-2 sm:text-3xl md:text-4xl">
-                  {next.subtitle ?? next.title}
-                </p>
+                <div className="mt-1.5 flex flex-wrap items-center gap-2.5 sm:mt-2">
+                  <p className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+                    {next.subtitle ?? next.title}
+                  </p>
+                  {next.confidentialUi && (
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold text-brand">
+                      <LockIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                      Confidential UI
+                    </span>
+                  )}
+                </div>
                 <p className="mt-1 text-sm text-muted sm:mt-2 sm:text-base">{next.category}</p>
               </div>
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-jade text-ink transition-transform duration-200 ease-out group-hover:rotate-45 sm:h-14 sm:w-14">

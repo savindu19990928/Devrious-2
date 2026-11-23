@@ -11,25 +11,37 @@ import { StepsTimeline } from '../components/sections/StepsTimeline';
 import { CtaBanner } from '../components/sections/CtaBanner';
 import { NotFound } from './NotFound';
 import { processSteps, services } from '../data/services';
+import { cyberSecurityProcessSteps, cyberSecurityServices } from '../data/cyberSecurity';
 import { techGroups } from '../data/devrious';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const techMarks = new Map(techGroups.flatMap((g) => g.items.map((t) => [t.name, t.mark] as const)));
 
-export function ServiceDetail() {
+interface ServiceDetailProps {
+  catalog?: 'services' | 'cyber-security';
+}
+
+export function ServiceDetail({ catalog = 'services' }: ServiceDetailProps) {
   const { slug } = useParams();
-  const service = services.find((s) => s.slug === slug);
+  const isCyber = catalog === 'cyber-security';
+  const catalogItems = isCyber ? cyberSecurityServices : services;
+  const catalogSteps = isCyber ? cyberSecurityProcessSteps : processSteps;
+  const basePath = isCyber ? '/cyber-security' : '/services';
+  const allLabel = isCyber ? 'All Cyber Security Services' : 'All services';
+  const bannerImage = isCyber ? '/banners/cyber-security-banner.jpg' : '/banners/services-banner.jpg';
+
+  const service = catalogItems.find((s) => s.slug === slug);
   usePageMeta(service?.title ?? 'Service not found', service?.description ?? 'This service could not be found.');
 
   if (!service) return <NotFound />;
 
-  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const others = catalogItems.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (
     <PageTransition>
       <PageHero
-        eyebrow="Service"
-        bannerImage="/banners/services-banner.jpg"
+        eyebrow={isCyber ? 'Cyber Security Service' : 'Service'}
+        bannerImage={bannerImage}
         title={service.title}
         description={service.description}
         aside={
@@ -42,9 +54,9 @@ export function ServiceDetail() {
             Discuss your project
           </ButtonLink>
           <Link
-            to="/services"
+            to={basePath}
             className="inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-white/80 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:justify-start">
-            <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> All services
+            <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> {allLabel}
           </Link>
         </div>
       </PageHero>
@@ -113,7 +125,7 @@ export function ServiceDetail() {
         </div>
       </section>
 
-      <StepsTimeline id="service-process-heading" label="How we work" title="A clear path from first call to go-live." steps={processSteps} />
+      <StepsTimeline id="service-process-heading" label="How we work" title="A clear path from first call to go-live." steps={catalogSteps} />
 
       <section aria-labelledby="other-services-heading" className="bg-canvas py-16 sm:py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
@@ -121,13 +133,13 @@ export function ServiceDetail() {
             id="other-services-heading"
             label="Keep exploring"
             title="More ways we can help."
-            action={{ label: 'All services', to: '/services' }}
+            action={{ label: allLabel, to: basePath }}
           />
           <ul className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {others.map((s, i) => (
               <li key={s.slug}>
                 <Reveal delay={i * 0.05} className="h-full">
-                  <ServiceCard service={s} />
+                  <ServiceCard service={s} basePath={basePath} />
                 </Reveal>
               </li>
             ))}

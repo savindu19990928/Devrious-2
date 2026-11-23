@@ -6,12 +6,13 @@ import type { Service } from '../../types/content';
 interface ServiceCardProps {
   service: Service;
   featured?: boolean;
+  basePath?: string;
 }
 
-export function ServiceCard({ service, featured = false }: ServiceCardProps) {
+export function ServiceCard({ service, featured = false, basePath = '/services' }: ServiceCardProps) {
   return (
     <Link
-      to={`/services/${service.slug}`}
+      to={`${basePath}/${service.slug}`}
       className="gradient-ring group flex h-full flex-col rounded-3xl border border-line bg-white p-3 shadow-soft transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
       
       <ServiceIllustration service={service} />

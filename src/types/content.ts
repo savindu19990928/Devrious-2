@@ -28,6 +28,7 @@ export interface Project {
   brief: string;
   description?: string;
   statusNote?: string;
+  confidentialUi?: boolean;
   url?: string;
   image: string;
   desktopImage: string;

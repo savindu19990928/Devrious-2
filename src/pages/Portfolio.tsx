@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRightIcon, QuoteIcon } from 'lucide-react';
+import { ArrowUpRightIcon, LockIcon, QuoteIcon } from 'lucide-react';
 import { PageTransition } from '../components/layout/PageTransition';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/ui/Reveal';
@@ -19,7 +19,7 @@ const filterGroups: FilterGroup[] = ['All', 'Web & E-Commerce', 'Enterprise & Ma
 function matchesGroup(slug: string, group: FilterGroup): boolean {
   if (group === 'All') return true;
   if (group === 'Web & E-Commerce') {
-    return ['avenor-apparel', 'zevora-custom', 'universal-tool-depot', 'arrow-ventures'].includes(slug);
+    return ['arrow-ventures', 'universal-tool-depot', 'thilaka-ayurveda', 'avenor-apparel', 'zevora-custom'].includes(slug);
   }
   if (group === 'Enterprise & Management') {
     return ['sunrise-residencies-ams', 'avenor-apparel-production-system', 'universal-tool-depot'].includes(slug);
@@ -30,7 +30,7 @@ function matchesGroup(slug: string, group: FilterGroup): boolean {
 export function Portfolio() {
   usePageMeta(
     'Portfolio',
-    'Selected work by Devrious — Avenor Apparel, Zevora Custom, Universal Tool Depot, Arrow Ventures, Sunrise Residencies AMS, Smart Metro Tech and Smart Part and Fly.'
+    'Selected work by Devrious — Arrow Ventures, Universal Tool Depot, Thilaka Ayurveda, Avenor Apparel, Zevora Custom, Sunrise Residencies AMS, Smart Metro Tech and Smart Part and Fly.'
   );
   const [activeGroup, setActiveGroup] = useState<FilterGroup>('All');
   const filteredProjects = useMemo(
@@ -126,9 +126,17 @@ export function Portfolio() {
                   {projects.map((p) => (
                     <tr key={p.slug} className="border-b border-line transition-colors hover:bg-canvas/60">
                       <th scope="row" className="py-4 pr-4 text-base font-extrabold text-ink">
-                        <Link to={`/portfolio/${p.slug}`} className="hover:text-brand">
-                          {p.subtitle ?? p.title}
-                        </Link>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <Link to={`/portfolio/${p.slug}`} className="hover:text-brand">
+                            {p.subtitle ?? p.title}
+                          </Link>
+                          {p.confidentialUi && (
+                            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold text-brand">
+                              <LockIcon className="h-2.5 w-2.5 shrink-0" aria-hidden="true" />
+                              Confidential UI
+                            </span>
+                          )}
+                        </div>
                       </th>
                       <td className="py-4 pr-4 text-sm font-bold text-ink/80">{p.category}</td>
                       <td className="py-4 pr-4 text-sm text-muted">{p.industry ?? p.type}</td>
@@ -163,11 +171,19 @@ export function Portfolio() {
                   <span className="inline-block rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-brand">
                     {p.category}
                   </span>
-                  <h3 className="mt-2.5 text-base font-extrabold tracking-tight text-ink">
-                    <Link to={`/portfolio/${p.slug}`} className="hover:text-brand">
-                      {p.subtitle ?? p.title}
-                    </Link>
-                  </h3>
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2">
+                    <h3 className="text-base font-extrabold tracking-tight text-ink">
+                      <Link to={`/portfolio/${p.slug}`} className="hover:text-brand">
+                        {p.subtitle ?? p.title}
+                      </Link>
+                    </h3>
+                    {p.confidentialUi && (
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold text-brand">
+                        <LockIcon className="h-2.5 w-2.5 shrink-0" aria-hidden="true" />
+                        Confidential UI
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-1 text-xs text-muted">{p.industry ?? p.type}</p>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-3">
                     <Link to={`/portfolio/${p.slug}`} className="text-xs font-bold text-ink hover:text-brand">
@@ -198,7 +214,7 @@ export function Portfolio() {
             label="Client voices"
             title="Trusted by the leaders who run these systems."
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.05} className="h-full">
                 <figure className="flex h-full flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-8">

@@ -2,6 +2,91 @@ import type { Project } from '../types/content';
 
 export const projects: Project[] = [
   {
+    slug: 'arrow-ventures',
+    title: 'Arrow Ventures',
+    client: 'Arrow Ventures',
+    industry: 'Electric Mobility, E-Bikes & Components',
+    category: 'Electric Mobility E-Commerce Platform',
+    type: 'E-Commerce platform',
+    brief:
+      'A modern e-commerce platform specializing in electric bicycles, bicycle components, spare parts and accessories.',
+    description:
+      'A modern e-commerce platform specializing in electric bicycles, bicycle components, spare parts, and accessories. Designed to provide customers with a seamless online shopping experience, the platform features product discovery, detailed product information, and an organized catalog tailored to the electric mobility market.',
+    url: 'https://www.arrowventures.lk/',
+    image: '/projects/arrow-ventures-desktop.jpg',
+    desktopImage: '/projects/arrow-ventures-desktop.jpg',
+    desktopVideo: '/projects/arrow-ventures-desktop.mp4',
+    mobileImage: '/projects/arrow-ventures-mobile.png',
+    tags: ['E-Commerce', 'Electric Mobility', 'Product Discovery', 'Catalog'],
+    challenge:
+      'Electric bicycle buyers compare range, motor specifications, compatible spare parts and accessories carefully before purchasing — requiring a storefront that feels both editorial and technically clear.',
+    approach:
+      'We designed a motion-led e-commerce platform tailored to the electric mobility market, pairing an immersive video-first hero with structured product discovery, detailed technical specifications and seamless mobile checkout.',
+    highlights: [
+      'Dedicated catalog for electric bicycles, components, spare parts & accessories',
+      'Streamlined product discovery with detailed specification views',
+      'Immersive motion-led desktop showcase paired with mobile-first shopping',
+      'Seamless online checkout tailored to the Sri Lankan electric mobility market'
+    ]
+  },
+  {
+    slug: 'universal-tool-depot',
+    title: 'Universal Tool Depot',
+    client: 'Universal Tool Depot',
+    industry: 'Construction Tools, Industrial Machinery & DIY Equipment',
+    category: 'E-Commerce & Equipment Rental Platform',
+    type: 'E-Commerce & equipment rental platform',
+    brief:
+      'A comprehensive e-commerce and equipment rental platform for professional construction tools, industrial machinery and DIY equipment.',
+    description:
+      'A comprehensive e-commerce and equipment rental platform specializing in professional construction tools, industrial machinery, and DIY equipment. The platform allows customers to browse and purchase equipment or rent machinery through an integrated rental management system with availability calendars, transparent pricing, refundable security deposits, and islandwide delivery support.',
+    url: 'https://www.universaltooldepot.lk/',
+    image: '/projects/universal-tool-depot-desktop.png',
+    desktopImage: '/projects/universal-tool-depot-desktop.png',
+    mobileImage: '/projects/universal-tool-depot-mobile.png',
+    tags: ['E-Commerce', 'Equipment Rental', 'Availability Calendar', 'Islandwide Delivery'],
+    challenge:
+      'Contractors and DIY customers needed a single platform where they could either buy professional construction tools outright or book heavy machinery rentals with clear availability and deposit terms.',
+    approach:
+      'We combined a full-featured e-commerce storefront with an integrated rental management engine featuring live availability calendars, transparent daily/weekly pricing, refundable security deposits and islandwide delivery support.',
+    highlights: [
+      'Dual-mode e-commerce purchase and machinery rental flows',
+      'Integrated rental management with live availability calendars',
+      'Transparent rental pricing and refundable security deposits',
+      'Structured catalog for construction tools, industrial machinery & DIY equipment',
+      'Islandwide delivery scheduling and customer support integration'
+    ]
+  },
+  {
+    slug: 'thilaka-ayurveda',
+    title: 'Thilaka Ayurveda',
+    client: 'Thilaka Ayurveda',
+    clientRep: 'Mr. Tharindu Jayathilaka',
+    industry: 'Traditional Ayurvedic Medicine & Herbal Products',
+    category: 'Heritage Brand Website & Digital Catalogue',
+    type: 'Brand website & product catalogue',
+    brief:
+      'Traditional Ayurvedic care rooted in heritage — a digital product catalogue and heritage brand website for Ruwanwella’s Est. 1982 Ayurvedic shop.',
+    description:
+      'A heritage-led website and digital product catalogue developed for Thilaka Ayurveda (Est. 1982) in Ruwanwella, Sri Lanka. Designed to present traditional herbal preparations, Ayurvedic products, quality FAQs, and clear catalogue-only store guidance with direct call and shop visit actions.',
+    url: 'https://www.thilakaayurveda.lk/',
+    image: '/projects/thilaka-ayurveda-desktop.jpg',
+    desktopImage: '/projects/thilaka-ayurveda-desktop.jpg',
+    mobileImage: '/projects/thilaka-ayurveda-mobile.jpg',
+    tags: ['Brand Website', 'Digital Catalogue', 'Heritage Design', 'Mobile-First'],
+    challenge:
+      'Established in 1982 in Ruwanwella, Thilaka Ayurveda needed an online presence that honoured decades of traditional Ayurvedic heritage while letting customers browse herbal products clearly before visiting the physical shop.',
+    approach:
+      'We crafted a warm, heritage-inspired digital catalogue with botanical styling, structured product discovery, quality FAQs, clear in-shop purchase guidance, and one-tap call and location actions tailored for mobile visitors.',
+    highlights: [
+      'Heritage-rooted botanical visual identity',
+      'Structured digital herbal product catalogue',
+      'Clear catalogue-only in-shop purchase guidance',
+      'Direct tap-to-call and Ruwanwella shop directions',
+      'Fast, mobile-first browsing experience across all devices'
+    ]
+  },
+  {
     slug: 'avenor-apparel',
     title: 'Avenor Apparel',
     client: 'Avenor Apparel',
@@ -46,62 +131,6 @@ export const projects: Project[] = [
     highlights: ['Motion-led brand experience', 'Built-in quote system', 'Fast on any device']
   },
   {
-    slug: 'universal-tool-depot',
-    title: 'Universal Tool Depot',
-    client: 'Universal Tool Depot',
-    industry: 'Construction Tools, Industrial Machinery & DIY Equipment',
-    category: 'E-Commerce & Equipment Rental Platform',
-    type: 'E-Commerce & equipment rental platform',
-    brief:
-      'A comprehensive e-commerce and equipment rental platform for professional construction tools, industrial machinery and DIY equipment.',
-    description:
-      'A comprehensive e-commerce and equipment rental platform specializing in professional construction tools, industrial machinery, and DIY equipment. The platform allows customers to browse and purchase equipment or rent machinery through an integrated rental management system with availability calendars, transparent pricing, refundable security deposits, and islandwide delivery support.',
-    url: 'https://www.universaltooldepot.lk/',
-    image: '/projects/universal-tool-depot-desktop.png',
-    desktopImage: '/projects/universal-tool-depot-desktop.png',
-    mobileImage: '/projects/universal-tool-depot-mobile.png',
-    tags: ['E-Commerce', 'Equipment Rental', 'Availability Calendar', 'Islandwide Delivery'],
-    challenge:
-      'Contractors and DIY customers needed a single platform where they could either buy professional construction tools outright or book heavy machinery rentals with clear availability and deposit terms.',
-    approach:
-      'We combined a full-featured e-commerce storefront with an integrated rental management engine featuring live availability calendars, transparent daily/weekly pricing, refundable security deposits and islandwide delivery support.',
-    highlights: [
-      'Dual-mode e-commerce purchase and machinery rental flows',
-      'Integrated rental management with live availability calendars',
-      'Transparent rental pricing and refundable security deposits',
-      'Structured catalog for construction tools, industrial machinery & DIY equipment',
-      'Islandwide delivery scheduling and customer support integration'
-    ]
-  },
-  {
-    slug: 'arrow-ventures',
-    title: 'Arrow Ventures',
-    client: 'Arrow Ventures',
-    industry: 'Electric Mobility, E-Bikes & Components',
-    category: 'Electric Mobility E-Commerce Platform',
-    type: 'E-Commerce platform',
-    brief:
-      'A modern e-commerce platform specializing in electric bicycles, bicycle components, spare parts and accessories.',
-    description:
-      'A modern e-commerce platform specializing in electric bicycles, bicycle components, spare parts, and accessories. Designed to provide customers with a seamless online shopping experience, the platform features product discovery, detailed product information, and an organized catalog tailored to the electric mobility market.',
-    url: 'https://www.arrowventures.lk/',
-    image: '/projects/arrow-ventures-desktop.jpg',
-    desktopImage: '/projects/arrow-ventures-desktop.jpg',
-    desktopVideo: '/projects/arrow-ventures-desktop.mp4',
-    mobileImage: '/projects/arrow-ventures-mobile.png',
-    tags: ['E-Commerce', 'Electric Mobility', 'Product Discovery', 'Catalog'],
-    challenge:
-      'Electric bicycle buyers compare range, motor specifications, compatible spare parts and accessories carefully before purchasing — requiring a storefront that feels both editorial and technically clear.',
-    approach:
-      'We designed a motion-led e-commerce platform tailored to the electric mobility market, pairing an immersive video-first hero with structured product discovery, detailed technical specifications and seamless mobile checkout.',
-    highlights: [
-      'Dedicated catalog for electric bicycles, components, spare parts & accessories',
-      'Streamlined product discovery with detailed specification views',
-      'Immersive motion-led desktop showcase paired with mobile-first shopping',
-      'Seamless online checkout tailored to the Sri Lankan electric mobility market'
-    ]
-  },
-  {
     slug: 'sunrise-residencies-ams',
     title: 'Sunrise Residencies AMS',
     subtitle: 'Sunrise Accommodation Management System (AMS)',
@@ -110,6 +139,7 @@ export const projects: Project[] = [
     industry: 'Hospitality & Property Management',
     category: 'Property & Accommodation Management',
     type: 'Accommodation Management System',
+    confidentialUi: true,
     brief:
       'A centralized Accommodation Management System developed for Sunrise Residencies to streamline the management of long-term room and apartment rentals.',
     description:
@@ -139,6 +169,7 @@ export const projects: Project[] = [
     industry: 'Public Transportation & Ticketing Technology',
     category: 'Transportation & IoT Management Platform',
     type: 'Transport Technology & API Platform',
+    confidentialUi: true,
     brief:
       'A centralized REST API-based management platform developed for Smart Metro Tech to support the deployment and management of bus ticketing machines.',
     description:
@@ -168,6 +199,7 @@ export const projects: Project[] = [
     industry: 'Apparel & Clothing Manufacturing',
     category: 'Apparel Production Management',
     type: 'Production & Inventory Management',
+    confidentialUi: true,
     brief:
       'A dedicated Clothing Production Management System developed for Avenor Apparel to streamline and coordinate clothing manufacturing operations from raw material to delivery.',
     description:
@@ -198,6 +230,7 @@ export const projects: Project[] = [
     industry: 'Airport Services & Parking Management',
     category: 'Airport Parking Reservation API',
     type: 'REST API Development',
+    confidentialUi: true,
     brief:
       'A backend REST API development project for an airport car parking reservation platform designed to simplify finding and booking parking spaces at airport facilities.',
     description:

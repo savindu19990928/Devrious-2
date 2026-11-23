@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import { services } from '../data/services';
+import { cyberSecurityServices } from '../data/cyberSecurity';
 import { products } from '../data/products';
 import { contact } from '../data/devrious';
 
@@ -21,7 +22,7 @@ export interface ContactValues {
 export type ContactErrors = Partial<Record<keyof ContactValues, string>>;
 export type ContactStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-export const serviceOptions = [...services.map((s) => s.title), 'Pre Built system', 'Cybersecurity services', 'Not sure yet'];
+export const serviceOptions = [...services.map((s) => s.title), 'Pre Built system', 'Cyber Security Services', 'Not sure yet'];
 
 export const budgetOptions = [
   'Under LKR 100,000',
@@ -51,13 +52,20 @@ export function useContactForm() {
 
   const initial = useMemo<ContactValues>(() => {
     const product = products.find((p) => p.slug === params.get('product'));
-    const service = services.find((s) => s.slug === params.get('service'));
+    const serviceParam = params.get('service');
+    const service = services.find((s) => s.slug === serviceParam);
+    const cyberService = cyberSecurityServices.find((s) => s.slug === serviceParam);
+    const isCyberQuery = serviceParam === 'cyber-security' || Boolean(cyberService);
     let description = '';
     if (product) {
       description =
         intent === 'quote'
           ? `I'd like a quote for the ${product.name}.`
           : `I'd like to request a demo of the ${product.name}.`;
+    } else if (cyberService) {
+      description = `I'd like to discuss ${cyberService.title}.`;
+    } else if (serviceParam === 'cyber-security') {
+      description = "I'd like to request a Cyber Security assessment.";
     } else if (intent === 'demo') {
       description = "I'd like to request a demo of a Pre Built system.";
     } else if (intent === 'quote') {
@@ -68,7 +76,7 @@ export function useContactForm() {
       email: '',
       phone: '',
       company: '',
-      service: service?.title ?? (product || intent ? 'Pre Built system' : ''),
+      service: service?.title ?? (isCyberQuery ? 'Cyber Security Services' : product || intent ? 'Pre Built system' : ''),
       product: product?.slug ?? '',
       budget: '',
       description

@@ -10,9 +10,10 @@ import type { Service } from '../../types/content';
 interface ServiceRowProps {
   service: Service;
   reversed: boolean;
+  basePath?: string;
 }
 
-export function ServiceRow({ service, reversed }: ServiceRowProps) {
+export function ServiceRow({ service, reversed, basePath = '/services' }: ServiceRowProps) {
   const [open, setOpen] = useState(false);
   const panelId = `${service.slug}-benefits`;
 
@@ -88,7 +89,7 @@ export function ServiceRow({ service, reversed }: ServiceRowProps) {
         </div>
 
         <div className="mt-6 sm:mt-8">
-          <ButtonLink to={`/services/${service.slug}`} ariaLabel={`Learn more about ${service.title}`}>
+          <ButtonLink to={`${basePath}/${service.slug}`} ariaLabel={`Learn more about ${service.title}`}>
             Learn more
           </ButtonLink>
         </div>

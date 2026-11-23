@@ -5,6 +5,7 @@ import { Navbar } from './components/layout/Navbar';
 import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
+import { CyberSecurity } from './pages/CyberSecurity';
 import { ServiceDetail } from './pages/ServiceDetail';
 import { PreBuilds } from './pages/PreBuilds';
 import { ProductDetail } from './pages/ProductDetail';
@@ -46,6 +47,8 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/cyber-security" element={<CyberSecurity />} />
+        <Route path="/cyber-security/:slug" element={<ServiceDetail catalog="cyber-security" />} />
         <Route path="/pre-builts" element={<PreBuilds />} />
         <Route path="/pre-builts/:slug" element={<ProductDetail />} />
         <Route path="/pre-builds" element={<Navigate to="/pre-builts" replace />} />

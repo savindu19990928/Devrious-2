@@ -3,34 +3,10 @@
   "skills": {
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
+      "commit": "d2dfc782ccdd79d25a9b4f0acced9321789cecb8",
       "sourceType": "github",
       "skillPath": "skills/agent-browser/SKILL.md",
       "computedHash": "a0dfac7503f69bcf529b2660fc79964064c4f179eb65695904ddc45fc0d99d20"
-    },
-    "derive-client": {
-      "source": "vercel-labs/agent-browser",
-      "sourceType": "github",
-      "skillPath": "skill-data/derive-client/SKILL.md",
-      "computedHash": "5f861033b5dc9e7f7665877214b5a73e1ec5f978f0151dd9c17e05a266cee9b2"
-    },
-    "imagegen": {
-      "source": "openai/skills",
-      "commit": "49f948faa9258a0c61caceaf225e179651397431",
-      "sourceType": "github",
-      "skillPath": "skills/.system/imagegen/SKILL.md",
-      "computedHash": "350968bf5dda3bf1261fe5c6af570ca79cf25252cbb3ddd0d5dfe91cd516885d"
-    },
-    "modern-web-guidance": {
-      "source": "vercel-labs/agent-browser",
-      "sourceType": "github",
-      "skillPath": "skill-data/modern-web-guidance/SKILL.md",
-      "computedHash": "bd779e7437fb83edc6956b183635b36574f8aa22e48777f93078354b0ce01862"
-    },
-    "writing-guidelines": {
-      "source": "vercel-labs/agent-skills",
-      "sourceType": "github",
-      "skillPath": "skills/writing-guidelines/SKILL.md",
-      "computedHash": "fe1390adbe2f7ba68d5fb85d3b14a1d55e71ce04cff5c175245c550d1c3a6f7e"
     }
   }
 }

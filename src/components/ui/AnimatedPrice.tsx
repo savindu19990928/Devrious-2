@@ -10,7 +10,7 @@ interface AnimatedPriceProps {
 }
 
 export function AnimatedPrice({ priceLkr, className = 'text-xl', heightClass = 'h-8' }: AnimatedPriceProps) {
-  const { currency } = useCurrency();
+  const { currency, lkrPerUsd } = useCurrency();
   return (
     <span className={`relative block overflow-hidden ${heightClass}`}>
       <AnimatePresence mode="popLayout" initial={false}>
@@ -22,7 +22,7 @@ export function AnimatedPrice({ priceLkr, className = 'text-xl', heightClass = '
           transition={{ duration: 0.18, ease: easeOut }}
           className={`block font-extrabold tracking-tight text-ink ${className}`}>
           
-          {formatPrice(priceLkr, currency)}
+          {formatPrice(priceLkr, currency, lkrPerUsd)}
         </motion.span>
       </AnimatePresence>
     </span>);

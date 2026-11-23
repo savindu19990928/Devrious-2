@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import type { PointerEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, LockIcon } from 'lucide-react';
 import { easeOut } from '../../utils/accent';
 import { ProjectDevices } from './ProjectDevices';
 import { formatProjectHost } from '../../utils/url';
@@ -68,16 +68,24 @@ export function ProjectCard({ project, index, large = false }: ProjectCardProps)
       </Link>
 
       <div className="mt-4 flex flex-col gap-1 sm:mt-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-        <h3
-          className={`font-extrabold tracking-tight text-ink transition-colors duration-150 ${
-            large ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-xl sm:text-2xl'
-          }`}>
-          <Link
-            to={`/portfolio/${project.slug}`}
-            className="hover:text-brand focus-visible:outline-none focus-visible:underline">
-            {heading}
-          </Link>
-        </h3>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <h3
+            className={`font-extrabold tracking-tight text-ink transition-colors duration-150 ${
+              large ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-xl sm:text-2xl'
+            }`}>
+            <Link
+              to={`/portfolio/${project.slug}`}
+              className="hover:text-brand focus-visible:outline-none focus-visible:underline">
+              {heading}
+            </Link>
+          </h3>
+          {project.confidentialUi && (
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold text-brand">
+              <LockIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+              Confidential UI
+            </span>
+          )}
+        </div>
         <p className="shrink-0 text-xs font-semibold text-muted sm:text-sm">
           {project.industry ?? project.type}
         </p>
