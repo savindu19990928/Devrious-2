@@ -80,9 +80,9 @@ export function ProjectCard({ project, index, large = false }: ProjectCardProps)
             </Link>
           </h3>
           {project.confidentialUi && (
-            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold text-brand">
+            <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold leading-snug text-brand">
               <LockIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
-              Confidential UI
+              <span>Confidential — Visual Preview, Not the Actual UI</span>
             </span>
           )}
         </div>

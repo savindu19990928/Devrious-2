@@ -36,7 +36,11 @@ export function ProjectDetail() {
   return (
     <PageTransition>
       <PageHero
-        eyebrow={project.confidentialUi ? `Case study · ${project.category} · Confidential UI` : `Case study · ${project.category}`}
+        eyebrow={
+          project.confidentialUi
+            ? `Case study · ${project.category} · Confidential — Visual Preview, Not the Actual UI`
+            : `Case study · ${project.category}`
+        }
         bannerImage="/banners/portfolio-banner.jpg"
         title={heading}
         description={project.description ?? project.brief}
@@ -79,7 +83,7 @@ export function ProjectDetail() {
           {project.confidentialUi && (
             <div className="mt-6 flex items-center gap-3 rounded-2xl border border-brand/20 bg-white px-4 py-3 text-xs font-semibold text-ink shadow-soft sm:text-sm">
               <LockIcon className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-              <span>Confidential UI — illustrative interface preview shown; the live client system UI is private.</span>
+              <span>Confidential — Visual Preview, Not the Actual UI. The live client system interface is private.</span>
             </div>
           )}
 
@@ -217,9 +221,9 @@ export function ProjectDetail() {
                     {next.subtitle ?? next.title}
                   </p>
                   {next.confidentialUi && (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold text-brand">
+                    <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-brand/25 bg-brand/[0.08] px-2.5 py-1 text-xs font-bold leading-snug text-brand">
                       <LockIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
-                      Confidential UI
+                      <span>Confidential — Visual Preview, Not the Actual UI</span>
                     </span>
                   )}
                 </div>

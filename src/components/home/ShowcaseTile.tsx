@@ -77,9 +77,9 @@ export function ShowcaseTile({
           <div className="flex flex-wrap items-center gap-2">
             <span className="block font-display text-base font-bold text-white sm:text-lg md:text-xl">{title}</span>
             {confidentialUi && (
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-white/25 bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+              <span className="inline-flex max-w-full items-center gap-1 rounded-full border border-white/25 bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
                 <LockIcon className="h-2.5 w-2.5 shrink-0 text-[#ff5c78]" aria-hidden="true" />
-                Confidential UI
+                <span>Confidential — Visual Preview, Not the Actual UI</span>
               </span>
             )}
           </div>

@@ -131,9 +131,9 @@ export function Portfolio() {
                             {p.subtitle ?? p.title}
                           </Link>
                           {p.confidentialUi && (
-                            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold text-brand">
+                            <span className="inline-flex max-w-full items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold leading-snug text-brand">
                               <LockIcon className="h-2.5 w-2.5 shrink-0" aria-hidden="true" />
-                              Confidential UI
+                              <span>Confidential — Visual Preview, Not the Actual UI</span>
                             </span>
                           )}
                         </div>
@@ -178,9 +178,9 @@ export function Portfolio() {
                       </Link>
                     </h3>
                     {p.confidentialUi && (
-                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold text-brand">
+                      <span className="inline-flex max-w-full items-center gap-1 rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[11px] font-bold leading-snug text-brand">
                         <LockIcon className="h-2.5 w-2.5 shrink-0" aria-hidden="true" />
-                        Confidential UI
+                        <span>Confidential — Visual Preview, Not the Actual UI</span>
                       </span>
                     )}
                   </div>
