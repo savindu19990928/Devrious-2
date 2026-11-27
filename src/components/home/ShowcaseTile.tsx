@@ -39,7 +39,7 @@ export function ShowcaseTile({
   return (
     <div
       ref={ref}
-      className={`group relative overflow-hidden rounded-[20px] bg-wine-deep sm:rounded-[22px] ${className}`}>
+      className={`group relative overflow-hidden rounded-[20px] bg-wine-deep sm:rounded-[22px] ${hasDevices ? 'flex flex-col justify-between' : ''} ${className}`}>
       {hasDevices && desktopImage ? (
         <ProjectDevices
           client={title}
@@ -72,7 +72,10 @@ export function ShowcaseTile({
         <ArrowUpRightIcon className="h-4 w-4" />
       </span>
 
-      <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-black/55 px-4 py-3 backdrop-blur-md sm:inset-x-4 sm:bottom-4 sm:px-5 sm:py-3.5">
+      <div
+        className={`pointer-events-none z-20 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-black/55 px-4 py-3 backdrop-blur-md sm:px-5 sm:py-3.5 ${
+          hasDevices ? 'relative mx-3 mb-3 sm:mx-4 sm:mb-4' : 'absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4'
+        }`}>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <span className="block font-display text-base font-bold text-white sm:text-lg md:text-xl">{title}</span>

@@ -30,7 +30,7 @@ export function Testimonials() {
             <span aria-hidden="true" className="block font-display text-5xl font-bold leading-none text-brand sm:text-7xl md:text-8xl">
               “
             </span>
-            <div className="min-h-[190px] sm:min-h-[220px] md:min-h-[260px]">
+            <div className="min-h-[250px] xs:min-h-[220px] sm:min-h-[230px] md:min-h-[260px]">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.figure
                   key={t.name}
@@ -66,7 +66,7 @@ export function Testimonials() {
                   role="tab"
                   aria-selected={i === index}
                   onClick={() => setIndex(i)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:px-5 sm:py-2.5 sm:text-sm ${
+                  className={`rounded-full px-4 py-2.5 text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:px-5 sm:py-2.5 sm:text-sm ${
                     i === index ? 'bg-ink text-white' : 'border border-ink/15 text-ink/70 hover:border-ink/40 hover:text-ink'
                   }`}>
                   {item.company}

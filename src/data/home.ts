@@ -77,10 +77,10 @@ export const featuredTestimonials: FeaturedTestimonial[] = [
 },
 {
   quote:
-  'Devrious gave Sunrise Apartments a website that guests actually use to reach us. Enquiries arrive clean and complete, and pages load fast on any phone.',
-  name: 'Mr. Thiranda Kariyawasam',
+  'Devrious gave Rising Sun Residences a website that guests actually use to reach us. Enquiries arrive clean and complete, and pages load fast on any phone.',
+  name: 'Mr. Thiranda Athukorala',
   role: 'Owner',
-  company: 'Sunrise Apartments'
+  company: 'Rising Sun Residences'
 },
 {
   quote:
@@ -128,7 +128,7 @@ export const industries: Industry[] = [
 },
 {
   name: 'Hospitality',
-  clients: 'Sunrise Apartments',
+  clients: 'Rising Sun Residences',
   description: 'Booking-ready sites that turn guest visits into clean, complete enquiries.',
   image: homeImages.hospitality
 },

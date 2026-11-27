@@ -19,7 +19,7 @@ export function TechStack() {
       </div>
       <div className="mt-10 flex flex-col gap-3 sm:mt-14 sm:gap-4">
         {rows.map((row, r) => (
-          <div key={r} className="group flex overflow-hidden">
+          <div key={r} className="group flex overflow-hidden motion-reduce:overflow-x-auto">
             <ul
               className={`flex w-max shrink-0 gap-3 pr-3 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-4 sm:pr-4 ${
                 r === 0 ? 'animate-marquee' : 'animate-marquee-reverse'

@@ -21,12 +21,12 @@ export function Statistics({ heading = true }: StatisticsProps) {
               </p>
             </Reveal>
           )}
-          <dl className={`grid gap-8 sm:grid-cols-3 sm:gap-6 md:gap-10 ${heading ? 'lg:col-span-9' : 'lg:col-span-12'}`}>
+          <dl className={`grid gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8 xl:gap-10 ${heading ? 'lg:col-span-9' : 'lg:col-span-12'}`}>
             {stats.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 0.06}>
                 <div className="flex flex-col">
                   <dt className="order-2 mt-3 font-semibold text-ink sm:mt-4">{stat.label}</dt>
-                  <dd className="order-1 font-display text-4xl font-bold tracking-[-0.03em] text-ink xs:text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                  <dd className="order-1 whitespace-nowrap font-display text-4xl font-bold leading-none tracking-[-0.03em] text-ink xs:text-5xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">
                     {stat.countTo !== undefined ? (
                       <CountUp to={stat.countTo} from={stat.countTo > 1000 ? stat.countTo - 24 : 0} />
                     ) : (

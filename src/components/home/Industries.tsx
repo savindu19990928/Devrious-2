@@ -28,7 +28,7 @@ export function Industries() {
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
-                  style={{ flexGrow: isActive ? 3.2 : 1 }}
+                  style={{ flexGrow: isActive ? 2.6 : 1 }}
                   className="group relative basis-0 overflow-hidden rounded-[22px] bg-wine-deep text-left transition-[flex-grow] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
                   <img
                     src={industry.image}
@@ -39,17 +39,28 @@ export function Industries() {
                   />
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-0 transition-colors duration-300 ${isActive ? 'bg-black/35' : 'bg-wine-deep/60'}`}
+                    className={`absolute inset-0 transition-colors duration-300 ${
+                      isActive ? 'bg-gradient-to-t from-black/80 via-black/35 to-black/15' : 'bg-wine-deep/65'
+                    }`}
                   />
                   <span className="absolute left-6 top-6 text-sm tabular-nums text-white/70">0{i + 1}</span>
-                  <span className="absolute inset-x-6 bottom-6 block">
-                    <span className="block font-display text-2xl font-bold text-white xl:text-3xl">{industry.name}</span>
+                  <span className={`absolute bottom-6 block transition-all duration-300 ${isActive ? 'inset-x-6' : 'inset-x-4 xl:inset-x-5'}`}>
                     <span
-                      className={`mt-3 block max-w-sm transition-opacity duration-200 ${
-                        isActive ? 'opacity-100 delay-100' : 'opacity-0'
+                      className={`block truncate font-display font-bold text-white transition-[font-size] duration-200 ${
+                        isActive ? 'text-2xl xl:text-3xl' : 'text-lg xl:text-xl'
                       }`}>
-                      <span className="block text-sm font-semibold text-jade-light">{industry.clients}</span>
-                      <span className="mt-1.5 block leading-relaxed text-white/80">{industry.description}</span>
+                      {industry.name}
+                    </span>
+                    <span
+                      className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                        isActive ? 'mt-3 grid-rows-[1fr] opacity-100 delay-100' : 'mt-0 grid-rows-[0fr] opacity-0'
+                      }`}>
+                      <span className="block overflow-hidden">
+                        <span className="block min-w-[240px] max-w-sm">
+                          <span className="block text-sm font-semibold text-jade-light">{industry.clients}</span>
+                          <span className="mt-1.5 block leading-relaxed text-white/80">{industry.description}</span>
+                        </span>
+                      </span>
                     </span>
                   </span>
                 </button>
@@ -61,7 +72,7 @@ export function Industries() {
             {industries.map((industry, i) => (
               <li
                 key={industry.name}
-                className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-wine-deep sm:aspect-[4/5] sm:rounded-[22px]">
+                className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-wine-deep sm:aspect-[5/4] sm:rounded-[22px]">
                 <img src={industry.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
                 <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15" />
                 <span className="absolute left-5 top-4 text-xs font-semibold tabular-nums text-white/75">0{i + 1}</span>

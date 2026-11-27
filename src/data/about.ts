@@ -43,7 +43,7 @@ export const timeline: TimelineItem[] = [
 {
   marker: 'Reach',
   title: 'Clients across LK & UK',
-  description: 'Sunrise Apartments, Smart Metro Tech and Smart Park n Fly join our client list.'
+  description: 'Rising Sun Residences, Smart Metro Tech and Smart Park n Fly join our client list.'
 },
 {
   marker: 'Pre Builts',

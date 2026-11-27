@@ -22,7 +22,7 @@ function matchesGroup(slug: string, group: FilterGroup): boolean {
     return ['arrow-ventures', 'universal-tool-depot', 'thilaka-ayurveda', 'avenor-apparel', 'zevora-custom'].includes(slug);
   }
   if (group === 'Enterprise & Management') {
-    return ['sunrise-residencies-ams', 'avenor-apparel-production-system', 'universal-tool-depot'].includes(slug);
+    return ['rising-sun-residences-ams', 'avenor-apparel-production-system', 'universal-tool-depot'].includes(slug);
   }
   return ['smart-metro-tech', 'smart-part-and-fly'].includes(slug);
 }
@@ -30,7 +30,7 @@ function matchesGroup(slug: string, group: FilterGroup): boolean {
 export function Portfolio() {
   usePageMeta(
     'Portfolio',
-    'Selected work by Devrious — Arrow Ventures, Universal Tool Depot, Thilaka Ayurveda, Avenor Apparel, Zevora Custom, Sunrise Residencies AMS, Smart Metro Tech and Smart Part and Fly.'
+    'Selected work by Devrious — Arrow Ventures, Universal Tool Depot, Thilaka Ayurveda, Avenor Apparel, Zevora Custom, Rising Sun Residences AMS, Smart Metro Tech and Smart Part and Fly.'
   );
   const [activeGroup, setActiveGroup] = useState<FilterGroup>('All');
   const filteredProjects = useMemo(

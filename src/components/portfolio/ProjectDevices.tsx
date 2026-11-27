@@ -124,25 +124,28 @@ export function ProjectDevices({
 
   if (layout === 'tile') {
     return (
-      <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-wine-deep px-4 pb-24 pt-12 sm:px-6 sm:pb-28 sm:pt-12">
+      <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden bg-wine-deep px-4 pb-4 pt-14 sm:px-6 sm:pb-5 sm:pt-14 md:pt-10">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(179,18,42,0.3),transparent_65%)]"
         />
-        <div className="relative w-full transition-transform duration-300 ease-out group-hover:scale-[1.02] sm:pb-6">
+        <div
+          className={`relative w-full transition-transform duration-300 ease-out group-hover:scale-[1.02] ${
+            mobileImage ? 'pb-4 sm:pb-6' : ''
+          }`}>
           <DesktopFrame
             client={client}
             src={desktopImage}
             videoSrc={desktopVideo}
             host={host}
             badge={badge}
-            className={mobileImage ? 'w-[90%] sm:w-[84%]' : 'w-full'}
+            className={mobileImage ? 'w-[84%]' : 'w-full'}
           />
           {mobileImage && (
             <MobileFrame
               client={client}
               src={mobileImage}
-              className="relative z-10 ml-auto -mt-8 w-[108px] xs:w-[122px] sm:absolute sm:bottom-0 sm:right-0 sm:mt-0 sm:w-[22.5%] sm:max-w-[160px]"
+              className="absolute bottom-0 right-0 z-10 w-[25%] max-w-[120px] sm:w-[22.5%] sm:max-w-[160px]"
             />
           )}
         </div>

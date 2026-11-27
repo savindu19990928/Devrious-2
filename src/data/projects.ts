@@ -131,19 +131,19 @@ export const projects: Project[] = [
     highlights: ['Motion-led brand experience', 'Built-in quote system', 'Fast on any device']
   },
   {
-    slug: 'sunrise-residencies-ams',
-    title: 'Sunrise Residencies AMS',
-    subtitle: 'Sunrise Accommodation Management System (AMS)',
-    client: 'Sunrise Residencies',
-    clientRep: 'Mr. Thiranda Kariyawasam',
+    slug: 'rising-sun-residences-ams',
+    title: 'Rising Sun Residences AMS',
+    subtitle: 'Rising Sun Accommodation Management System (AMS)',
+    client: 'Rising Sun Residences',
+    clientRep: 'Mr. Thiranda Athukorala',
     industry: 'Hospitality & Property Management',
     category: 'Property & Accommodation Management',
     type: 'Accommodation Management System',
     confidentialUi: true,
     brief:
-      'A centralized Accommodation Management System developed for Sunrise Residencies to streamline the management of long-term room and apartment rentals.',
+      'A centralized Accommodation Management System developed for Rising Sun Residences to streamline the management of long-term room and apartment rentals.',
     description:
-      'A centralized Accommodation Management System developed for Sunrise Residencies to streamline the management of long-term room and apartment rentals. The system is designed to simplify accommodation operations by providing a structured way to manage properties, rooms, tenants, rental agreements, payments, and occupancy information. It helps reduce manual administrative work while improving rental tracking, operational efficiency, and overall property management.',
+      'A centralized Accommodation Management System developed for Rising Sun Residences to streamline the management of long-term room and apartment rentals. The system is designed to simplify accommodation operations by providing a structured way to manage properties, rooms, tenants, rental agreements, payments, and occupancy information. It helps reduce manual administrative work while improving rental tracking, operational efficiency, and overall property management.',
     image: '/projects/sunrise-ams-desktop.jpg',
     desktopImage: '/projects/sunrise-ams-desktop.jpg',
     tags: ['Property Management', 'Tenancy Tracking', 'Payment Ledger', 'Occupancy Monitoring'],

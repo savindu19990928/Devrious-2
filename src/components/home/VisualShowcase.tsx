@@ -16,9 +16,9 @@ export function VisualShowcase() {
           action={{ label: 'View portfolio', to: '/portfolio' }}
         />
 
-        <div className="mt-10 grid gap-3 sm:mt-14 md:grid-cols-12 md:gap-4">
+        <div className="mt-10 grid gap-3 sm:mt-14 md:grid-cols-2 md:gap-4 lg:grid-cols-12">
           {first && (
-            <Reveal className="md:col-span-7">
+            <Reveal className="h-full lg:col-span-7">
               <ShowcaseTile
                 to={`/portfolio/${first.slug}`}
                 image={first.image}
@@ -29,12 +29,12 @@ export function VisualShowcase() {
                 confidentialUi={first.confidentialUi}
                 title={first.title}
                 meta={first.category}
-                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+                className="h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px]"
               />
             </Reveal>
           )}
           {second && (
-            <Reveal delay={0.05} className="md:col-span-5">
+            <Reveal delay={0.05} className="h-full lg:col-span-5">
               <ShowcaseTile
                 to={`/portfolio/${second.slug}`}
                 image={second.image}
@@ -45,12 +45,12 @@ export function VisualShowcase() {
                 confidentialUi={second.confidentialUi}
                 title={second.title}
                 meta={second.category}
-                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+                className="h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px]"
               />
             </Reveal>
           )}
           {third && (
-            <Reveal delay={0.08} className="md:col-span-5">
+            <Reveal delay={0.08} className="h-full lg:col-span-5">
               <ShowcaseTile
                 to={`/portfolio/${third.slug}`}
                 image={third.image}
@@ -61,12 +61,12 @@ export function VisualShowcase() {
                 confidentialUi={third.confidentialUi}
                 title={third.title}
                 meta={third.category}
-                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+                className="h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px]"
               />
             </Reveal>
           )}
           {fourth && (
-            <Reveal delay={0.12} className="md:col-span-7">
+            <Reveal delay={0.12} className="h-full lg:col-span-7">
               <ShowcaseTile
                 to={`/portfolio/${fourth.slug}`}
                 image={fourth.image}
@@ -77,7 +77,7 @@ export function VisualShowcase() {
                 confidentialUi={fourth.confidentialUi}
                 title={fourth.title}
                 meta={fourth.category}
-                className="min-h-[340px] sm:min-h-[380px] md:h-[440px]"
+                className="h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px]"
               />
             </Reveal>
           )}

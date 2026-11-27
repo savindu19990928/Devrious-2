@@ -59,7 +59,7 @@ export function Difference() {
 
           <ul className="grid gap-3 sm:grid-cols-2 md:hidden">
             {differences.map((row) => (
-              <li key={row.topic} className="flex flex-col overflow-hidden rounded-2xl border border-line bg-white">
+              <li key={row.topic} className="flex flex-col overflow-hidden rounded-2xl border border-line bg-white sm:last:odd:col-span-2">
                 <p className="px-4 pt-4 font-display text-base font-bold text-ink sm:px-5 sm:pt-5 sm:text-lg">{row.topic}</p>
                 <div className="flex items-start gap-2.5 px-4 py-3.5 text-sm text-muted sm:px-5 sm:py-4">
                   <MinusIcon className="mt-0.5 h-4 w-4 shrink-0 text-ink/30" aria-hidden="true" />

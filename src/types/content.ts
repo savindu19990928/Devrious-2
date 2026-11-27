@@ -141,11 +141,23 @@ export interface FeaturedTestimonial {
 
 export type DemoTabId = 'website' | 'store' | 'system';
 
+export type DemoDeviceMode = 'desktop' | 'tablet' | 'mobile';
+
 export interface DemoTab {
   id: DemoTabId;
   title: string;
   description: string;
   url: string;
+}
+
+export interface DemoSitePreview {
+  slug: string;
+  name: string;
+  category: string;
+  url: string;
+  host: string;
+  desktopImage: string;
+  mobileImage: string;
 }
 
 export interface DemoProduct {

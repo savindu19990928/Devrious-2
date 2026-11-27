@@ -33,7 +33,7 @@ export const clients: string[] = [
 'Thilaka Ayurveda',
 'Avenor Apparel',
 'Zevora Custom',
-'Sunrise Residencies',
+'Rising Sun Residences',
 'Smart Metro Tech',
 'Smart Part and Fly'];
 
@@ -47,9 +47,9 @@ export const testimonials: Testimonial[] = [
   'Devrious built both of our websites — Avenor Apparel and Zevora Custom — and the clothing production management system our factory floor now runs on. They understood that Avenor had to feel corporate and trustworthy while Zevora needed movement and personality, and they delivered both without sacrificing speed. The production system finally gave us clear visibility of every order from cutting to dispatch. Responsive, honest and technically sharp — they are our long-term technology partner.'
 },
 {
-  name: 'Mr. Thiranda Kariyawasam',
+  name: 'Mr. Thiranda Athukorala',
   role: 'Owner',
-  company: 'Sunrise Residencies',
+  company: 'Rising Sun Residences',
   quote:
   'Devrious built our Accommodation Management System from the ground up, replacing scattered spreadsheets with one structured platform for rooms, tenants, rental agreements, payments and live occupancy. It cut down manual administrative work immediately and gave us clear control over every unit.'
 },

@@ -82,7 +82,7 @@ export function Footer() {
 
           <p
             aria-hidden="true"
-            className="mt-12 select-none overflow-hidden font-display text-[19vw] font-bold italic lowercase leading-[0.85] tracking-[-0.04em] text-white/[0.06] transition-colors duration-300 hover:text-brand sm:mt-16 sm:text-[21vw] lg:mt-20 lg:text-[17rem]">
+            className="mt-12 select-none overflow-hidden pr-[0.06em] font-display text-[clamp(3.25rem,18.2vw,16.25rem)] font-bold italic lowercase leading-[0.85] tracking-[-0.04em] text-white/[0.06] transition-colors duration-300 hover:text-brand sm:mt-16 lg:mt-20">
             devrious
           </p>
 

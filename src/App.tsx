@@ -54,6 +54,7 @@ function AppRoutes() {
         <Route path="/pre-builds" element={<Navigate to="/pre-builts" replace />} />
         <Route path="/pre-builds/:slug" element={<LegacyProductRedirect />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/sunrise-residencies-ams" element={<Navigate to="/portfolio/rising-sun-residences-ams" replace />} />
         <Route path="/portfolio/:slug" element={<ProjectDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

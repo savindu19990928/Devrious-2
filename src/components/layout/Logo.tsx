@@ -20,9 +20,9 @@ export function Logo({ inverted = false, showWordmark = true, wordmarkClassName 
       </span>
       {showWordmark && (
         <span
-          className={`font-display text-xl font-bold italic lowercase tracking-tight sm:text-2xl ${
+          className={`font-display font-bold italic lowercase tracking-tight ${
             inverted ? 'text-white' : 'text-ink'
-          } ${wordmarkClassName}`}>
+          } ${wordmarkClassName || 'text-xl sm:text-2xl'}`}>
           devrious
         </span>
       )}

@@ -52,7 +52,7 @@ export function ServicesShowcase() {
                           {service.number}
                         </span>
                         <h3
-                          className={`flex-1 font-display text-lg font-bold leading-snug tracking-[-0.01em] transition-colors duration-200 group-focus-visible:underline xs:text-xl sm:text-[1.5rem] md:text-[2.1rem] ${
+                          className={`flex-1 font-display text-[1.125rem] font-bold leading-[1.24] tracking-[-0.01em] transition-colors duration-200 group-focus-visible:underline xs:text-[1.25rem] sm:text-[1.5rem] md:text-[1.85rem] lg:text-[1.8rem] xl:text-[2.1rem] ${
                             isActive ? 'text-white' : 'text-white/55'
                           }`}>
                           {service.title}
@@ -101,9 +101,9 @@ export function ServicesShowcase() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </AnimatePresence>
-                <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl bg-black/35 px-5 py-4 backdrop-blur-md">
-                  <span className="text-sm font-semibold text-white">{current.title}</span>
-                  <span className="text-sm tabular-nums text-white/60">{current.number} / 06</span>
+                <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl bg-black/35 px-5 py-4 backdrop-blur-md">
+                  <span className="truncate text-sm font-semibold text-white">{current.title}</span>
+                  <span className="shrink-0 text-sm tabular-nums text-white/60">{current.number} / 06</span>
                 </div>
               </div>
             </div>

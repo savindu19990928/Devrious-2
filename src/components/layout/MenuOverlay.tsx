@@ -19,7 +19,7 @@ export function MenuOverlay({ isActive }: MenuOverlayProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: easeOut }}
       className="fixed inset-2 z-40 overflow-y-auto rounded-[20px] bg-wine-deep text-white sm:inset-3 sm:rounded-[24px] md:inset-4 md:rounded-frame">
-      <div className="mx-auto grid min-h-full max-w-[1320px] gap-8 px-5 pb-8 pt-20 sm:gap-10 sm:px-8 sm:pb-10 sm:pt-28 md:px-10 md:pt-36 lg:grid-cols-12 lg:gap-12">
+      <div className="mx-auto grid min-h-full max-w-[1320px] gap-8 px-5 pb-8 pt-20 sm:gap-10 sm:px-8 sm:pb-10 sm:pt-28 md:px-10 md:pt-28 lg:grid-cols-12 lg:gap-12">
         <motion.ul
           className="flex flex-col lg:col-span-7"
           initial="hidden"
